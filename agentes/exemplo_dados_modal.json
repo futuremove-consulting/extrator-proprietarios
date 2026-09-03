@@ -1,0 +1,39 @@
+{
+  "nome_completo": "ANA PAULA RODRIGUES",
+  "papel": "Proprietário",
+  "endereco_retornado": "Rua Marc Chagall, 397",
+  "unidade": "VG 3M TER",
+  "inscricao": "123456789",
+  "idade": 45,
+  "data_nascimento": "15/03/1979",
+  "data_nascimento_ausente": false,
+  "telefones": [
+    {
+      "numero": "(11) 99999-8888",
+      "tipo": "Celular",
+      "whatsapp_status": "validado"
+    },
+    {
+      "numero": "(11) 3333-4444",
+      "tipo": "Residencial",
+      "whatsapp_status": "nao_validado"
+    },
+    {
+      "numero": "(11) 97777-6666",
+      "tipo": "Celular",
+      "whatsapp_status": "nao_validado"
+    }
+  ],
+  "emails": [
+    {
+      "endereco": "ana.paula@email.com",
+      "tipo": "Principal"
+    },
+    {
+      "endereco": "ana.rodrigues@empresa.com.br",
+      "tipo": "Trabalho"
+    }
+  ],
+  "metodo_extracao": "manual",
+  "modal_completo": true
+}
