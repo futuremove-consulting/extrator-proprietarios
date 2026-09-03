@@ -1,0 +1,20 @@
+# Sistema de Extração de Proprietários
+# Python 3.8+
+
+# Bibliotecas padrão do Python (não requer instalação)
+# - hashlib, json, re, datetime, pathlib, typing são built-in
+
+# Para integração futura com PostgreSQL/Supabase
+# psycopg2-binary>=2.9.0
+# sqlalchemy>=2.0.0
+
+# Para integração futura com browser automation
+# playwright>=1.40.0
+# selenium>=4.15.0
+
+# Para integração futura com agent-browser
+# agent-browser>=0.36.0
+
+# Para desenvolvimento e testes
+# pytest>=7.4.0
+# pytest-cov>=4.1.0
