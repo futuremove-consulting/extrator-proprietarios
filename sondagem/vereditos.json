@@ -1,0 +1,33 @@
+{
+  "gerado_em": "2026-09-04T16:09:38Z",
+  "P1_listagem_gratuita": {
+    "captei": "consome_credito",
+    "fisgar": "sem_medicao",
+    "eemovel": "sem_medicao"
+  },
+  "P2_captei_modalidade": {
+    "modalidade": "pre_pago_capcoins",
+    "evidencias": 1,
+    "saldo_atual_apos_sondagem": 75.0,
+    "cota_real": "saldo de capcoins (pre-pago)",
+    "plano_500_mes_valido_para_consultas": false,
+    "recomendacao": "tratar capcoins como budget; recarga (pacote 50 = R$ 49,90) apenas com aprovacao"
+  },
+  "P3_eemovel_escopo": {
+    "escopo": "irregular_revisar",
+    "custo_por_proprietario": null,
+    "evidencias": 1
+  },
+  "P4_fisgar_modal": {
+    "custo_por_modal": "irregular_revisar",
+    "deltas": [
+      -1
+    ],
+    "evidencias": 1
+  },
+  "P5_guard_rail": {
+    "conclusao": "ativo_e_validado",
+    "tentativas_bloqueadas": 1,
+    "eventos_pagos_aprovados": 3
+  }
+}

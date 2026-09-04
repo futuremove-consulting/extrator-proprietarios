@@ -1,0 +1,11 @@
+{
+  "lote": "piloto_testes",
+  "operador": "leonardo",
+  "dominios_a_testar": [
+    "com",
+    "com_br"
+  ],
+  "escopo_validacao": "todos_os_leads",
+  "numeros": "propria_equipe_mascarados",
+  "iniciada_em": "2026-09-04T16:08:36Z"
+}

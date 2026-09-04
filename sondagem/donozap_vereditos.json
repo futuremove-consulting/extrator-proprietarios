@@ -1,0 +1,34 @@
+{
+  "gerado_em": "2026-09-04T16:10:00Z",
+  "por_dominio": {
+    "donodozap.com": {
+      "status": "nome_publico_gratis_confirmado",
+      "sondas": 1,
+      "nome_publico_obtido": 1,
+      "taxa_nome_publico": 1.0,
+      "pix_oferecido": 1,
+      "pix_valores_observados": [
+        4.9
+      ],
+      "tempo_medio_segundos": 8.0,
+      "sigilo_claims": [
+        "ui_afirma"
+      ]
+    },
+    "donodozap.com.br": {
+      "status": "sem_retorno_gratuito_revisar",
+      "sondas": 1,
+      "nome_publico_obtido": 0,
+      "taxa_nome_publico": 0.0,
+      "pix_oferecido": 0,
+      "pix_valores_observados": [],
+      "tempo_medio_segundos": 15.0,
+      "sigilo_claims": [
+        "nao_verificado"
+      ]
+    }
+  },
+  "recomendacao": "usar donodozap.com para validacao gratuita por nome publico",
+  "comparacoes_registradas": 0,
+  "distribuicao_comparacoes": {}
+}

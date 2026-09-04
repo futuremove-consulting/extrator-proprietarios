@@ -1,0 +1,51 @@
+{
+  "gerado_em": "2026-09-04T16:10:08Z",
+  "fonte": "sonda_donozap_empirica",
+  "dominios_testados": [
+    "donodozap.com",
+    "donodozap.com.br"
+  ],
+  "dominio_recomendado": "donodozap.com",
+  "estatisticas_por_dominio": {
+    "donodozap.com": {
+      "status": "nome_publico_gratis_confirmado",
+      "sondas": 1,
+      "nome_publico_obtido": 1,
+      "taxa_nome_publico": 1.0,
+      "pix_oferecido": 1,
+      "pix_valores_observados": [
+        4.9
+      ],
+      "tempo_medio_segundos": 8.0,
+      "sigilo_claims": [
+        "ui_afirma"
+      ]
+    },
+    "donodozap.com.br": {
+      "status": "sem_retorno_gratuito_revisar",
+      "sondas": 1,
+      "nome_publico_obtido": 0,
+      "taxa_nome_publico": 0.0,
+      "pix_oferecido": 0,
+      "pix_valores_observados": [],
+      "tempo_medio_segundos": 15.0,
+      "sigilo_claims": [
+        "nao_verificado"
+      ]
+    }
+  },
+  "regra_match": {
+    "comparacao": "similaridade_nomes(nome_proprietario, nome_publico_whatsapp)",
+    "whatsapp_validado_publico": ">= 0.92",
+    "ambiguo_revisao": "0.75 a 0.92",
+    "nao_correspondente": "< 0.75",
+    "inicial_nome_do_meio_vai_para_revisao": true
+  },
+  "escopo_validacao": "todos_os_leads",
+  "economia_esperada_capcoins": "70-85 por cento das validacoes sem custo",
+  "proximo_passo": "Fase 2: comum/validacao_whatsapp.py + fila CSV operavel + import no orquestrador",
+  "pendencias": [
+    "Revisar sonda do dominio donodozap.com.br (status: sem_retorno_gratuito_revisar)",
+    "Registrar ao menos 1 comparacao de nome (regra central) com 'comparar --registrar'"
+  ]
+}

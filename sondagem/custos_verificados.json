@@ -1,0 +1,35 @@
+{
+  "gerado_em": "2026-09-04T16:09:49Z",
+  "fonte": "sondagem_empirica",
+  "sistemas": {
+    "eemovel": {
+      "limite_mes": 500,
+      "custo_por_proprietario": null,
+      "escopo_consulta": "irregular_revisar"
+    },
+    "fisgar": {
+      "limite_mes": 250,
+      "custo_por_modal": null
+    },
+    "captei": {
+      "modalidade": "pre_pago_capcoins",
+      "cota_real": "saldo de capcoins (pre-pago)",
+      "saldo_capcoins_atual": 75.0,
+      "limite_mes_efetivo": "saldo_capcoins"
+    }
+  },
+  "guard_rail": {
+    "aprovacao_humana_obrigatoria": true,
+    "status": "ativo_e_validado"
+  },
+  "ordem_cascata": [
+    "eemovel",
+    "fisgar",
+    "captei"
+  ],
+  "avisos": [
+    "ATENCAO: listagem de captei consumiu credito — inventario NAO e gratuito",
+    "PENDENTE: medir P1 para fisgar",
+    "PENDENTE: medir P1 para eemovel"
+  ]
+}
