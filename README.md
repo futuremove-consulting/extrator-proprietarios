@@ -2,6 +2,8 @@
 
 Sistema modular para extração de dados de proprietários dos sistemas Captei e Fisgar, com persistência estruturada, manifest append-only e checkpoints para retomada.
 
+> **Plano de testes reais:** ver "PLANO_TESTES_REAIS.md" (validação ponta a ponta com gates de Go/No-Go) · **Estratégia de cascata:** ver "ESTRATEGIA_EXTRACAO_CASCATA.md" · **Validação de WhatsApp:** ver "VALIDACAO_WHATSAPP_DONODOZAP.md"
+
 ## 🎯 Objetivo
 
 Transformar bases fragmentadas de proprietários, moradores, imóveis e empreendimentos em uma estrutura normalizada, segregada, auditável e enriquecida.
