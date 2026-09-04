@@ -13,12 +13,17 @@ Transformar bases fragmentadas de proprietários, moradores, imóveis e empreend
 ```
 extrator-proprietarios/
 ├── agentes/                    # Sistema de extração modular
-│   ├── comum/                # Funções utilitárias compartilhadas
+│   ├── comum/                # Utilitários + consolidação multi-origem
 │   ├── captei/               # Agente específico para Captei
 │   ├── fisgar/               # Agente específico para Fisgar
+│   ├── eemovel/              # Agente específico para EEmovel
 │   ├── extrair_captei.py     # Script de orquestração Captei
 │   ├── extrair_fisgar.py     # Script de orquestração Fisgar
-│   └── migrar_dados_existentes.py  # Migração de dados anteriores
+│   ├── extrair_eemovel.py    # Script de orquestração EEmovel
+│   ├── consolidar_multi_origem.py  # Pipeline de consolidação (8 stages)
+│   ├── migrar_dados_existentes.py  # Migração de dados anteriores
+│   └── benchmark_cross_origem.py   # Análise de overlap entre origens
+├── DOCUMENTACAO_TECNICA.md   # Documentação técnica e roadmap
 ├── extracted/                # Dados extraídos anteriormente
 └── README.md                 # Este arquivo
 ```
@@ -49,6 +54,26 @@ Gerencia extração do sistema Fisgar:
 - Suporte a scroll position
 - Dados específicos (CPF, RG)
 - Checkpoints com posição de scroll
+
+#### Agente EEmovel
+Gerencia extração do sistema EEmovel:
+- Consulta de proprietários + moradores ("Possível morador")
+- Múltiplos endereços e CPF
+- Campo de busca por rua e faixa de números
+- Dados específicos: CPF, RG, data de nascimento, óbito
+
+#### Consolidação Multi-Origem
+Pipeline unificado (8 stages) para unir Captei, Fisgar e EEmovel:
+- **Load** — leitura de manifests NDJSON por origem
+- **Normalize** — canonicalização (aplicada na extração)
+- **Sanitize** — camada LGPD
+- **Deduplicate** — resolução de identidade (CPF forte > record_key exato > telefone+nome > fuzzy)
+- **Merge** — políticas por campo (most_complete, union_dedup, source_priority)
+- **Validate** — validação cross-origem
+- **Score** — confidence 0-100 por campo, quality tier, revisão
+- **Output** — Golden Records JSON + relatório MD
+
+CLI: 
 
 ## 🚀 Uso
 

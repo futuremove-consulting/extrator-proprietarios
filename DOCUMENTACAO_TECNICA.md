@@ -43,7 +43,7 @@ extrator-proprietarios/
 │   │   ├── __init__.py         # AgenteFisgar: + scroll_position, dom_reference
 │   │   ├── extrator.py         # processar_modal_fisgar, CTA selectors, tel:/mailto:
 │   │   └── persister.py        # + sistema_origem='fisgar', CPF/RG no MD
-│   ├── eemovel/                # NOVO: Agente EEmovel (a implementar)
+│   ├── eemovel/                # Agente EEmovel (implementado)
 │   │   ├── __init__.py         # AgenteEEmovel: + multi_enderecos, moradores
 │   │   ├── extrator.py         # processar_modal_eemovel, CPF, multi-endereços
 │   │   └── persister.py        # + sistema_origem='eemovel', moradores no MD
@@ -292,12 +292,12 @@ MERGE_POLICY = {
 | Documentar MergeReport format | ☐ |
 
 **Definition of Done Fase 1:**
-- [ ] Pipeline roda end-to-end com 3 origens
-- [ ] Golden Records produzidos para 100% dos proprietários únicos
-- [ ] MergeReport documenta cada decisão de merge
-- [ ] Zero perda de dados (SourceRecords preservados)
-- [ ] Confidence score médio > 85
-- [ ] Taxa revisão manual < 10%
+- [x] Pipeline roda end-to-end com 3 origens (consolidar_multi_origem.py, compilado e executado)
+- [ ] Golden Records produzidos para 100% dos proprietários únicos (validar com lote de produção)
+- [x] MergeReport documenta cada decisão de merge (golden_records_<lote>.json + relatorio_<lote>.md)
+- [x] Zero perda de dados (SourceRecords preservados por origem)
+- [ ] Confidence score médio > 85 (dados de exemplo dan ~56%; requer dados reais/CPF)
+- [ ] Taxa revisão manual < 10% (dados de exemplo ~100%; requer calibração)
 
 ---
 
@@ -459,10 +459,11 @@ Substituir simulação por extração real via Playwright.
 3. ✅ Testar 3 agentes em sequência
 4. ✅ Documentar CLI unificado
 
-### Prioridade 2 — Próxima Semana
-5. Iniciar Fase 1: Benchmark de consolidação cross-origem
-6. Brainstorm/Define/Spec do pipeline de merge
-7. Setup CI/CD para agentes Python (GitHub Actions)
+### Prioridade 2 — Próxima Semana (em parte concluída)
+5. ✅ Iniciar Fase 1: Benchmark de consolidação cross-origem (benchmark_cross_origem.py)
+6. ✅ Pipeline de merge implementado (comum/consolidation.py, 8 stages)
+7. Calibrar scoring e reduzir revisão manual (confidence > 85, revisão < 10%)
+8. Setup CI/CD para agentes Python (GitHub Actions)
 
 ### Prioridade 3 — Curto Prazo
 8. Browser automation (Playwright) para uma origem (piloto Captei)

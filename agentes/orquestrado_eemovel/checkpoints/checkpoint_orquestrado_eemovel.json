@@ -1,0 +1,22 @@
+{
+  "address_canonical": null,
+  "address_raw": null,
+  "counts": {
+    "empresas_excluidas": 0,
+    "manifest_total": 0,
+    "moradores": 0,
+    "pessoa_fisica_completed": 0,
+    "pessoa_fisica_pending": 0,
+    "revisao_manual": 0
+  },
+  "creditos_disponiveis": null,
+  "errors": [],
+  "last_completed_key": "ec3422c2eb120bbf03bc",
+  "lote": "orquestrado_eemovel",
+  "next_record_key": null,
+  "number_from": null,
+  "number_to": null,
+  "scroll_position": null,
+  "state": "inicializado",
+  "timestamp": "2026-09-04T11:24:45.551852"
+}

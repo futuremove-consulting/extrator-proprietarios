@@ -1,0 +1,6230 @@
+[
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.608588",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall, 397",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "captei",
+      "nome_completo": "captei",
+      "obito": "captei",
+      "tipo_pessoa": "captei",
+      "unidade": "captei"
+    },
+    "golden_key": "golden_593fb07b670b5bc7f764",
+    "idade": null,
+    "identity_confidence": 0.85,
+    "imovel_detalhes": {},
+    "match_type": "record_key_exact",
+    "nome_completo": "ANA PAULA RODRIGUES",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.35714285714285715,
+      "cross_source_agreement": 0.4,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.1,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.1,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.1,
+          "field": "emails",
+          "provenance": {
+            "emails": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.95,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall, 397"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.1,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.1,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.95,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "ANA PAULA RODRIGUES"
+        },
+        "obito": {
+          "confidence": 0.95,
+          "field": "obito",
+          "provenance": {
+            "obito": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.95,
+          "field": "quality",
+          "provenance": {},
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": null
+        },
+        "rg": {
+          "confidence": 0.1,
+          "field": "rg",
+          "provenance": {
+            "rg": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.1,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.95,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.95,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "VG 3M TER"
+        },
+        "whatsapp_status": {
+          "confidence": 0.1,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 43.14999999999999,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 43%",
+        "Baixa concordância cross-origem: 40%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "ANA PAULA RODRIGUES",
+        "record_key": "593fb07b670b5bc7f764",
+        "source": "captei",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      },
+      {
+        "name_raw": "ANA PAULA RODRIGUES",
+        "record_key": "593fb07b670b5bc7f764",
+        "source": "fisgar",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "VG 3M TER",
+    "updated_at": "2026-09-04T11:24:45.608611",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.608758",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall, 397",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "captei",
+      "nome_completo": "captei",
+      "obito": "captei",
+      "tipo_pessoa": "captei",
+      "unidade": "captei"
+    },
+    "golden_key": "golden_2736f3820b80323c3893",
+    "idade": null,
+    "identity_confidence": 0.85,
+    "imovel_detalhes": {},
+    "match_type": "record_key_exact",
+    "nome_completo": "JOÃO SILVA SANTOS",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.35714285714285715,
+      "cross_source_agreement": 0.4,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.1,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.1,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.1,
+          "field": "emails",
+          "provenance": {
+            "emails": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.95,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall, 397"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.1,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.1,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.95,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "JOÃO SILVA SANTOS"
+        },
+        "obito": {
+          "confidence": 0.95,
+          "field": "obito",
+          "provenance": {
+            "obito": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.95,
+          "field": "quality",
+          "provenance": {},
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": null
+        },
+        "rg": {
+          "confidence": 0.1,
+          "field": "rg",
+          "provenance": {
+            "rg": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.1,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.95,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.95,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "AP 101"
+        },
+        "whatsapp_status": {
+          "confidence": 0.1,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 43.14999999999999,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 43%",
+        "Baixa concordância cross-origem: 40%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "JOÃO SILVA SANTOS",
+        "record_key": "2736f3820b80323c3893",
+        "source": "captei",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      },
+      {
+        "name_raw": "JOÃO SILVA SANTOS",
+        "record_key": "2736f3820b80323c3893",
+        "source": "fisgar",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "AP 101",
+    "updated_at": "2026-09-04T11:24:45.608765",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.608875",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall, 397",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "captei",
+      "nome_completo": "captei",
+      "obito": "captei",
+      "tipo_pessoa": "captei",
+      "unidade": "captei"
+    },
+    "golden_key": "golden_52e3a62efbbc29ff7985",
+    "idade": null,
+    "identity_confidence": 0.85,
+    "imovel_detalhes": {},
+    "match_type": "record_key_exact",
+    "nome_completo": "MARIA APARECIDA OLIVEIRA",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.35714285714285715,
+      "cross_source_agreement": 0.4,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.1,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.1,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.1,
+          "field": "emails",
+          "provenance": {
+            "emails": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.95,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall, 397"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.1,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.1,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.95,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "MARIA APARECIDA OLIVEIRA"
+        },
+        "obito": {
+          "confidence": 0.95,
+          "field": "obito",
+          "provenance": {
+            "obito": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.95,
+          "field": "quality",
+          "provenance": {},
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": null
+        },
+        "rg": {
+          "confidence": 0.1,
+          "field": "rg",
+          "provenance": {
+            "rg": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.1,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.95,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.95,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "AP 202"
+        },
+        "whatsapp_status": {
+          "confidence": 0.1,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 43.14999999999999,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 43%",
+        "Baixa concordância cross-origem: 40%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "MARIA APARECIDA OLIVEIRA",
+        "record_key": "52e3a62efbbc29ff7985",
+        "source": "captei",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      },
+      {
+        "name_raw": "MARIA APARECIDA OLIVEIRA",
+        "record_key": "52e3a62efbbc29ff7985",
+        "source": "fisgar",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "AP 202",
+    "updated_at": "2026-09-04T11:24:45.608881",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.608983",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall, 397",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "captei",
+      "nome_completo": "captei",
+      "obito": "captei",
+      "tipo_pessoa": "captei",
+      "unidade": "captei"
+    },
+    "golden_key": "golden_d112a0dbc9875bba1850",
+    "idade": null,
+    "identity_confidence": 0.85,
+    "imovel_detalhes": {},
+    "match_type": "record_key_exact",
+    "nome_completo": "PEDRO HENRIQUE COSTA",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.35714285714285715,
+      "cross_source_agreement": 0.4,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.1,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.1,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.1,
+          "field": "emails",
+          "provenance": {
+            "emails": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.95,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall, 397"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.1,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.1,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.95,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "PEDRO HENRIQUE COSTA"
+        },
+        "obito": {
+          "confidence": 0.95,
+          "field": "obito",
+          "provenance": {
+            "obito": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.95,
+          "field": "quality",
+          "provenance": {},
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": null
+        },
+        "rg": {
+          "confidence": 0.1,
+          "field": "rg",
+          "provenance": {
+            "rg": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.1,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.95,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.95,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "captei"
+          },
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": "VG 2M"
+        },
+        "whatsapp_status": {
+          "confidence": 0.1,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "captei",
+            "fisgar"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 43.14999999999999,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 43%",
+        "Baixa concordância cross-origem: 40%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "PEDRO HENRIQUE COSTA",
+        "record_key": "d112a0dbc9875bba1850",
+        "source": "captei",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      },
+      {
+        "name_raw": "PEDRO HENRIQUE COSTA",
+        "record_key": "d112a0dbc9875bba1850",
+        "source": "fisgar",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "VG 2M",
+    "updated_at": "2026-09-04T11:24:45.608988",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609072",
+    "data_nascimento": "",
+    "emails": [
+      "exemplo@email.com"
+    ],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "emails": "eemovel",
+      "endereco_principal": "eemovel",
+      "imovel_detalhes": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "telefones": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_c9e094c7233a4e19bac3",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {
+      "ano_construcao": 2015,
+      "area_construida_m2": 174,
+      "area_terreno_m2": 8254,
+      "edificio": "CONDOMINIO RECANTO JACARANDA",
+      "padrao_construtivo": "Residencial Vertical Padrão D",
+      "tipo_terreno": "Normal",
+      "uso_imovel": "Apartamento Em Condomínio"
+    },
+    "match_type": "single_origin",
+    "nome_completo": "ANA LAURA ALCANTARA ALVES",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.6428571428571429,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": [
+            "exemplo@email.com"
+          ]
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {
+            "ano_construcao": 2015,
+            "area_construida_m2": 174,
+            "area_terreno_m2": 8254,
+            "edificio": "CONDOMINIO RECANTO JACARANDA",
+            "padrao_construtivo": "Residencial Vertical Padrão D",
+            "tipo_terreno": "Normal",
+            "uso_imovel": "Apartamento Em Condomínio"
+          }
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "ANA LAURA ALCANTARA ALVES"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": [
+            "11999999999"
+          ]
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 101 E 2 Vg Bl C"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "ANA LAURA ALCANTARA ALVES",
+        "record_key": "c9e094c7233a4e19bac3",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [
+      "11999999999"
+    ],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 101 E 2 Vg Bl C",
+    "updated_at": "2026-09-04T11:24:45.609077",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609153",
+    "data_nascimento": "",
+    "emails": [
+      "exemplo@email.com"
+    ],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "emails": "eemovel",
+      "endereco_principal": "eemovel",
+      "imovel_detalhes": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "telefones": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_859fb31e9f7d7e69868c",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {
+      "ano_construcao": 2015,
+      "area_construida_m2": 174,
+      "area_terreno_m2": 8254,
+      "edificio": "CONDOMINIO RECANTO JACARANDA",
+      "padrao_construtivo": "Residencial Vertical Padrão D",
+      "tipo_terreno": "Normal",
+      "uso_imovel": "Apartamento Em Condomínio"
+    },
+    "match_type": "single_origin",
+    "nome_completo": "GILBERTO LACHTER GREIBER",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.6428571428571429,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": [
+            "exemplo@email.com"
+          ]
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {
+            "ano_construcao": 2015,
+            "area_construida_m2": 174,
+            "area_terreno_m2": 8254,
+            "edificio": "CONDOMINIO RECANTO JACARANDA",
+            "padrao_construtivo": "Residencial Vertical Padrão D",
+            "tipo_terreno": "Normal",
+            "uso_imovel": "Apartamento Em Condomínio"
+          }
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "GILBERTO LACHTER GREIBER"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": [
+            "11999999999"
+          ]
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 101 E 2 Vg Bl A"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "GILBERTO LACHTER GREIBER",
+        "record_key": "859fb31e9f7d7e69868c",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [
+      "11999999999"
+    ],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 101 E 2 Vg Bl A",
+    "updated_at": "2026-09-04T11:24:45.609158",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609226",
+    "data_nascimento": "",
+    "emails": [
+      "exemplo@email.com"
+    ],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "emails": "eemovel",
+      "endereco_principal": "eemovel",
+      "imovel_detalhes": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "telefones": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_4e30c54c3a204a366e27",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {
+      "ano_construcao": 2015,
+      "area_construida_m2": 174,
+      "area_terreno_m2": 8254,
+      "edificio": "CONDOMINIO RECANTO JACARANDA",
+      "padrao_construtivo": "Residencial Vertical Padrão D",
+      "tipo_terreno": "Normal",
+      "uso_imovel": "Apartamento Em Condomínio"
+    },
+    "match_type": "single_origin",
+    "nome_completo": "SUZANA CAPASSI BALTUILHE MARTINS",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.6428571428571429,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": [
+            "exemplo@email.com"
+          ]
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {
+            "ano_construcao": 2015,
+            "area_construida_m2": 174,
+            "area_terreno_m2": 8254,
+            "edificio": "CONDOMINIO RECANTO JACARANDA",
+            "padrao_construtivo": "Residencial Vertical Padrão D",
+            "tipo_terreno": "Normal",
+            "uso_imovel": "Apartamento Em Condomínio"
+          }
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "SUZANA CAPASSI BALTUILHE MARTINS"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": [
+            "11999999999"
+          ]
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 101 Pavao"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "SUZANA CAPASSI BALTUILHE MARTINS",
+        "record_key": "4e30c54c3a204a366e27",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [
+      "11999999999"
+    ],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 101 Pavao",
+    "updated_at": "2026-09-04T11:24:45.609230",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609296",
+    "data_nascimento": "",
+    "emails": [
+      "exemplo@email.com"
+    ],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "emails": "eemovel",
+      "endereco_principal": "eemovel",
+      "imovel_detalhes": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "telefones": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_5d3c28b6b0ad030e13b5",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {
+      "ano_construcao": 2015,
+      "area_construida_m2": 174,
+      "area_terreno_m2": 8254,
+      "edificio": "CONDOMINIO RECANTO JACARANDA",
+      "padrao_construtivo": "Residencial Vertical Padrão D",
+      "tipo_terreno": "Normal",
+      "uso_imovel": "Apartamento Em Condomínio"
+    },
+    "match_type": "single_origin",
+    "nome_completo": "BRUNO ZANCHETA SCARCELLI",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.6428571428571429,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": [
+            "exemplo@email.com"
+          ]
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {
+            "ano_construcao": 2015,
+            "area_construida_m2": 174,
+            "area_terreno_m2": 8254,
+            "edificio": "CONDOMINIO RECANTO JACARANDA",
+            "padrao_construtivo": "Residencial Vertical Padrão D",
+            "tipo_terreno": "Normal",
+            "uso_imovel": "Apartamento Em Condomínio"
+          }
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "BRUNO ZANCHETA SCARCELLI"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": [
+            "11999999999"
+          ]
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 101 E Tor B"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "BRUNO ZANCHETA SCARCELLI",
+        "record_key": "5d3c28b6b0ad030e13b5",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [
+      "11999999999"
+    ],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 101 E Tor B",
+    "updated_at": "2026-09-04T11:24:45.609300",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609382",
+    "data_nascimento": "",
+    "emails": [
+      "exemplo@email.com"
+    ],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "emails": "eemovel",
+      "endereco_principal": "eemovel",
+      "imovel_detalhes": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "telefones": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_342bd60b46e6e48cf0b5",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {
+      "ano_construcao": 2015,
+      "area_construida_m2": 174,
+      "area_terreno_m2": 8254,
+      "edificio": "CONDOMINIO RECANTO JACARANDA",
+      "padrao_construtivo": "Residencial Vertical Padrão D",
+      "tipo_terreno": "Normal",
+      "uso_imovel": "Apartamento Em Condomínio"
+    },
+    "match_type": "single_origin",
+    "nome_completo": "AUGUSTO TADEU GRAIFF GAMA",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.6428571428571429,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": [
+            "exemplo@email.com"
+          ]
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {
+            "ano_construcao": 2015,
+            "area_construida_m2": 174,
+            "area_terreno_m2": 8254,
+            "edificio": "CONDOMINIO RECANTO JACARANDA",
+            "padrao_construtivo": "Residencial Vertical Padrão D",
+            "tipo_terreno": "Normal",
+            "uso_imovel": "Apartamento Em Condomínio"
+          }
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "AUGUSTO TADEU GRAIFF GAMA"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": [
+            "11999999999"
+          ]
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 101 Complemen"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "AUGUSTO TADEU GRAIFF GAMA",
+        "record_key": "342bd60b46e6e48cf0b5",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [
+      "11999999999"
+    ],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 101 Complemen",
+    "updated_at": "2026-09-04T11:24:45.609387",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609452",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_1c51dce3eda54588692c",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "TEREZA PORTIGLIOTTI",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "TEREZA PORTIGLIOTTI"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 102 E Vg Bl E"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "TEREZA PORTIGLIOTTI",
+        "record_key": "1c51dce3eda54588692c",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 102 E Vg Bl E",
+    "updated_at": "2026-09-04T11:24:45.609457",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609520",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_48b32b5ba120cc225d11",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "THAIS WAISMAN",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "THAIS WAISMAN"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 102 E Vg Bl G"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "THAIS WAISMAN",
+        "record_key": "48b32b5ba120cc225d11",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 102 E Vg Bl G",
+    "updated_at": "2026-09-04T11:24:45.609525",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609593",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_360f7f8e9929cc8b5a1d",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "MARCUS AURELIO MASCARO MARTINELLI",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "MARCUS AURELIO MASCARO MARTINELLI"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 111 E 2 Vg Bl A"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "MARCUS AURELIO MASCARO MARTINELLI",
+        "record_key": "360f7f8e9929cc8b5a1d",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 111 E 2 Vg Bl A",
+    "updated_at": "2026-09-04T11:24:45.609598",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609662",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_c677b4df09802e2124a9",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "CLAUDIA DE FRANCA",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "CLAUDIA DE FRANCA"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 111 E 2 Vg Bl E"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "CLAUDIA DE FRANCA",
+        "record_key": "c677b4df09802e2124a9",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 111 E 2 Vg Bl E",
+    "updated_at": "2026-09-04T11:24:45.609666",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609730",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_4f5a9fdba423b65d8bd1",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "ARTUR DE SOUZA FREITAS",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "ARTUR DE SOUZA FREITAS"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 112 E Vg Bl F"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "ARTUR DE SOUZA FREITAS",
+        "record_key": "4f5a9fdba423b65d8bd1",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 112 E Vg Bl F",
+    "updated_at": "2026-09-04T11:24:45.609735",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609870",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_110d3082d16613eab17d",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "LINDOMAR FIGUEIREDO DA COSTA",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "LINDOMAR FIGUEIREDO DA COSTA"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 112 E Vg Bl G"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "LINDOMAR FIGUEIREDO DA COSTA",
+        "record_key": "110d3082d16613eab17d",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 112 E Vg Bl G",
+    "updated_at": "2026-09-04T11:24:45.609881",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.609958",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_257826a3b8a1235f6ce1",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "HERMINA POLLAK EJZENMESSER",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "HERMINA POLLAK EJZENMESSER"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 121 E 2 Vg Bl A"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "HERMINA POLLAK EJZENMESSER",
+        "record_key": "257826a3b8a1235f6ce1",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 121 E 2 Vg Bl A",
+    "updated_at": "2026-09-04T11:24:45.610032",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610096",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_6f7408995a3b21c9cfcc",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "ANA CRISTINA GRECCO GARCIA",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "ANA CRISTINA GRECCO GARCIA"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 121 E 2 Vg Bl E"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "ANA CRISTINA GRECCO GARCIA",
+        "record_key": "6f7408995a3b21c9cfcc",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 121 E 2 Vg Bl E",
+    "updated_at": "2026-09-04T11:24:45.610101",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610185",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_5994782957602102bff4",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "MARIA CECILIA TEMER BARBOSA",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "MARIA CECILIA TEMER BARBOSA"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 121 E 2 Vg Bl D"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "MARIA CECILIA TEMER BARBOSA",
+        "record_key": "5994782957602102bff4",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 121 E 2 Vg Bl D",
+    "updated_at": "2026-09-04T11:24:45.610196",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610292",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_1ae57e7d9265f5c9defe",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "PAULA FERREIRO VIEIRA",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "PAULA FERREIRO VIEIRA"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 122 E Vg Bl B"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "PAULA FERREIRO VIEIRA",
+        "record_key": "1ae57e7d9265f5c9defe",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 122 E Vg Bl B",
+    "updated_at": "2026-09-04T11:24:45.610298",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610345",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_137c2c4076d67d7c79cf",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "ALEXANDRE XAVIER FURLAN",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "ALEXANDRE XAVIER FURLAN"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 122 E Vg Bl F"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "ALEXANDRE XAVIER FURLAN",
+        "record_key": "137c2c4076d67d7c79cf",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 122 E Vg Bl F",
+    "updated_at": "2026-09-04T11:24:45.610348",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610386",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_73ccd38b94340e8e5279",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "TIAGO AUGUSTO DOS SANTOS",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "TIAGO AUGUSTO DOS SANTOS"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 131 E 2 Vg Bl C"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "TIAGO AUGUSTO DOS SANTOS",
+        "record_key": "73ccd38b94340e8e5279",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Ap 131 E 2 Vg Bl C",
+    "updated_at": "2026-09-04T11:24:45.610388",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610432",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_43c6334554c294a16f0e",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "ANA PAULA RODRIGUES",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "ANA PAULA RODRIGUES"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Proprietário"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Vg 3M Ter"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "ANA PAULA RODRIGUES",
+        "record_key": "43c6334554c294a16f0e",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Proprietário"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Proprietário",
+    "unidade": "Vg 3M Ter",
+    "updated_at": "2026-09-04T11:24:45.610435",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610470",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_f451138ab053f8bb708d",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "ANDRE HENRIQUE SANTOS",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "ANDRE HENRIQUE SANTOS"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Possível morador"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 101"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "ANDRE HENRIQUE SANTOS",
+        "record_key": "f451138ab053f8bb708d",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Possível morador"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Possível morador",
+    "unidade": "Ap 101",
+    "updated_at": "2026-09-04T11:24:45.610472",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610509",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_430d738a34d6789b44a6",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "MARINA RING GREIBER",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "MARINA RING GREIBER"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Possível morador"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 101"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "MARINA RING GREIBER",
+        "record_key": "430d738a34d6789b44a6",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Possível morador"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Possível morador",
+    "unidade": "Ap 101",
+    "updated_at": "2026-09-04T11:24:45.610512",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610545",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_f78ff967b6ea6df42258",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "KATY ANNE UMEOKA",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "KATY ANNE UMEOKA"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Possível morador"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 102"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "KATY ANNE UMEOKA",
+        "record_key": "f78ff967b6ea6df42258",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Possível morador"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Possível morador",
+    "unidade": "Ap 102",
+    "updated_at": "2026-09-04T11:24:45.610547",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610581",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_61105ac454a410426676",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "MARA REGINA MARCAL VIEIRA CEOLIN",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "MARA REGINA MARCAL VIEIRA CEOLIN"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Possível morador"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 102"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "MARA REGINA MARCAL VIEIRA CEOLIN",
+        "record_key": "61105ac454a410426676",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Possível morador"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Possível morador",
+    "unidade": "Ap 102",
+    "updated_at": "2026-09-04T11:24:45.610584",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  },
+  {
+    "cpf": "",
+    "created_at": "2026-09-04T11:24:45.610619",
+    "data_nascimento": "",
+    "emails": [],
+    "endereco_principal": "Rua Marc Chagall",
+    "enderecos_adicionais": [],
+    "field_provenance": {
+      "endereco_principal": "eemovel",
+      "nome_completo": "eemovel",
+      "obito": "eemovel",
+      "quality": "eemovel",
+      "tipo_pessoa": "eemovel",
+      "unidade": "eemovel"
+    },
+    "golden_key": "golden_84af0ef5253d82d77427",
+    "idade": null,
+    "identity_confidence": 0.5,
+    "imovel_detalhes": {},
+    "match_type": "single_origin",
+    "nome_completo": "PRISCILA FRANCOZO MAFRA CARDOSO",
+    "obito": false,
+    "quality": "baixa",
+    "rg": "",
+    "scoring": {
+      "completeness": 0.42857142857142855,
+      "cross_source_agreement": 0.42,
+      "field_scores": {
+        "cpf": {
+          "confidence": 0.0,
+          "field": "cpf",
+          "provenance": {
+            "cpf": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "data_nascimento": {
+          "confidence": 0.0,
+          "field": "data_nascimento",
+          "provenance": {
+            "data_nascimento": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "emails": {
+          "confidence": 0.6,
+          "field": "emails",
+          "provenance": {
+            "emails": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "endereco_principal": {
+          "confidence": 0.6,
+          "field": "endereco_principal",
+          "provenance": {
+            "endereco_principal": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Rua Marc Chagall"
+        },
+        "enderecos_adicionais": {
+          "confidence": 0.0,
+          "field": "enderecos_adicionais",
+          "provenance": {
+            "enderecos_adicionais": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "imovel_detalhes": {
+          "confidence": 0.6,
+          "field": "imovel_detalhes",
+          "provenance": {
+            "imovel_detalhes": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": {}
+        },
+        "nome_completo": {
+          "confidence": 0.6,
+          "field": "nome_completo",
+          "provenance": {
+            "nome_completo": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "PRISCILA FRANCOZO MAFRA CARDOSO"
+        },
+        "obito": {
+          "confidence": 0.6,
+          "field": "obito",
+          "provenance": {
+            "obito": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": false
+        },
+        "quality": {
+          "confidence": 0.6,
+          "field": "quality",
+          "provenance": {
+            "quality": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "baixa"
+        },
+        "rg": {
+          "confidence": 0.0,
+          "field": "rg",
+          "provenance": {
+            "rg": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": ""
+        },
+        "telefones": {
+          "confidence": 0.6,
+          "field": "telefones",
+          "provenance": {
+            "telefones": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": []
+        },
+        "tipo_pessoa": {
+          "confidence": 0.6,
+          "field": "tipo_pessoa",
+          "provenance": {
+            "tipo_pessoa": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Possível morador"
+        },
+        "unidade": {
+          "confidence": 0.6,
+          "field": "unidade",
+          "provenance": {
+            "unidade": "eemovel"
+          },
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": "Ap 102 Cotovia"
+        },
+        "whatsapp_status": {
+          "confidence": 0.0,
+          "field": "whatsapp_status",
+          "provenance": {},
+          "sources": [
+            "eemovel"
+          ],
+          "validation_flags": [],
+          "value": null
+        }
+      },
+      "overall_confidence": 35.400000000000006,
+      "quality_tier": "low",
+      "requires_manual_review": true,
+      "review_reasons": [
+        "Confiança geral baixa: 35%",
+        "Baixa concordância cross-origem: 42%"
+      ]
+    },
+    "source_records": [
+      {
+        "name_raw": "PRISCILA FRANCOZO MAFRA CARDOSO",
+        "record_key": "84af0ef5253d82d77427",
+        "source": "eemovel",
+        "source_record_id": null,
+        "tipo_pessoa": "Possível morador"
+      }
+    ],
+    "telefones": [],
+    "tipo_pessoa": "Possível morador",
+    "unidade": "Ap 102 Cotovia",
+    "updated_at": "2026-09-04T11:24:45.610622",
+    "validation_summary": {
+      "errors": [],
+      "infos": [],
+      "warnings": []
+    },
+    "whatsapp_status": null
+  }
+]

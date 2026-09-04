@@ -1,0 +1,68 @@
+{
+  "dados_extraidos": {
+    "detalhes": {
+      "data_nascimento": null,
+      "data_nascimento_ausente": true,
+      "endereco_retornado": "Rua Marc Chagall, 397",
+      "idade": null,
+      "inscricao": "",
+      "nome_completo": "PEDRO HENRIQUE COSTA",
+      "papel": "Proprietário",
+      "unidade": "VG 2M"
+    },
+    "emails": [
+      {
+        "endereco_lower": "exemplo@email.com",
+        "endereco_raw": "exemplo@email.com",
+        "tipo": "Principal",
+        "valido": true
+      }
+    ],
+    "metadata": {
+      "metodo_extracao": "simulado_orquestrado",
+      "modal_completo": true,
+      "qualidade": "media",
+      "tem_nascimento": false,
+      "timestamp_extracao": "2026-09-04T11:24:45.582111",
+      "total_emails": 1,
+      "total_telefones": 1,
+      "whatsapp_validado": false
+    },
+    "telefones": [
+      {
+        "digitos": "11999999999",
+        "numero_raw": "(11) 99999-9999",
+        "tipo": "Celular",
+        "validado": false,
+        "whatsapp_status": "nao_validado"
+      }
+    ]
+  },
+  "manifest": {
+    "address_canonical": "rua marc chagall 397",
+    "address_raw": "Rua Marc Chagall, 397",
+    "entity_type": "Pessoa Fisica",
+    "name_canonical": "pedro henrique costa",
+    "name_raw": "PEDRO HENRIQUE COSTA",
+    "record_key": "a9a0960986e6b57fe4a3",
+    "source_line": 5,
+    "source_record_id": null,
+    "source_system": "captei",
+    "state": "inventariado",
+    "timestamp": "2026-09-04T11:24:45.535834",
+    "tipo_pessoa": "Proprietário",
+    "tipo_unidade": "vaga",
+    "unidade_imovel_canonical": "",
+    "unidade_imovel_raw": "",
+    "unidade_vaga_canonical": "vg 2m",
+    "unidade_vaga_raw": "VG 2M",
+    "unit_canonical": "vg 2m",
+    "unit_raw": "VG 2M"
+  },
+  "metadata": {
+    "lote": "orquestrado_captei",
+    "timestamp_persistencia": "2026-09-04T11:24:45.582157",
+    "versao_schema": "1.0"
+  },
+  "record_key": "a9a0960986e6b57fe4a3"
+}

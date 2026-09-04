@@ -1,0 +1,7 @@
+[
+  {"nome": "ANA PAULA RODRIGUES", "unidade_imovel": "", "unidade_vaga": "VG 3M TER", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "JOÃO SILVA SANTOS", "unidade_imovel": "AP 101", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "MARIA APARECIDA OLIVEIRA", "unidade_imovel": "AP 202", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "CARLOS EDUARDO LTDA", "unidade_imovel": "SALA 301", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "PEDRO HENRIQUE COSTA", "unidade_imovel": "", "unidade_vaga": "VG 2M", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"}
+]

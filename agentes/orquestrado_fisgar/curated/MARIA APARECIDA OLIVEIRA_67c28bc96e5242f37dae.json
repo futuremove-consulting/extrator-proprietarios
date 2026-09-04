@@ -1,0 +1,72 @@
+{
+  "dados_extraidos": {
+    "detalhes": {
+      "cpf": "",
+      "data_nascimento": null,
+      "data_nascimento_ausente": true,
+      "endereco_retornado": "Rua Marc Chagall, 397",
+      "idade": null,
+      "inscricao": "",
+      "nome_completo": "MARIA APARECIDA OLIVEIRA",
+      "papel": "Proprietário",
+      "rg": "",
+      "unidade": "AP 202"
+    },
+    "emails": [
+      {
+        "endereco_lower": "exemplo@email.com",
+        "endereco_raw": "exemplo@email.com",
+        "principal": true,
+        "tipo": "Principal",
+        "valido": true
+      }
+    ],
+    "metadata": {
+      "metodo_extracao": "simulado_orquestrado",
+      "modal_completo": true,
+      "qualidade": "media",
+      "tem_cpf": false,
+      "tem_nascimento": false,
+      "timestamp_extracao": "2026-09-04T11:24:45.567010",
+      "total_emails": 1,
+      "total_telefones": 1
+    },
+    "telefones": [
+      {
+        "digitos": "11999999999",
+        "numero_raw": "(11) 99999-9999",
+        "observacao": "",
+        "principal": true,
+        "tipo": "Celular"
+      }
+    ]
+  },
+  "manifest": {
+    "address_canonical": "rua marc chagall 397",
+    "address_raw": "Rua Marc Chagall, 397",
+    "entity_type": "Pessoa Fisica",
+    "name_canonical": "maria aparecida oliveira",
+    "name_raw": "MARIA APARECIDA OLIVEIRA",
+    "record_key": "67c28bc96e5242f37dae",
+    "source_line": 3,
+    "source_record_id": null,
+    "source_system": "fisgar",
+    "state": "inventariado",
+    "timestamp": "2026-09-04T11:24:45.535253",
+    "tipo_pessoa": "Proprietário",
+    "tipo_unidade": "apartamento",
+    "unidade_imovel_canonical": "ap 202",
+    "unidade_imovel_raw": "AP 202",
+    "unidade_vaga_canonical": "",
+    "unidade_vaga_raw": "",
+    "unit_canonical": "ap 202",
+    "unit_raw": "AP 202"
+  },
+  "metadata": {
+    "lote": "orquestrado_fisgar",
+    "sistema_origem": "fisgar",
+    "timestamp_persistencia": "2026-09-04T11:24:45.567034",
+    "versao_schema": "1.0"
+  },
+  "record_key": "67c28bc96e5242f37dae"
+}

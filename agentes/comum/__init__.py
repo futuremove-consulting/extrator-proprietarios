@@ -91,10 +91,138 @@ def timestamp_iso() -> str:
 
 
 def normalizar_unidade(unidade: str) -> str:
-    """Normaliza descrição da unidade para matching."""
+    """Normaliza descrição da unidade para matching (legado - usa parse_unidade)."""
     if not unidade:
         return ""
     return unidade.lower().strip()
+
+
+def parse_unidade(unidade: str) -> Dict[str, str]:
+    """
+    Parseia unidade em componentes estruturados.
+    
+    Returns:
+        {
+            'unidade_imovel': 'AP 101' ou '',
+            'unidade_vaga': 'VG 3M TER' ou '',
+            'tipo_unidade': 'apartamento' | 'cobertura' | 'garden' | 'sala' | 'loja' | 'vaga' | 'outro'
+        }
+    """
+    if not unidade:
+        return {'unidade_imovel': '', 'unidade_vaga': '', 'tipo_unidade': 'outro'}
+    
+    unidade_upper = unidade.upper().strip()
+    
+    # Padrões de vaga
+    vaga_patterns = [
+        r'VG\s*\d+[A-Z]*\s*(TER|SS\d+|M\s*TER)?',
+        r'VAGA\s+\d+',
+        r'GARAGEM\s+\d+',
+        r'BOX\s+\d+'
+    ]
+    
+    # Padrões de imóvel
+    imovel_patterns = [
+        r'AP\s+\d+[A-Z]?',
+        r'APARTAMENTO\s+\d+[A-Z]?',
+        r'CASA\s+\d+[A-Z]?',
+        r'SALA\s+\d+[A-Z]?',
+        r'LOJA\s+\d+[A-Z]?',
+        r'COBERTURA\s+\d+[A-Z]?',
+        r'GARDEN\s+\d+[A-Z]?',
+        r'TORRE\s+[A-Z]\s+\d+',
+        r'BL[OCO]?\s+[A-Z]\s+\d+',
+        r'UNIDADE\s+\d+'
+    ]
+    
+    unidade_imovel = ''
+    unidade_vaga = ''
+    
+    # Separar por vírgula, " e ", " + ", ou espaço duplo
+    partes = re.split(r',\s*|\s+e\s+|\s+\+\s+|\s{2,}', unidade)
+    
+    for parte in partes:
+        parte = parte.strip()
+        if not parte:
+            continue
+            
+        parte_upper = parte.upper()
+        
+        # Verificar se é vaga
+        is_vaga = any(re.search(p, parte_upper) for p in vaga_patterns)
+        
+        # Verificar se é imóvel
+        is_imovel = any(re.search(p, parte_upper) for p in imovel_patterns)
+        
+        if is_vaga and not is_imovel:
+            if unidade_vaga:
+                unidade_vaga += '; ' + parte
+            else:
+                unidade_vaga = parte
+        elif is_imovel and not is_vaga:
+            if unidade_imovel:
+                unidade_imovel += '; ' + parte
+            else:
+                unidade_imovel = parte
+        else:
+            # Ambíguo - tentar classificar por palavras-chave
+            if any(kw in parte_upper for kw in ['VG', 'VAGA', 'GARAGEM', 'BOX']):
+                if unidade_vaga:
+                    unidade_vaga += '; ' + parte
+                else:
+                    unidade_vaga = parte
+            else:
+                if unidade_imovel:
+                    unidade_imovel += '; ' + parte
+                else:
+                    unidade_imovel = parte
+    
+    # Classificar tipo
+    tipo_unidade = classificar_tipo_unidade(unidade_imovel, unidade_vaga)
+    
+    return {
+        'unidade_imovel': unidade_imovel.strip(),
+        'unidade_vaga': unidade_vaga.strip(),
+        'tipo_unidade': tipo_unidade
+    }
+
+
+def classificar_tipo_unidade(unidade_imovel: str, unidade_vaga: str) -> str:
+    """Classifica tipo de unidade baseado nos componentes parseados."""
+    if not unidade_imovel and not unidade_vaga:
+        return 'outro'
+    
+    if unidade_vaga and not unidade_imovel:
+        return 'vaga'
+    
+    imovel_upper = unidade_imovel.upper()
+    
+    if 'COBERTURA' in imovel_upper:
+        return 'cobertura'
+    if 'GARDEN' in imovel_upper:
+        return 'garden'
+    if 'SALA' in imovel_upper:
+        return 'sala'
+    if 'LOJA' in imovel_upper:
+        return 'loja'
+    if 'CASA' in imovel_upper:
+        return 'casa'
+    if any(kw in imovel_upper for kw in ['AP ', 'APARTAMENTO', 'UNIDADE']):
+        return 'apartamento'
+    
+    return 'outro'
+
+
+def gerar_record_key_v2(name_canonical: str, unidade_imovel: str, unidade_vaga: str, address_canonical: str) -> str:
+    """
+    Gera chave única v2 com componentes separados para melhor matching.
+    
+    Componentes: nome|unidade_imovel|unidade_vaga|endereco
+    """
+    imovel_norm = canonicalizar_texto(unidade_imovel)
+    vaga_norm = canonicalizar_texto(unidade_vaga)
+    componentes = f"{name_canonical}|{imovel_norm}|{vaga_norm}|{address_canonical}"
+    return hashlib.sha256(componentes.encode()).hexdigest()[:20]
 
 
 def formatar_telefone(telefone: str) -> str:

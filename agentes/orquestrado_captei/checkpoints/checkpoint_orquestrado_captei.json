@@ -1,0 +1,18 @@
+{
+  "address_canonical": null,
+  "address_raw": null,
+  "counts": {
+    "companies_excluded": 1,
+    "manifest_total": 1,
+    "pessoa_fisica_completed": 0,
+    "pessoa_fisica_pending": 0,
+    "revisao_manual": 0
+  },
+  "errors": [],
+  "last_completed_key": "a9a0960986e6b57fe4a3",
+  "lote": "orquestrado_captei",
+  "next_record_key": null,
+  "saldo_capcoins": null,
+  "state": "inicializado",
+  "timestamp": "2026-09-04T11:24:45.583735"
+}

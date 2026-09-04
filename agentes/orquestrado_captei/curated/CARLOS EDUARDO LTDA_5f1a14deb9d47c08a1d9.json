@@ -1,0 +1,68 @@
+{
+  "dados_extraidos": {
+    "detalhes": {
+      "data_nascimento": null,
+      "data_nascimento_ausente": true,
+      "endereco_retornado": "Rua Marc Chagall, 397",
+      "idade": null,
+      "inscricao": "",
+      "nome_completo": "CARLOS EDUARDO LTDA",
+      "papel": "Proprietário",
+      "unidade": "SALA 301"
+    },
+    "emails": [
+      {
+        "endereco_lower": "exemplo@email.com",
+        "endereco_raw": "exemplo@email.com",
+        "tipo": "Principal",
+        "valido": true
+      }
+    ],
+    "metadata": {
+      "metodo_extracao": "simulado_orquestrado",
+      "modal_completo": true,
+      "qualidade": "media",
+      "tem_nascimento": false,
+      "timestamp_extracao": "2026-09-04T11:24:45.579416",
+      "total_emails": 1,
+      "total_telefones": 1,
+      "whatsapp_validado": false
+    },
+    "telefones": [
+      {
+        "digitos": "11999999999",
+        "numero_raw": "(11) 99999-9999",
+        "tipo": "Celular",
+        "validado": false,
+        "whatsapp_status": "nao_validado"
+      }
+    ]
+  },
+  "manifest": {
+    "address_canonical": "rua marc chagall 397",
+    "address_raw": "Rua Marc Chagall, 397",
+    "entity_type": "Empresa",
+    "name_canonical": "carlos eduardo ltda",
+    "name_raw": "CARLOS EDUARDO LTDA",
+    "record_key": "5f1a14deb9d47c08a1d9",
+    "source_line": 4,
+    "source_record_id": null,
+    "source_system": "captei",
+    "state": "empresa_classificada",
+    "timestamp": "2026-09-04T11:24:45.535798",
+    "tipo_pessoa": "Proprietário",
+    "tipo_unidade": "sala",
+    "unidade_imovel_canonical": "sala 301",
+    "unidade_imovel_raw": "SALA 301",
+    "unidade_vaga_canonical": "",
+    "unidade_vaga_raw": "",
+    "unit_canonical": "sala 301",
+    "unit_raw": "SALA 301"
+  },
+  "metadata": {
+    "lote": "orquestrado_captei",
+    "timestamp_persistencia": "2026-09-04T11:24:45.579447",
+    "versao_schema": "1.0"
+  },
+  "record_key": "5f1a14deb9d47c08a1d9"
+}

@@ -1,0 +1,18 @@
+{
+  "address_canonical": null,
+  "address_raw": null,
+  "counts": {
+    "companies_excluded": 0,
+    "manifest_total": 0,
+    "pessoa_fisica_completed": 0,
+    "pessoa_fisica_pending": 0,
+    "revisao_manual": 0
+  },
+  "errors": [],
+  "last_completed_key": "67c28bc96e5242f37dae",
+  "lote": "orquestrado_fisgar",
+  "next_record_key": null,
+  "scroll_position": null,
+  "state": "inicializado",
+  "timestamp": "2026-09-04T11:24:45.568907"
+}

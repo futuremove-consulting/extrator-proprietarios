@@ -1,0 +1,37 @@
+{
+  "dom_reference": null,
+  "manifest_raw": {
+    "address_canonical": "rua marc chagall 397",
+    "address_raw": "Rua Marc Chagall, 397",
+    "entity_type": "Pessoa Fisica",
+    "name_canonical": "suzana capassi baltuilhe martins",
+    "name_raw": "SUZANA CAPASSI BALTUILHE MARTINS",
+    "record_key": "ec3422c2eb120bbf03bc",
+    "source_line": 3,
+    "source_record_id": null,
+    "source_system": "eemovel",
+    "state": "inventariado",
+    "timestamp": "2026-09-04T11:24:45.533120",
+    "tipo_pessoa": "Proprietário",
+    "tipo_unidade": "apartamento",
+    "unidade_imovel_canonical": "ap 101 e 2 vg bl c recanto jacaranda",
+    "unidade_imovel_raw": "Ap 101 E 2 Vg Bl C Recanto Jacaranda",
+    "unidade_vaga_canonical": "",
+    "unidade_vaga_raw": "",
+    "unit_canonical": "ap 101 e 2 vg bl c recanto jacaranda",
+    "unit_raw": "Ap 101 E 2 Vg Bl C Recanto Jacaranda"
+  },
+  "modal_raw": {
+    "metodo_extracao": "simulado_orquestrado",
+    "modal_completo": true,
+    "qualidade": "media",
+    "tem_cpf": true,
+    "tem_dados_imovel": false,
+    "tem_nascimento": false,
+    "tem_rg": false,
+    "timestamp_extracao": "2026-09-04T11:24:45.549813",
+    "total_emails": 1,
+    "total_enderecos_adicionais": 0,
+    "total_telefones": 1
+  }
+}

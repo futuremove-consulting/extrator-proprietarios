@@ -1,152 +1,27 @@
 [
-  {
-    "nome": "ANA LAURA ALCANTARA ALVES",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 101 E 2 Vg Bl C Recanto Jacaranda",
-    "unidade": "Ap 101 E 2 Vg Bl C"
-  },
-  {
-    "nome": "GILBERTO LACHTER GREIBER",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 101 E 2 Vg Bl A Recanto Jacaranda",
-    "unidade": "Ap 101 E 2 Vg Bl A"
-  },
-  {
-    "nome": "SUZANA CAPASSI BALTUILHE MARTINS",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 101 Pavao",
-    "unidade": "Ap 101 Pavao"
-  },
-  {
-    "nome": "BRUNO ZANCHETA SCARCELLI",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 101 E Tor B",
-    "unidade": "Ap 101 E Tor B"
-  },
-  {
-    "nome": "AUGUSTO TADEU GRAIFF GAMA",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 101 Complemen",
-    "unidade": "Ap 101 Complemen"
-  },
-  {
-    "nome": "TEREZA PORTIGLIOTTI",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 102 E Vg Bl E Recanto Jacaranda",
-    "unidade": "Ap 102 E Vg Bl E"
-  },
-  {
-    "nome": "THAIS WAISMAN",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 102 E Vg Bl G Recanto Jacaranda",
-    "unidade": "Ap 102 E Vg Bl G"
-  },
-  {
-    "nome": "PANS PARTICIPACOES LTDA",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 102 E Vaga Recanto Jacaranda",
-    "unidade": "Ap 102 E Vaga"
-  },
-  {
-    "nome": "WINDSOR INVESTIMENTOS IMOBILIARIOS LTDA",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 102 E Vaga Recanto Jacaranda",
-    "unidade": "Ap 102 E Vaga"
-  },
-  {
-    "nome": "MARCUS AURELIO MASCARO MARTINELLI",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 111 E 2 Vg Bl A Recanto Jacaranda",
-    "unidade": "Ap 111 E 2 Vg Bl A"
-  },
-  {
-    "nome": "CLAUDIA DE FRANCA",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 111 E 2 Vg Bl E Recanto Jacaranda",
-    "unidade": "Ap 111 E 2 Vg Bl E"
-  },
-  {
-    "nome": "ARTUR DE SOUZA FREITAS",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 112 E Vg Bl F Recanto Jacaranda",
-    "unidade": "Ap 112 E Vg Bl F"
-  },
-  {
-    "nome": "LINDOMAR FIGUEIREDO DA COSTA",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 112 E Vg Bl G Recanto Jacaranda",
-    "unidade": "Ap 112 E Vg Bl G"
-  },
-  {
-    "nome": "HERMINA POLLAK EJZENMESSER",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 121 E 2 Vg Bl A Recanto Jacaranda",
-    "unidade": "Ap 121 E 2 Vg Bl A"
-  },
-  {
-    "nome": "ANA CRISTINA GRECCO GARCIA",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 121 E 2 Vg Bl E Recanto Jacaranda",
-    "unidade": "Ap 121 E 2 Vg Bl E"
-  },
-  {
-    "nome": "MARIA CECILIA TEMER BARBOSA",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 121 E 2 Vg Bl D Recanto Jacaranda",
-    "unidade": "Ap 121 E 2 Vg Bl D"
-  },
-  {
-    "nome": "PAULA FERREIRO VIEIRA",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 122 E Vg Bl B Recanto Jacaranda",
-    "unidade": "Ap 122 E Vg Bl B"
-  },
-  {
-    "nome": "ALEXANDRE XAVIER FURLAN",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 122 E Vg Bl F Recanto Jacaranda",
-    "unidade": "Ap 122 E Vg Bl F"
-  },
-  {
-    "nome": "TIAGO AUGUSTO DOS SANTOS",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Ap 131 E 2 Vg Bl C Recanto Jacaranda",
-    "unidade": "Ap 131 E 2 Vg Bl C"
-  },
-  {
-    "nome": "ANA PAULA RODRIGUES",
-    "tipo_pessoa": "Proprietário",
-    "endereco": "Marc Chagall, 397 - Vg 3M Ter Recanto Jacaranda",
-    "unidade": "Vg 3M Ter"
-  },
-  {
-    "nome": "ANDRE HENRIQUE SANTOS",
-    "tipo_pessoa": "Possível morador",
-    "endereco": "Marc Chagall, 397 - Ap 101",
-    "unidade": "Ap 101"
-  },
-  {
-    "nome": "MARINA RING GREIBER",
-    "tipo_pessoa": "Possível morador",
-    "endereco": "Marc Chagall, 397 - Ap 101",
-    "unidade": "Ap 101"
-  },
-  {
-    "nome": "KATY ANNE UMEOKA",
-    "tipo_pessoa": "Possível morador",
-    "endereco": "Marc Chagall, 397 - Ap 102",
-    "unidade": "Ap 102"
-  },
-  {
-    "nome": "MARA REGINA MARCAL VIEIRA CEOLIN",
-    "tipo_pessoa": "Possível morador",
-    "endereco": "Marc Chagall, 397 - Ap 102",
-    "unidade": "Ap 102"
-  },
-  {
-    "nome": "PRISCILA FRANCOZO MAFRA CARDOSO",
-    "tipo_pessoa": "Possível morador",
-    "endereco": "Marc Chagall, 397 - Ap 102 Cotovia",
-    "unidade": "Ap 102 Cotovia"
-  }
+  {"nome": "ANA LAURA ALCANTARA ALVES", "unidade_imovel": "Ap 101 E 2 Vg Bl C Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "GILBERTO LACHTER GREIBER", "unidade_imovel": "Ap 101 E 2 Vg Bl A Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "SUZANA CAPASSI BALTUILHE MARTINS", "unidade_imovel": "Ap 101 E 2 Vg Bl C Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "BRUNO ZANCHETA SCARCELLI", "unidade_imovel": "Ap 101 E Tor B", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "AUGUSTO TADEU GRAIFF GAMA", "unidade_imovel": "Ap 101 Complemen", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "TEREZA PORTIGLIOTTI", "unidade_imovel": "Ap 102 E Vg Bl E Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "THAIS WAISMAN", "unidade_imovel": "Ap 102 E Vg Bl G Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "PANS PARTICIPACOES LTDA", "unidade_imovel": "Apartamento 102 E Vaga Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "WINDSOR INVESTIMENTOS IMOBILIARIOS LTDA", "unidade_imovel": "Apartamento 102 E Vaga Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "MARCUS AURELIO MASCARO MARTINELLI", "unidade_imovel": "Ap 111 E 2 Vg Bl A Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "CLAUDIA DE FRANCA", "unidade_imovel": "Apartamento 111 E 2 Vaga Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "ARTUR DE SOUZA FREITAS", "unidade_imovel": "Ap 112 E Vg Bl F Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "LINDOMAR FIGUEIREDO DA COSTA", "unidade_imovel": "Ap 112 E Vg Bl G Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "HERMINA POLLAK EJZENMESSER", "unidade_imovel": "Ap 121 E 2 Vg Bl A Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "ANA CRISTINA GRECCO GARCIA", "unidade_imovel": "Ap 121 E 2 Vg Bl C Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "MARIA CECILIA TEMER BARBOSA", "unidade_imovel": "Ap 121 E 2 Vg Bl D Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "PAULA FERREIRO VIEIRA", "unidade_imovel": "Ap 122 E Vg Bl B Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "ALEXANDRE XAVIER FURLAN", "unidade_imovel": "Ap 122 E Vg Bl F Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "TIAGO AUGUSTO DOS SANTOS", "unidade_imovel": "Ap 131 E 2 Vg Bl C Recanto Jacaranda", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "ANA PAULA RODRIGUES", "unidade_imovel": "", "unidade_vaga": "VG 3M TER", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Proprietário"},
+  {"nome": "ANDRE HENRIQUE SANTOS", "unidade_imovel": "Ap 101", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Possível morador"},
+  {"nome": "MARINA RING GREIBER", "unidade_imovel": "Ap 101", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Possível morador"},
+  {"nome": "KATY ANNE UMEOKA", "unidade_imovel": "Ap 102", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Possível morador"},
+  {"nome": "MARA REGINA MARCAL VIEIRA CEOLIN", "unidade_imovel": "Ap 102", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Possível morador"},
+  {"nome": "PRISCILA FRANCOZO MAFRA CARDOSO", "unidade_imovel": "Ap 102 Cotovia", "unidade_vaga": "", "endereco": "Rua Marc Chagall, 397", "tipo_pessoa": "Possível morador"}
 ]
