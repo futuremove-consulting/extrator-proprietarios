@@ -1,0 +1,27 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[pyc]
+.pytest_cache
+.mypy_cache
+.coverage
+
+# Virtual environments
+.venv
+venv
+env
+
+# IDE
+.vscode
+.idea
+
+# Local data
+data/logs/*.log
+data/lots/*/
+
+# Secrets
+.env
+*.pem
