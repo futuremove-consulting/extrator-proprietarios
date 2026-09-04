@@ -105,3 +105,13 @@ Protocolo (~15 min por sistema):
 Guard-rail: todo evento "--pago" exige "--aprovacao arquivo.json" com {"aprovado": true, "por": "...", "escopo": "..."}; sem ele o evento é BLOQUEADO (exit 2) e a tentativa fica registrada em "medicoes.ndjson" como evidência de auditoria. Saídas em "agentes/sondagem/": sessao.json, medicoes.ndjson, vereditos.json, custos_verificados.json.
 
 CPF: "comum/validators.py::extrair_cpf_texto" — quando o CPF completo aparecer (qualquer sistema, inclusive texto livre do modal), é extraído, validado por dígito verificador e vira chave forte (cpf_strong) no consolidador. Integração pendente no extrator do Captei enquanto o arquivo estiver em edição por outro agente (ver alerta de arquivo em disputa).
+
+---
+
+## 9. Camada de validacao de WhatsApp — Dono do Zap (04/09/2026)
+
+Documento completo: **VALIDACAO_WHATSAPP_DONODOZAP.md** (analise das ferramentas donodozap.com.br e donodozap.com, decisoes e plano em 3 fases).
+
+Resumo: o **nome de exibicao publico** do WhatsApp (gratis no donodozap, OSINT) e comparado ao nome do proprietario via "similaridade_nomes" (banda 0.92/0.75, do "comum/matching_revisao.py"). Validacao gratuita para **TODOS os leads**; o Captei "Validar Whatsapp" vira camada de excecao. Sonda da Fase 1 com numeros da propria equipe, em **ambos os dominios** (.com e .com.br), via "sondar_donozap.py" (padrao do Sondador de Cotas).
+
+Decisoes do usuario (04/09/2026): testar ambos os dominios; validacao por nome publico para todos os leads; sonda com numeros da propria equipe. Regra central: comparar se o nome publico de exibicao daquele WhatsApp bate com o nome do proprietario em questao.
