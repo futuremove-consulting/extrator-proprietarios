@@ -1,0 +1,81 @@
+{
+  "nome_completo": "ANA LAURA ALCANTARA ALVES",
+  "tipo_pessoa": "Proprietário",
+  "endereco_principal": "Marc Chagall, 397 - Ap 101 E 2 Vg Bl C Recanto Jacaranda",
+  "unidade": "Ap 101 E 2 Vg Bl C",
+  "inscricao": "123456789",
+  "idade": 44,
+  "data_nascimento": "15/03/1982",
+  "cpf": "***.236.678-**",
+  "rg": "12.345.678-9",
+  "obito": false,
+  "telefones": [
+    {
+      "numero": "(11) 96751-6505",
+      "tipo": "Celular",
+      "principal": true
+    },
+    {
+      "numero": "(11) 96103-9278",
+      "tipo": "Celular",
+      "principal": false
+    },
+    {
+      "numero": "(16) 3633-2114",
+      "tipo": "Residencial",
+      "principal": false
+    },
+    {
+      "numero": "(18) 3621-3666",
+      "tipo": "Comercial",
+      "principal": false
+    },
+    {
+      "numero": "(11) 2306-1794",
+      "tipo": "Comercial",
+      "principal": false
+    }
+  ],
+  "emails": [
+    {
+      "endereco": "alcantara.analauraalves@gmail.com",
+      "tipo": "Principal",
+      "principal": true
+    },
+    {
+      "endereco": "analaura151521@yahoo.com.br",
+      "tipo": "Pessoal",
+      "principal": false
+    },
+    {
+      "endereco": "analaura151521@yahoo.com",
+      "tipo": "Pessoal",
+      "principal": false
+    },
+    {
+      "endereco": "analaura@ig.com.br",
+      "tipo": "Pessoal",
+      "principal": false
+    },
+    {
+      "endereco": "ana_alcantara@superig.com.br",
+      "tipo": "Profissional",
+      "principal": false
+    }
+  ],
+  "enderecos_adicionais": [
+    "Ulisses Cruz, 668 - Ap 37 E 2 Vg Torre A Sky The Gardens Sea - Sao Paulo, SP",
+    "Saturnino Pereira, 12 - A 12 - Sao Paulo, SP"
+  ],
+  "imovel": {
+    "ano_construcao": 2015,
+    "edificio": "CONDOMINIO RECANTO JACARANDA",
+    "padrao_construtivo": "Residencial Vertical Padrão D",
+    "uso_imovel": "Apartamento Em Condomínio",
+    "tipo_terreno": "Normal",
+    "area_terreno_m2": 8254,
+    "area_construida_m2": 174
+  },
+  "metodo_extracao": "manual",
+  "modal_completo": true
+}
