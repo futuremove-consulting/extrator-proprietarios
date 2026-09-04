@@ -5,7 +5,7 @@ Transforma as 5 perguntas abertas da Estrategia de Cascata em um PROTOCOLO DE
 MEDICAO antes/depois com veredito automatico e guard-rail de aprovacao humana.
 
 Perguntas respondidas com evidencia:
-  P1  A listagem por endereco e gratuita nos 3 sistemas?
+  P1  A listagem por endereco consome credito? (premissa do usuario: SIM, 1 credito por busca por sistema)
   P2  Captei: a cota real e o saldo de capcoins ou renovacao mensal (500/mes)?
   P3  EEmovel: 1 consulta cobre o perfil completo (moradores inclusos)?
   P4  Fisgar: cada modal 'Consultar' custa 1 das 250/mes?
@@ -13,8 +13,8 @@ Perguntas respondidas com evidencia:
 
 Uso tipico (protocolo manual assistido, ~15 min por sistema):
   python3 sondar_cotas.py iniciar --lote mar_chagall --operador leonardo
-  # P1: busque o endereco SEM abrir consulta; informe saldo/contador antes e depois
-  python3 sondar_cotas.py medir --pergunta P1 --sistema captei --evento busca_listagem       --tipo-saldo capcoins --saldo-antes 77 --saldo-depois 77       --contador-antes 0 --contador-depois 0
+  # P1: busque o endereco SEM abrir consulta (premissa: consome 1 credito); informe saldo/contador antes e depois
+  python3 sondar_cotas.py medir --pergunta P1 --sistema captei --evento busca_listagem       --tipo-saldo capcoins --saldo-antes 77 --saldo-depois 76       --contador-antes 0 --contador-depois 0
   # P2/P3/P4: abra 1 consulta por sistema (COM aprovacao registrada)
   python3 sondar_cotas.py medir --pergunta P2 --sistema captei --evento consulta_detalhe       --tipo-saldo capcoins --saldo-antes 77 --saldo-depois 76       --contador-antes 3 --contador-depois 3 --pago --aprovacao aprovacao.json
   python3 sondar_cotas.py veredito
@@ -35,7 +35,7 @@ BASE = Path(__file__).resolve().parent
 DIR_PADRAO = BASE / "sondagem"
 
 PERGUNTAS = {
-    "P1": "Listagem por endereco e gratuita nos 3 sistemas?",
+    "P1": "Listagem por endereco consome credito? Quanto por sistema? (usuario: 1 credito por busca)",
     "P2": "Captei: cota real = saldo de capcoins ou renovacao mensal (500/mes)?",
     "P3": "EEmovel: 1 consulta cobre perfil completo (moradores inclusos)?",
     "P4": "Fisgar: cada modal Consultar custa 1 das 250/mes?",

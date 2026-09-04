@@ -26,6 +26,7 @@ Faz sentido? **SIM.** É o padrão consolidar-antes-de-comprar (merge-before-fet
 - Sobreposição medida no projeto (smoke test das 3 fontes): 4 grupos de identidade, 85 por cento casados por record_key exato. No lote Marc Chagall, Captei e Fisgar têm ~342 chaves únicas cada — bases quase espelhadas (mesma origem cadastral).
 - Sem cascata: 3 x U consultas (U = PF únicas consolidadas). Com cascata: A(U) + B(U - S_AB) + C(só faltantes). Com U = 320 PF e sobreposição de 85 por cento: ~320 + ~48 + ~10 = ~378 consultas — economia de ~60 por cento.
 - Com as cotas atuais (Captei 77 capcoins, Fisgar 250/mês, EEmovel 500/mês), a cascata é a única forma de cobrir um lote grande sem comprar pacotes: as cotas somam 827 consultas/mês, mas gastá-las integralmente nos mesmos proprietários é desperdício duplo (dinheiro + dado redundante).
+- **CORREÇÃO (04/09): a listagem NÃO é gratuita** — consome 1 crédito por sistema. Custo fixo da descoberta no lote-piloto: +3 créditos. Continua sendo a compra mais barata do processo: 1 crédito revela centenas de nomes de uma vez e evita centenas de consultas duplicadas na cascata; e a lista fica salva (a retomada não repaga).
 
 ## 4. As três correções obrigatórias
 
@@ -49,14 +50,14 @@ A chave exata nome+unidade falha com abreviações (MARIA AP. DE SOUZA x MARIA A
 4. **Listagem incompleta quebra a dedup.** Paginação do Captei e scroll infinito do Fisgar precisam ser varridos integralmente antes da decisão; truncamento gera compra duplicada.
 5. **Divergência entre fontes é sinal de qualidade, não ruído.** Telefone diferente entre sistemas = política de qualidade (validado x não validado, fonte mais recente), já coberta pelo scoring; divergência não justifica recompra automática.
 6. **Guard-rail de conformidade.** Confirmação humana antes de cada lote pago (premissa de consulta sequencial aprovada) e atenção a ToS/LGPD — os contatos alimentarão disparos (Copiloto/WhatsApp), que exigem base legal e opt-out.
-7. **Re-entrada na etapa 3 deve ser barata.** Se o lote for retomado noutro dia, a re-busca da listagem precisa ser gratuita; caso a plataforma expire resultados, revalidar antes de comprar.
+7. **Re-entrada na etapa 3: NÃO rebuscar endereço já inventariado.** A listagem é paga (1 crédito por sistema) e fica salva no manifest — retomar a partir da lista salva, sem nova busca; caso a plataforma expire resultados, revalidar antes de comprar.
 
 ## 6. Fluxo refinado em 5 etapas (recomendado)
 
 | Etapa | Custo | O que acontece | Artefato salvo |
 |---|---|---|---|
 | 0 Setup | Zero | Sessões autenticadas; ler saldos/cotas (capcoins, consultas restantes); receber endereço | estado da sessão |
-| 1 Varredura | Zero (a validar) | Busca por endereço nos 3; varredura integral; classificar PF/PJ e Proprietário/Possível morador | lista original por sistema (RAW) |
+| 1 Varredura | 1 crédito por sistema (listagem paga — CORREÇÃO do usuário 04/09: a busca por endereço consome 1 crédito e retorna possíveis proprietários e possíveis moradores; fica salva no manifest — retomada não repaga) | Busca por endereço nos 3; varredura integral; classificar PF/PJ e Proprietário/Possível morador | lista original por sistema (RAW) |
 | 2 Consolidação base | Zero | Normalizar unidade; dedup intra; consolidar inter (exata + fuzzy com banda); matriz de cobertura por campo; plano de compras com custo x saldos | lista_consolidada_base (sem contato) + plano_compras.json (aprovação humana) |
 | 3 Cascata paga | Créditos | 1º sistema = maior valor/crédito com saldo; 2º e 3º = só não-cobertos + campos deficientes; log de gasto por consulta | contatos por registro + log de gastos |
 | 4 Pós | Zero | Merge por campo; validação WhatsApp só no subconjunto prioritário; scoring; saídas separadas | lista_proprietarios_consolidada, lista_possiveis_moradores, golden records com proveniência |

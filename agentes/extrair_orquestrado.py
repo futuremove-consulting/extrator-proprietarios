@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Orquestrador Inteligente — Extração em 3 Estágios com Ordem Otimizada.
 
-ESTÁGIO 1: Inventário (gratuito - apenas listagem)
+ESTÁGIO 1: Inventário (custo: 1 crédito por listagem por sistema — retorna a lista completa de possíveis PROPRIETÁRIOS e possíveis MORADORES; fica salvo no manifest — retomada não repaga)
 ESTÁGIO 2: Extração em Cascata (EEmovel → Fisgar → Captei) 
 ESTÁGIO 3: Merge & Enriquecimento
 """
@@ -156,7 +156,7 @@ def stage1_inventario(
     sistemas_ativos: List[str],
     dados_por_sistema: Dict[str, List[Dict]]
 ) -> Dict[str, Any]:
-    """ESTÁGIO 1: Inventário gratuito - apenas listagem, sem abrir modais."""
+    """ESTÁGIO 1: Inventário — consome 1 crédito por listagem por sistema; sem abrir modais/fichas. A lista fica salva no manifest (retomada não repaga a listagem)."""
     
     with logger.stage("inventory", metadata={"endereco": endereco, "sistemas": sistemas_ativos}) as stage_id:
         inventario = {
