@@ -73,39 +73,35 @@ Já existe e serve de base:
 Falta construir:
 
 1. budget_planner: ler saldos/cotas, simular custo da rodada, emitir plano_compras.json para aprovação humana.
-2. normalizador de unidade + fuzzy com banda de revisão na etapa 2.
+2. [IMPLEMENTADO 04/09/2026] comum/matching_revisao.py + CLI revisar_pares.py + teste_matching_revisao.py: unidade estrutural (número do imóvel domina — AP 10 x AP 20 nunca casa automático), nome por tokens com abreviatura (AP. = APARECIDA), banda auto_merge >= 0.92 / revisão 0.75–0.92, decisões humanas via JSON. Validado com 6 casos de teste e fluxo ponta a ponta com decisão humana.
 3. modo cascata no consolidador: entrada incremental (base do dia 1, delta do sistema B, delta do C) sem retrabalho.
 4. saídas separadas proprietarios x moradores (hoje o pipeline mescla no golden record).
 5. registro de gasto: custo em créditos por consulta no manifest/log (auditoria de eficiência).
 
-## 8. Perguntas abertas (bloqueiam a implementação)
+---
 
-1. A busca por endereço e a listagem são gratuitas nos 3 sistemas (crédito só no Consultar/detalhe)?
-2. Captei: a cota real é o saldo de capcoins (77 hoje) ou renovação mensal? O plano Pro indica 500 consultas/mês — qual vale?
-3. EEmovel: 1 consulta por proprietário na página de detalhe, ou 1 consulta cobre o perfil completo (e moradores vêm juntos)?
-4. Fisgar: cada modal Consultar consome 1 das 250/mês?
-5. [RESPONDIDA em 04/09/2026] Prioridade de negócio: o usuário decidiu ordenar por maior cota/menor custo primeiro, sem ponderação por campo. Ver seção 10.
-6. Confirmado: possíveis moradores NÃO recebem gasto de crédito (só registro da listagem)?
-7. Mantemos confirmação humana antes de cada lote de consultas pagas?
+## 8. Sondador de Cotas — verificação empírica das perguntas abertas (04/09/2026)
 
-## 9. Próximo passo
+Serviço: "agentes/sondar_cotas.py" + "agentes/teste_sondar_cotas.py". Transforma as 5 perguntas abertas em protocolo de medição antes/depois com veredito automático e guard-rail de aprovação humana.
 
-Com as respostas das perguntas 1, 3 e 5, implementar nesta ordem: normalizador de unidade + banda de revisão (4.3), budget_planner (7.1) e modo cascata (7.3).
+| Pergunta | Evento medido | Veredito automático |
+|---|---|---|
+| P1 listagem gratuita? | saldo/contador antes e depois de buscar endereço SEM abrir consulta | gratuita x consome_credito |
+| P2 Captei: capcoins ou cota mensal? | saldo capcoins + contador antes/depois de 1 consulta | pre_pago_capcoins x cota_mensal x hibrido |
+| P3 EEmovel: perfil completo? | contador + moradores_inclusos no 1º detalhe | perfil_completo_1_consulta (custo 1) x moradores_consulta_separada (custo 2) |
+| P4 Fisgar: modal = 1/250? | contador antes/depois de 1 modal | custo_por_modal 1 x 0 x irregular |
+| P5 guard-rail | tentativa paga SEM aprovação DEVE ser bloqueada (exit 2) | ativo_e_validado x nao_testado |
 
-## 10. Decisão registrada: ordem da cascata (04/09/2026)
+Protocolo (~15 min por sistema):
 
-**Decisão do usuário:** maior cota/menor custo primeiro, tanto faz o campo. A ordenação passa a ser por eficiência econômica do crédito, não por prioridade de dado.
+    python3 sondar_cotas.py iniciar --lote mar_chagall --operador leonardo
+    # P1 nos 3 sistemas (deltas devem ser 0)
+    python3 sondar_cotas.py medir --pergunta P1 --sistema captei --evento busca_listagem --tipo-saldo capcoins --saldo-antes 77 --saldo-depois 77 --contador-antes 0 --contador-depois 0
+    # P2/P3/P4: 1 consulta paga por sistema COM aprovação registrada
+    python3 sondar_cotas.py medir --pergunta P2 --sistema captei --evento consulta_detalhe --tipo-saldo capcoins --saldo-antes 77 --saldo-depois 76 --contador-antes 3 --contador-depois 3 --pago --aprovacao aprovacao.json
+    python3 sondar_cotas.py veredito
+    python3 sondar_cotas.py aplicar   # gera custos_verificados.json: orquestrador usa custos VERIFICADOS, nao estimados
 
-**Ordem resultante da cascata:**
+Guard-rail: todo evento "--pago" exige "--aprovacao arquivo.json" com {"aprovado": true, "por": "...", "escopo": "..."}; sem ele o evento é BLOQUEADO (exit 2) e a tentativa fica registrada em "medicoes.ndjson" como evidência de auditoria. Saídas em "agentes/sondagem/": sessao.json, medicoes.ndjson, vereditos.json, custos_verificados.json.
 
-| Ordem | Sistema | Justificativa econômica | Papel na cascata |
-|---|---|---|---|
-| 1º | EEmovel | Maior cota (500/mês) e contato completo (telefone + email) na página de detalhe, sem modal intermediário | Varredura principal: consultar a lista consolidada inteira de PF |
-| 2º | Fisgar | Cota média (250/mês) | Complemento: apenas não-cobertos + campos deficientes (ex.: CPF/RG) |
-| 3º | Captei | Crédito pré-pago escasso (77 capcoins) e reposição cara (50 por R$ 49,90) | Fechamento: lacunas residuais + validação WhatsApp dos leads prioritários |
-
-**Custo estimado do lote-piloto (U = 320 PF):** EEmovel ~320 consultas (dentro da cota), Fisgar ~40-60 (delta + campos faltantes), Captei ~20-40 capcoins (lacunas + validação seletiva) — cabe no saldo atual de 77.
-
-**Regra de exceção que permanece:** se um registro ficar sem contato após EEmovel + Fisgar, e for lead prioritário, o Captei cobre a lacuna; a validação WhatsApp não é automática — passa por fila de prioridade (score do lead).
-
-**Perguntas ainda abertas (não bloqueiam o desenho, bloqueiam o budget_planner exato):** 1 (gratuidade da listagem), 2 (cota real do Captei), 3 (custo por registro no EEmovel), 4 (custo do modal no Fisgar), 6 (guard-rail humano).
+CPF: "comum/validators.py::extrair_cpf_texto" — quando o CPF completo aparecer (qualquer sistema, inclusive texto livre do modal), é extraído, validado por dígito verificador e vira chave forte (cpf_strong) no consolidador. Integração pendente no extrator do Captei enquanto o arquivo estiver em edição por outro agente (ver alerta de arquivo em disputa).

@@ -71,6 +71,21 @@ def validar_cpf(cpf: str) -> bool:
     return cpf[-2:] == f"{digito1}{digito2}"
 
 
+def extrair_cpf_texto(texto: str) -> str:
+    """Extrai o primeiro CPF VALIDO (digito verificador conferido) de um texto livre.
+
+    Cobre formas com mascara (000.000.000-00) e sem mascara (00000000000).
+    Retorna apenas os digitos do CPF valido, ou '' se nenhum for encontrado.
+    """
+    if not texto:
+        return ""
+    candidatos = re.findall(r"\d{3}[.\s]?\d{3}[.\s]?\d{3}[-.\s]?\d{2}", str(texto))
+    for cand in candidatos:
+        if validar_cpf(cand):
+            return re.sub(r"\D", "", cand)
+    return ""
+
+
 def validar_rg(rg: str) -> bool:
     """Validação básica de RG (formato)."""
     if not rg:
