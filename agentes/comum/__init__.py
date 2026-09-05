@@ -265,3 +265,19 @@ def deduplicar_emails(emails: List[str]) -> List[str]:
             vistos.add(email_lower)
             resultado.append(email)
     return resultado
+
+
+# WhatsApp Validation exports
+from .whatsapp_validator import (
+    WhatsAppValidator,
+    WhatsAppValidationResult,
+    ValidationSource,
+    ValidationTier
+)
+from .donodozap_br_validator import DonoDoZapBRValidator
+from .donodozap_com_validator import DonoDoZapComValidator
+from .whatsapp_validation_service import (
+    WhatsAppValidationService,
+    ValidationPolicy,
+    create_validation_service
+)

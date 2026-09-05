@@ -50,3 +50,8 @@ agentes/*_teste/
 # Environment
 .env
 .env.local
+
+# Dados operacionais (auditoria local; nao sao codigo)
+agentes/sondagem/
+piloto/
+aprovacao*.json

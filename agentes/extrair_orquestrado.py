@@ -27,7 +27,11 @@ from comum import (
     salvar_json_seguro,
     carregar_json,
     append_ndjson,
-    timestamp_iso
+    timestamp_iso,
+    WhatsAppValidationService,
+    ValidationPolicy,
+    ValidationSource,
+    ValidationTier
 )
 from comum.process_logger import ProcessLearningLogger, generate_learning_report
 
@@ -471,6 +475,158 @@ def stage3_merge_enriquecimento(
         }
 
 
+async def stage25_validacao_whatsapp(
+    logger: ProcessLearningLogger,
+    golden_records_path: str,
+    policy: Optional[ValidationPolicy] = None,
+    max_cost_per_phone: float = 1.00
+) -> Dict[str, Any]:
+    """
+    ESTÁGIO 2.5: Validação WhatsApp via Dono do Zap.
+    
+    Para cada Golden Record, valida telefones usando:
+    1. donodozap.com.br (gratuito: nome; pago: foto + dados)
+    2. donodozap.com (gratuito: nome; pago: foto + dados)
+    
+    Captei já valida WhatsApp nativamente, então foca em Fisgar + EEmovel.
+    """
+    
+    with logger.stage("whatsapp_validation", metadata={"golden_records_path": golden_records_path}) as stage_id:
+        
+        # Carregar Golden Records
+        from comum import carregar_json
+        golden_records = carregar_json(Path(golden_records_path))
+        
+        # Filtrar registros que têm telefones e não são do Captei (que já valida)
+        records_to_validate = []
+        for record in golden_records:
+            # Verificar se tem telefones
+            telefones = record.get("telefones", [])
+            if not telefones:
+                continue
+            
+            # Verificar origem: se só Captei, pular (já validado)
+            sources = record.get("sources", [])
+            if sources and all(s == "captei" for s in sources):
+                continue
+            
+            records_to_validate.append(record)
+        
+        if not records_to_validate:
+            logger.log_decision(
+                stage="whatsapp_validation",
+                decision="skip_all",
+                rationale="Nenhum registro precisa de validação WhatsApp (sem telefones ou só Captei)",
+                data={"total_golden": len(golden_records), "to_validate": 0}
+            )
+            return {"validated": 0, "skipped": len(golden_records), "results": []}
+        
+        logger.log_decision(
+            stage="whatsapp_validation",
+            decision="validate_batch",
+            rationale=f"{len(records_to_validate)} Golden Records com telefones para validar",
+            data={"to_validate": len(records_to_validate)}
+        )
+        
+        # Inicializar serviço de validação
+        validation_service = WhatsAppValidationService(
+            logger=logger,
+            headless=True,
+            validators_config={"timeout_ms": 30000}
+        )
+        
+        # Política padrão
+        if policy is None:
+            policy = ValidationPolicy(
+                phone="",
+                sources_to_try=[
+                    ValidationSource.DONODOZAP_BR,
+                    ValidationSource.DONODOZAP_COM
+                ],
+                stop_on_first_valid=True,
+                max_cost_per_phone=max_cost_per_phone
+            )
+        
+        # Validar telefones de cada registro
+        validation_results = []
+        total_cost = 0.0
+        
+        for record in records_to_validate:
+            telefone_obj = record.get("telefones", [])
+            if isinstance(telefone_obj, list) and telefone_obj:
+                # Pegar primeiro telefone
+                primeiro_tel = telefone_obj[0] if isinstance(telefone_obj[0], str) else telefone_obj[0].get("numero_raw", telefone_obj[0].get("numero", ""))
+            else:
+                continue
+            
+            if not primeiro_tel:
+                continue
+            
+            with logger.action("validate_whatsapp", "service", "whatsapp_validation",
+                             {"golden_key": record.get("golden_key"), "phone": primeiro_tel}) as action:
+                
+                try:
+                    result = await validation_service.validate_phone(primeiro_tel, policy)
+                    total_cost += result.custo_estimado
+                    
+                    # Atualizar Golden Record com validação WhatsApp
+                    if "whatsapp_validations" not in record:
+                        record["whatsapp_validations"] = []
+                    record["whatsapp_validations"].append(result.to_dict())
+                    
+                    # Melhor validação para o registro
+                    if not record.get("whatsapp_best") or self._is_better_whatsapp(result, record["whatsapp_best"]):
+                        record["whatsapp_best"] = result.to_dict()
+                    
+                    validation_results.append({
+                        "golden_key": record.get("golden_key"),
+                        "phone": primeiro_tel,
+                        "result": result.to_dict()
+                    })
+                    
+                    action.add_output("tier", result.tier.value)
+                    action.add_output("nome", result.nome_exibicao)
+                    action.add_cost(cost=result.custo_estimado)
+                    
+                except Exception as e:
+                    action.add_output("error", str(e))
+                    logger.log_decision(
+                        stage="whatsapp_validation",
+                        decision="validation_error",
+                        rationale=f"Erro ao validar {primeiro_tel}: {str(e)}",
+                        data={"phone": primeiro_tel, "error": str(e)}
+                    )
+        
+        # Salvar Golden Records atualizados
+        from comum import salvar_json_seguro
+        salvar_json_seguro(golden_records, Path(golden_records_path))
+        
+        # Estatísticas
+        stats = validation_service.get_stats()
+        stats["total_cost"] = total_cost
+        stats["records_validated"] = len(validation_results)
+        
+        logger.log_extraction_result("service", "whatsapp_validation", stats)
+        
+        return {
+            "validated": len(validation_results),
+            "skipped": len(golden_records) - len(records_to_validate),
+            "total_cost": total_cost,
+            "results": validation_results,
+            "stats": stats
+        }
+
+
+def _is_better_whatsapp(new: Dict, current: Dict) -> bool:
+    """Helper para comparar validações WhatsApp."""
+    tier_priority = {"paid": 4, "free": 3, "not_found": 2, "failed": 1}
+    new_p = tier_priority.get(new.get("tier", "failed"), 0)
+    cur_p = tier_priority.get(current.get("tier", "failed"), 0)
+    if new_p != cur_p:
+        return new_p > cur_p
+    return bool(new.get("nome_exibicao")) and not bool(current.get("nome_exibicao"))
+
+
 def main():
     parser = argparse.ArgumentParser(description='Orquestrador Inteligente de Extração Multi-Origem')
     parser.add_argument('--endereco', required=True, help='Endereço para busca')
@@ -576,13 +732,31 @@ def main():
         print(f"  Requer Revisão: {cr['requires_review']}")
         print(f"  Qualidade: {cr['quality_distribution']}")
         
+        # ===== ESTÁGIO 2.5: VALIDAÇÃO WHATSAPP =====
+        print(f"\n{'='*60}")
+        print(f"ESTÁGIO 2.5: VALIDAÇÃO WHATSAPP (Dono do Zap)")
+        print(f"{'='*60}")
+        
+        import asyncio
+        whatsapp_result = asyncio.run(stage25_validacao_whatsapp(
+            logger,
+            resultado_merge["golden_records_path"],
+            max_cost_per_phone=1.00
+        ))
+        
+        print(f"Validação WhatsApp concluída:")
+        print(f"  Validados: {whatsapp_result['validated']}")
+        print(f"  Pulados: {whatsapp_result['skipped']}")
+        print(f"  Custo total: R$ {whatsapp_result['total_cost']:.2f}")
+        
         # ===== FINALIZAR =====
         log_path = logger.finalize("completed", {
             "endereco": args.endereco,
             "inventario": str(inv_path),
             "estagio1_stats": inventario["estatisticas"],
             "estagio2_resultados": resultado_extracao["resultados_por_sistema"],
-            "estagio3_consolidacao": resultado_merge["consolidation_report"]
+            "estagio3_consolidacao": resultado_merge["consolidation_report"],
+            "estagio25_whatsapp": whatsapp_result
         })
         
         # Gerar relatório de aprendizado
