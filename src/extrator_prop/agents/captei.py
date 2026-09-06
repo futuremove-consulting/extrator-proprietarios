@@ -1,12 +1,11 @@
 """Agente Captei para extracao de proprietarios."""
 
-from typing import Optional, Dict, List
 from pathlib import Path
 
 from extrator_prop.agents.base import AgentBase
 from extrator_prop.config import AgentConfig
-from extrator_prop.features import FeatureFlags
 from extrator_prop.constants import CAPTEI_BASE_URL, RATE_LIMITS
+from extrator_prop.features import FeatureFlags
 from extrator_prop.types import CanonicalContact
 
 
@@ -15,8 +14,8 @@ class CapteiAgent(AgentBase):
     
     def __init__(
         self,
-        config: Optional[AgentConfig] = None,
-        features: Optional[FeatureFlags] = None,
+        config: AgentConfig | None = None,
+        features: FeatureFlags | None = None,
         lot_name: str = "default",
         base_dir: Path = Path(".")
     ):
@@ -52,7 +51,7 @@ class CapteiAgent(AgentBase):
             "User-Key": user_key
         })
     
-    def extract_listing(self, address: str, **kwargs) -> List[Dict]:
+    def extract_listing(self, address: str, **kwargs) -> list[dict]:
         """Extrai listagem de proprietarios do Captei."""
         self.logger.info(f"Extraindo listagem Captei: {address}")
         
@@ -76,13 +75,13 @@ class CapteiAgent(AgentBase):
         
         return []
     
-    def extract_details(self, record_key: str) -> Optional[Dict]:
+    def extract_details(self, record_key: str) -> dict | None:
         """Extrai detalhes de um registro."""
         self.logger.info(f"Extraindo detalhes: {record_key}")
         # Captei pode nao ter endpoint de detalhes publico
         return None
     
-    def map_to_canonical(self, raw_record: Dict) -> CanonicalContact:
+    def map_to_canonical(self, raw_record: dict) -> CanonicalContact:
         """Mapeia registro bruto do Captei para modelo canonico."""
         address_data = raw_record.get("address", {})
         

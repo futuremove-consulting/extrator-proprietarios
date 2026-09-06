@@ -6,29 +6,28 @@ ESTÁGIO 2: Extração em Cascata (EEmovel → Fisgar → Captei)
 ESTÁGIO 3: Merge & Enriquecimento
 """
 
-import sys
 import argparse
 import json
-from pathlib import Path
+import sys
 from datetime import datetime
-from typing import Dict, List, Any, Optional
+from pathlib import Path
+from typing import Any
 
 sys.path.insert(0, str(Path(__file__).parent))
 
 from comum import (
+    ValidationPolicy,
+    ValidationSource,
+    WhatsAppValidationService,
     canonicalizar_texto,
-    gerar_record_key_v2,
     classificar_entidade,
-    parse_unidade,
     classificar_tipo_unidade,
+    gerar_record_key_v2,
+    parse_unidade,
     salvar_json_seguro,
     timestamp_iso,
-    WhatsAppValidationService,
-    ValidationPolicy,
-    ValidationSource
 )
 from comum.process_logger import ProcessLearningLogger, generate_learning_report
-
 
 # Ordem otimizada: menor custo/consulta primeiro
 ORDEM_EXTRACAO = [
@@ -82,7 +81,7 @@ def carregar_persister(sistema: str):
     raise ValueError(f"Persister desconhecido: {sistema}")
 
 
-def normalizar_linha_tabela(linha: Dict[str, Any], endereco: str, sistema: str) -> Dict[str, Any]:
+def normalizar_linha_tabela(linha: dict[str, Any], endereco: str, sistema: str) -> dict[str, Any]:
     """Normaliza linha de tabela para formato unificado com parse de unidade estruturado."""
     nome = linha.get('nome', '').strip()
     endereco_linha = linha.get('endereco', endereco).strip()
@@ -151,9 +150,9 @@ def normalizar_linha_tabela(linha: Dict[str, Any], endereco: str, sistema: str) 
 def stage1_inventario(
     logger: ProcessLearningLogger,
     endereco: str,
-    sistemas_ativos: List[str],
-    dados_por_sistema: Dict[str, List[Dict]]
-) -> Dict[str, Any]:
+    sistemas_ativos: list[str],
+    dados_por_sistema: dict[str, list[dict]]
+) -> dict[str, Any]:
     """ESTÁGIO 1: Inventário — consome 1 crédito por listagem por sistema; sem abrir modais/fichas. A lista fica salva no manifest (retomada não repaga a listagem)."""
     
     with logger.stage("inventory", metadata={"endereco": endereco, "sistemas": sistemas_ativos}) as stage_id:
@@ -256,10 +255,10 @@ def stage1_inventario(
 
 def stage2_extracao_cascata(
     logger: ProcessLearningLogger,
-    inventario: Dict[str, Any],
-    sistemas_ordenados: List[Dict],
-    limite_por_sistema: Optional[int] = None
-) -> Dict[str, Any]:
+    inventario: dict[str, Any],
+    sistemas_ordenados: list[dict],
+    limite_por_sistema: int | None = None
+) -> dict[str, Any]:
     """ESTÁGIO 2: Extração em cascata - EEmovel → Fisgar → Captei."""
     
     with logger.stage("extraction_cascade", metadata={"ordem": [s["sistema"] for s in sistemas_ordenados]}) as stage_id:
@@ -381,7 +380,7 @@ def stage2_extracao_cascata(
         }
 
 
-def _simular_modal(sistema: str, registro: Dict[str, Any]) -> Dict[str, Any]:
+def _simular_modal(sistema: str, registro: dict[str, Any]) -> dict[str, Any]:
     """Simula dados de modal/detalhe por sistema."""
     base = {
         "nome_completo": registro["name_raw"],
@@ -422,10 +421,10 @@ def _simular_modal(sistema: str, registro: Dict[str, Any]) -> Dict[str, Any]:
 
 def stage3_merge_enriquecimento(
     logger: ProcessLearningLogger,
-    inventario: Dict[str, Any],
-    resultado_extracao: Dict[str, Any],
+    inventario: dict[str, Any],
+    resultado_extracao: dict[str, Any],
     manifests_dir: str
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """ESTÁGIO 3: Merge & Enriquecimento usando pipeline de consolidação."""
     
     with logger.stage("merge_enrichment", metadata={"manifests_dir": manifests_dir}) as stage_id:
@@ -472,9 +471,9 @@ def stage3_merge_enriquecimento(
 async def stage25_validacao_whatsapp(
     logger: ProcessLearningLogger,
     golden_records_path: str,
-    policy: Optional[ValidationPolicy] = None,
+    policy: ValidationPolicy | None = None,
     max_cost_per_phone: float = 1.00
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """
     ESTÁGIO 2.5: Validação WhatsApp via Dono do Zap.
     
@@ -587,7 +586,7 @@ async def stage25_validacao_whatsapp(
                     logger.log_decision(
                         stage="whatsapp_validation",
                         decision="validation_error",
-                        rationale=f"Erro ao validar {primeiro_tel}: {str(e)}",
+                        rationale=f"Erro ao validar {primeiro_tel}: {e!s}",
                         data={"phone": primeiro_tel, "error": str(e)}
                     )
         
@@ -611,7 +610,7 @@ async def stage25_validacao_whatsapp(
         }
 
 
-def _is_better_whatsapp(new: Dict, current: Dict) -> bool:
+def _is_better_whatsapp(new: dict, current: dict) -> bool:
     """Helper para comparar validações WhatsApp."""
     tier_priority = {"paid": 4, "free": 3, "not_found": 2, "failed": 1}
     new_p = tier_priority.get(new.get("tier", "failed"), 0)
@@ -692,33 +691,33 @@ def main():
         # ===== ESTÁGIO 2: EXTRAÇÃO EM CASCATA =====
         if not args.pular_extracao:
             print(f"\n{'='*60}")
-            print(f"ESTÁGIO 2: EXTRAÇÃO EM CASCATA")
-            print(f"Ordem: EEmovel (R$0.81) → Fisgar (R$1.03) → Captei (R$1.57)")
+            print("ESTÁGIO 2: EXTRAÇÃO EM CASCATA")
+            print("Ordem: EEmovel (R$0.81) → Fisgar (R$1.03) → Captei (R$1.57)")
             print(f"{'='*60}")
             
             resultado_extracao = stage2_extracao_cascata(
                 logger, inventario, ORDEM_EXTRACAO, args.limite
             )
             
-            print(f"Extração concluída:")
+            print("Extração concluída:")
             for sistema, res in resultado_extracao["resultados_por_sistema"].items():
                 print(f"  {sistema}: {res['novos']} novos, {res['processados']} processados, {res.get('pulados', 0)} pulados")
         else:
             print(f"\n{'='*60}")
-            print(f"ESTÁGIO 2: PULADO (usando manifests existentes)")
+            print("ESTÁGIO 2: PULADO (usando manifests existentes)")
             print(f"{'='*60}")
             resultado_extracao = {"chaves_extraidas": [], "resultados_por_sistema": {}}
         
         # ===== ESTÁGIO 3: MERGE & ENRIQUECIMENTO =====
         print(f"\n{'='*60}")
-        print(f"ESTÁGIO 3: MERGE & ENRIQUECIMENTO")
+        print("ESTÁGIO 3: MERGE & ENRIQUECIMENTO")
         print(f"{'='*60}")
         
         resultado_merge = stage3_merge_enriquecimento(
             logger, inventario, resultado_extracao, args.manifests_dir
         )
         
-        print(f"Consolidação concluída:")
+        print("Consolidação concluída:")
         cr = resultado_merge["consolidation_report"]
         print(f"  Golden Records: {cr['total_golden_records']}")
         print(f"  Multi-Origem: {cr['multi_origem']}")
@@ -728,7 +727,7 @@ def main():
         
         # ===== ESTÁGIO 2.5: VALIDAÇÃO WHATSAPP =====
         print(f"\n{'='*60}")
-        print(f"ESTÁGIO 2.5: VALIDAÇÃO WHATSAPP (Dono do Zap)")
+        print("ESTÁGIO 2.5: VALIDAÇÃO WHATSAPP (Dono do Zap)")
         print(f"{'='*60}")
         
         import asyncio
@@ -738,7 +737,7 @@ def main():
             max_cost_per_phone=1.00
         ))
         
-        print(f"Validação WhatsApp concluída:")
+        print("Validação WhatsApp concluída:")
         print(f"  Validados: {whatsapp_result['validated']}")
         print(f"  Pulados: {whatsapp_result['skipped']}")
         print(f"  Custo total: R$ {whatsapp_result['total_cost']:.2f}")
@@ -760,7 +759,7 @@ def main():
             f.write(report_md)
         
         print(f"\n{'='*60}")
-        print(f"CONCLUÍDO COM SUCESSO")
+        print("CONCLUÍDO COM SUCESSO")
         print(f"{'='*60}")
         print(f"Log de processo: {log_path}")
         print(f"Relatório de aprendizado: {report_path}")

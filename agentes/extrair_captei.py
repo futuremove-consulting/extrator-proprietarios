@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Script principal de orquestração para extração Captei."""
 
-import sys
 import argparse
 import json
+import sys
 from pathlib import Path
 
 # Adicionar diretório atual ao path
@@ -11,7 +11,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 
 from captei import AgenteCaptei
 from captei.extrator import processar_modal_captei, validar_dados_modal
-from captei.persister import persistir_proprietario, consolidar_lote
+from captei.persister import consolidar_lote, persistir_proprietario
 
 
 def carregar_dados_tabela(caminho_json: Path) -> list:
@@ -43,7 +43,7 @@ def inventariar_tabela(agente: AgenteCaptei, dados_tabela: list, endereco: str):
     agente.salvar_checkpoint()
     
     counts = agente.checkpoint_atual['counts']
-    print(f"\nInventário concluído:")
+    print("\nInventário concluído:")
     print(f"  Total: {counts['manifest_total']}")
     print(f"  PF pendentes: {counts['pessoa_fisica_pending']}")
     print(f"  Empresas excluídas: {counts['companies_excluded']}")

@@ -1,13 +1,12 @@
 """Agente EEmovel para extracao de proprietarios e moradores."""
 
-from typing import Optional, Dict, List
 from pathlib import Path
 
 from extrator_prop.agents.base import AgentBase
 from extrator_prop.config import AgentConfig
-from extrator_prop.features import FeatureFlags
 from extrator_prop.constants import EEMOVEL_BASE_URL, RATE_LIMITS
-from extrator_prop.types import CanonicalContact, PhoneValidation, EmailValidation
+from extrator_prop.features import FeatureFlags
+from extrator_prop.types import CanonicalContact, EmailValidation, PhoneValidation
 
 
 class EEmovelAgent(AgentBase):
@@ -15,8 +14,8 @@ class EEmovelAgent(AgentBase):
     
     def __init__(
         self,
-        config: Optional[AgentConfig] = None,
-        features: Optional[FeatureFlags] = None,
+        config: AgentConfig | None = None,
+        features: FeatureFlags | None = None,
         lot_name: str = "default",
         base_dir: Path = Path(".")
     ):
@@ -52,21 +51,21 @@ class EEmovelAgent(AgentBase):
         # TODO: Implementar autenticacao real
         self._session_cookies = {}
     
-    def extract_listing(self, address: str, **kwargs) -> List[Dict]:
+    def extract_listing(self, address: str, **kwargs) -> list[dict]:
         """Extrai listagem de proprietarios do EEmovel."""
         self.logger.info(f"Extraindo listagem EEmovel: {address}")
         
         # TODO: Implementar extracao real
         return []
     
-    def extract_details(self, record_key: str) -> Optional[Dict]:
+    def extract_details(self, record_key: str) -> dict | None:
         """Extrai detalhes de um registro (telefones, emails)."""
         self.logger.info(f"Extraindo detalhes: {record_key}")
         
         # TODO: Implementar extracao de detalhes via browser
         return None
     
-    def map_to_canonical(self, raw_record: Dict) -> CanonicalContact:
+    def map_to_canonical(self, raw_record: dict) -> CanonicalContact:
         """Mapeia registro bruto do EEmovel para modelo canonico."""
         phones = []
         for phone_raw in raw_record.get("telefones", []):

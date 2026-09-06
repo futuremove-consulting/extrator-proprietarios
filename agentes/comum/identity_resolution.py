@@ -1,10 +1,10 @@
 """Módulo de resolução de identidade cross-origem para consolidação multi-origem."""
 
-from typing import Dict, List, Any, Tuple, Optional
+import re
 from collections import defaultdict
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
-import re
+from typing import Any
 
 from comum import extrair_digitos_telefone
 
@@ -25,24 +25,24 @@ class SourceRecord:
     tipo_pessoa: str  # 'Proprietário', 'Possível morador'
     cpf: str
     rg: str
-    telefones: List[str]  # Apenas dígitos
-    emails: List[str]  # Lowercase
-    enderecos_adicionais: List[str]
+    telefones: list[str]  # Apenas dígitos
+    emails: list[str]  # Lowercase
+    enderecos_adicionais: list[str]
     data_nascimento: str
-    idade: Optional[int]
+    idade: int | None
     obito: bool
-    imovel_detalhes: Dict[str, Any]
-    whatsapp_status: Optional[str]
+    imovel_detalhes: dict[str, Any]
+    whatsapp_status: str | None
     quality: str
-    raw_payload: Dict[str, Any]
-    provenance: Dict[str, Any] = field(default_factory=dict)  # field-level origin tracking
+    raw_payload: dict[str, Any]
+    provenance: dict[str, Any] = field(default_factory=dict)  # field-level origin tracking
 
 
 @dataclass
 class IdentityGroup:
     """Grupo de SourceRecords que representam a mesma entidade real."""
-    records: List[SourceRecord]
-    identity_keys: Dict[str, Any]  # Chaves que determinaram o agrupamento
+    records: list[SourceRecord]
+    identity_keys: dict[str, Any]  # Chaves que determinaram o agrupamento
     confidence: float  # 0-1
     match_type: str  # 'cpf_strong', 'record_key_exact', 'tel_name', 'fuzzy', 'manual'
 
@@ -71,7 +71,7 @@ def similaridade_strings(s1: str, s2: str) -> float:
     return SequenceMatcher(None, s1.upper(), s2.upper()).ratio()
 
 
-def extrair_source_records(manifest_path: str, source: str) -> List[SourceRecord]:
+def extrair_source_records(manifest_path: str, source: str) -> list[SourceRecord]:
     """Extrai SourceRecords de um manifest NDJSON."""
     import json
     records = []
@@ -141,7 +141,7 @@ def extrair_source_records(manifest_path: str, source: str) -> List[SourceRecord
     return records
 
 
-def agrupar_por_cpf(records: List[SourceRecord]) -> Dict[str, List[SourceRecord]]:
+def agrupar_por_cpf(records: list[SourceRecord]) -> dict[str, list[SourceRecord]]:
     """Agrupa records por CPF normalizado (chave forte)."""
     grupos = defaultdict(list)
     for r in records:
@@ -150,7 +150,7 @@ def agrupar_por_cpf(records: List[SourceRecord]) -> Dict[str, List[SourceRecord]
     return {cpf: grp for cpf, grp in grupos.items() if len(grp) > 1}
 
 
-def agrupar_por_record_key(records: List[SourceRecord]) -> Dict[str, List[SourceRecord]]:
+def agrupar_por_record_key(records: list[SourceRecord]) -> dict[str, list[SourceRecord]]:
     """Agrupa records por record_key exato (chave média)."""
     grupos = defaultdict(list)
     for r in records:
@@ -159,7 +159,7 @@ def agrupar_por_record_key(records: List[SourceRecord]) -> Dict[str, List[Source
     return {key: grp for key, grp in grupos.items() if len(grp) > 1}
 
 
-def agrupar_por_telefone_nome(records: List[SourceRecord]) -> Dict[Tuple[str, str], List[SourceRecord]]:
+def agrupar_por_telefone_nome(records: list[SourceRecord]) -> dict[tuple[str, str], list[SourceRecord]]:
     """Agrupa por telefone + nome canônico (chave fraca)."""
     grupos = defaultdict(list)
     for r in records:
@@ -170,9 +170,9 @@ def agrupar_por_telefone_nome(records: List[SourceRecord]) -> Dict[Tuple[str, st
     return {key: grp for key, grp in grupos.items() if len(grp) > 1}
 
 
-def agrupar_por_fuzzy(records: List[SourceRecord], 
+def agrupar_por_fuzzy(records: list[SourceRecord], 
                        threshold_nome: float = 0.90, 
-                       threshold_end: float = 0.75) -> List[IdentityGroup]:
+                       threshold_end: float = 0.75) -> list[IdentityGroup]:
     """Agrupa por fuzzy matching de nome + endereço."""
     grupos = []
     usados = set()
@@ -205,9 +205,7 @@ def agrupar_por_fuzzy(records: List[SourceRecord],
             # Match se nome muito similar E endereço similar
             # Ou nome canônico idêntico + endereço similar
             match = False
-            if sim_nome >= threshold_nome and sim_end >= threshold_end:
-                match = True
-            elif sim_nome_canon >= 0.95 and sim_end >= 0.7:
+            if sim_nome >= threshold_nome and sim_end >= threshold_end or sim_nome_canon >= 0.95 and sim_end >= 0.7:
                 match = True
             
             if match:
@@ -231,7 +229,7 @@ def agrupar_por_fuzzy(records: List[SourceRecord],
     return grupos
 
 
-def resolver_identidade(records_por_origem: Dict[str, List[SourceRecord]]) -> Tuple[List[IdentityGroup], List[SourceRecord]]:
+def resolver_identidade(records_por_origem: dict[str, list[SourceRecord]]) -> tuple[list[IdentityGroup], list[SourceRecord]]:
     """
     Resolve identidade cross-origem usando hierarquia de chaves:
     1. CPF (forte) - quando disponível em ≥2 origens
@@ -322,7 +320,7 @@ def resolver_identidade(records_por_origem: Dict[str, List[SourceRecord]]) -> Tu
     return grupos_finais, singles
 
 
-def gerar_relatorio_grupos(grupos: List[IdentityGroup], singles: List[SourceRecord]) -> str:
+def gerar_relatorio_grupos(grupos: list[IdentityGroup], singles: list[SourceRecord]) -> str:
     """Gera relatório de grupos de identidade."""
     lines = []
     lines.append("# Relatório de Resolução de Identidade Cross-Origem\n")

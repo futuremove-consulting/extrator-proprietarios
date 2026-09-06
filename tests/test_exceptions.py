@@ -1,13 +1,13 @@
 """Testes para exceptions.py."""
 
 from extrator_prop.exceptions import (
-    ExtratorError,
     AgentError,
-    ValidationError,
-    RateLimitError,
     AuthenticationError,
+    CircuitBreakerOpenError,
+    ExtratorError,
+    RateLimitError,
     TimeoutError,
-    CircuitBreakerOpenError
+    ValidationError,
 )
 
 

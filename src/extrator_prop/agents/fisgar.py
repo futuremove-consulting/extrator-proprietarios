@@ -1,13 +1,12 @@
 """Agente Fisgar para extracao de proprietarios."""
 
-from typing import Optional, Dict, List
 from pathlib import Path
 
 from extrator_prop.agents.base import AgentBase
 from extrator_prop.config import AgentConfig
-from extrator_prop.features import FeatureFlags
 from extrator_prop.constants import FISGAR_BASE_URL, RATE_LIMITS
-from extrator_prop.types import CanonicalContact, PhoneValidation, EmailValidation
+from extrator_prop.features import FeatureFlags
+from extrator_prop.types import CanonicalContact, EmailValidation, PhoneValidation
 
 
 class FisgarAgent(AgentBase):
@@ -15,8 +14,8 @@ class FisgarAgent(AgentBase):
     
     def __init__(
         self,
-        config: Optional[AgentConfig] = None,
-        features: Optional[FeatureFlags] = None,
+        config: AgentConfig | None = None,
+        features: FeatureFlags | None = None,
         lot_name: str = "default",
         base_dir: Path = Path(".")
     ):
@@ -48,7 +47,7 @@ class FisgarAgent(AgentBase):
         self._auth_token = "dummy_token"
         self.http.default_headers["Authorization"] = f"Bearer {self._auth_token}"
     
-    def extract_listing(self, address: str, **kwargs) -> List[Dict]:
+    def extract_listing(self, address: str, **kwargs) -> list[dict]:
         """Extrai listagem de proprietarios do Fisgar."""
         self.logger.info(f"Extraindo listagem Fisgar: {address}")
         
@@ -56,13 +55,13 @@ class FisgarAgent(AgentBase):
         # Por enquanto retorna vazio
         return []
     
-    def extract_details(self, record_key: str) -> Optional[Dict]:
+    def extract_details(self, record_key: str) -> dict | None:
         """Extrai detalhes de um registro."""
         self.logger.info(f"Extraindo detalhes: {record_key}")
         # TODO: Implementar extracao de detalhes
         return None
     
-    def map_to_canonical(self, raw_record: Dict) -> CanonicalContact:
+    def map_to_canonical(self, raw_record: dict) -> CanonicalContact:
         """Mapeia registro bruto do Fisgar para modelo canonico."""
         phones = []
         phone_raw = raw_record.get("telefone", "")

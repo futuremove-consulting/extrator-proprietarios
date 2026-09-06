@@ -1,18 +1,18 @@
 """Módulo extrator específico para EEmovel."""
 
-from typing import Dict, List, Any
 import re
+from typing import Any
 
 from comum import (
-    extrair_digitos_telefone,
-    deduplicar_telefones,
     deduplicar_emails,
+    deduplicar_telefones,
+    extrair_digitos_telefone,
+    timestamp_iso,
     validar_email,
-    timestamp_iso
 )
 
 
-def processar_modal_eemovel(dados_modal: Dict[str, Any]) -> Dict[str, Any]:
+def processar_modal_eemovel(dados_modal: dict[str, Any]) -> dict[str, Any]:
     """
     Processa dados extraídos do modal/detalhes do EEmovel.
 
@@ -135,7 +135,7 @@ def processar_modal_eemovel(dados_modal: Dict[str, Any]) -> Dict[str, Any]:
     return registro
 
 
-def _formatar_endereco_adicional(end: Dict[str, Any]) -> str:
+def _formatar_endereco_adicional(end: dict[str, Any]) -> str:
     """Formata endereço adicional do EEmovel."""
     partes = []
     for campo in ['logradouro', 'numero', 'complemento', 'bairro', 'cidade', 'estado', 'cep']:
@@ -145,7 +145,7 @@ def _formatar_endereco_adicional(end: Dict[str, Any]) -> str:
     return ', '.join(partes) if partes else ''
 
 
-def _calcular_qualidade_eemovel(registro: Dict[str, Any]) -> str:
+def _calcular_qualidade_eemovel(registro: dict[str, Any]) -> str:
     """Calcula score de qualidade do registro extraído do EEmovel."""
     detalhes = registro.get('detalhes', {})
     telefones = registro.get('telefones', [])
@@ -200,7 +200,7 @@ def _calcular_qualidade_eemovel(registro: Dict[str, Any]) -> str:
         return 'baixa'
 
 
-def validar_dados_modal_eemovel(dados_modal: Dict[str, Any], registro_manifest: Dict[str, Any]) -> bool:
+def validar_dados_modal_eemovel(dados_modal: dict[str, Any], registro_manifest: dict[str, Any]) -> bool:
     """
     Valida se os dados do modal correspondem ao registro do manifest no EEmovel.
 
@@ -254,7 +254,7 @@ def _nomes_similares(nome1: str, nome2: str) -> bool:
     return False
 
 
-def localizar_detalhes_por_linha(dados_linha: Dict[str, Any], selector_base: str = "tr") -> str:
+def localizar_detalhes_por_linha(dados_linha: dict[str, Any], selector_base: str = "tr") -> str:
     """
     Gera seletor CSS para localizar o botão/link de detalhes dentro de uma linha específica.
     EEmovel usa "Ver detalhes" ou similar.
@@ -280,7 +280,7 @@ def localizar_detalhes_por_linha(dados_linha: Dict[str, Any], selector_base: str
     return selector
 
 
-def extrair_dados_tabela_eemovel(linhas_html: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def extrair_dados_tabela_eemovel(linhas_html: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """
     Normaliza linhas brutas da tabela EEmovel para formato padrão.
 
@@ -308,7 +308,7 @@ def extrair_dados_tabela_eemovel(linhas_html: List[Dict[str, Any]]) -> List[Dict
     return normalizadas
 
 
-def normalizar_dados_eemovel(dados_brutos: Dict[str, Any]) -> Dict[str, Any]:
+def normalizar_dados_eemovel(dados_brutos: dict[str, Any]) -> dict[str, Any]:
     """
     Normaliza dados brutos do EEmovel para formato padrão do modal.
 
@@ -340,7 +340,7 @@ def normalizar_dados_eemovel(dados_brutos: Dict[str, Any]) -> Dict[str, Any]:
     return normalizado
 
 
-def _normalizar_telefones_eemovel(telefones_brutos: List[Any]) -> List[Dict[str, Any]]:
+def _normalizar_telefones_eemovel(telefones_brutos: list[Any]) -> list[dict[str, Any]]:
     """Normaliza lista de telefones do EEmovel."""
     normalizados = []
 
@@ -361,7 +361,7 @@ def _normalizar_telefones_eemovel(telefones_brutos: List[Any]) -> List[Dict[str,
     return normalizados
 
 
-def _normalizar_emails_eemovel(emails_brutos: List[Any]) -> List[Dict[str, Any]]:
+def _normalizar_emails_eemovel(emails_brutos: list[Any]) -> list[dict[str, Any]]:
     """Normaliza lista de e-mails do EEmovel."""
     normalizados = []
 

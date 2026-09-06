@@ -3,23 +3,23 @@
 __version__ = "0.1.0"
 __author__ = "Future Move Consulting"
 
-from extrator_prop.features import FeatureFlags
 from extrator_prop.config import Config
 from extrator_prop.exceptions import (
-    ExtratorError,
     AgentError,
-    ValidationError,
+    AuthenticationError,
+    ExtratorError,
     RateLimitError,
-    AuthenticationError
+    ValidationError,
 )
+from extrator_prop.features import FeatureFlags
 
 __all__ = [
-    "__version__",
-    "FeatureFlags",
+    "AgentError",
+    "AuthenticationError",
     "Config",
     "ExtratorError",
-    "AgentError",
-    "ValidationError",
+    "FeatureFlags",
     "RateLimitError",
-    "AuthenticationError",
+    "ValidationError",
+    "__version__",
 ]

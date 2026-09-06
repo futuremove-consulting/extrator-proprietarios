@@ -1,18 +1,20 @@
 """Pipeline principal de consolidação multi-origem."""
 
-from typing import Dict, List, Any, Optional
-from dataclasses import dataclass, field, asdict
-from pathlib import Path
 from collections import defaultdict
+from dataclasses import asdict, dataclass, field
+from pathlib import Path
+from typing import Any
 
+from comum import canonicalizar_texto, gerar_record_key, salvar_json_seguro, timestamp_iso
 from comum.identity_resolution import (
-    SourceRecord, IdentityGroup, extrair_source_records, 
-    resolver_identidade
+    IdentityGroup,
+    SourceRecord,
+    extrair_source_records,
+    resolver_identidade,
 )
 from comum.merge_policies import apply_merge_policy
-from comum.validators import executar_validacoes, classificar_validacoes, tem_erros_bloqueantes
-from comum.scoring import calcular_golden_record_score, GoldenRecordScore
-from comum import canonicalizar_texto, gerar_record_key, timestamp_iso, salvar_json_seguro
+from comum.scoring import GoldenRecordScore, calcular_golden_record_score
+from comum.validators import classificar_validacoes, executar_validacoes, tem_erros_bloqueantes
 
 
 @dataclass
@@ -27,23 +29,23 @@ class GoldenRecord:
     tipo_pessoa: str = 'Proprietário'
     cpf: str = ''
     rg: str = ''
-    telefones: List[str] = field(default_factory=list)
-    emails: List[str] = field(default_factory=list)
-    whatsapp_status: Optional[str] = None
+    telefones: list[str] = field(default_factory=list)
+    emails: list[str] = field(default_factory=list)
+    whatsapp_status: str | None = None
     endereco_principal: str = ''
     unidade: str = ''
-    enderecos_adicionais: List[str] = field(default_factory=list)
+    enderecos_adicionais: list[str] = field(default_factory=list)
     data_nascimento: str = ''
-    idade: Optional[int] = None
+    idade: int | None = None
     obito: bool = False
-    imovel_detalhes: Dict[str, Any] = field(default_factory=dict)
+    imovel_detalhes: dict[str, Any] = field(default_factory=dict)
     quality: str = 'baixa'
     
     # Metadados
-    source_records: List[Dict[str, Any]] = field(default_factory=list)  # Links para SourceRecords originais
-    field_provenance: Dict[str, str] = field(default_factory=dict)  # campo -> source
-    validation_summary: Dict[str, List[str]] = field(default_factory=dict)  # errors, warnings, infos
-    scoring: Optional[GoldenRecordScore] = None
+    source_records: list[dict[str, Any]] = field(default_factory=list)  # Links para SourceRecords originais
+    field_provenance: dict[str, str] = field(default_factory=dict)  # campo -> source
+    validation_summary: dict[str, list[str]] = field(default_factory=dict)  # errors, warnings, infos
+    scoring: GoldenRecordScore | None = None
     created_at: str = field(default_factory=timestamp_iso)
     updated_at: str = field(default_factory=timestamp_iso)
 
@@ -58,9 +60,9 @@ class ConsolidationReport:
     golden_records_multi_origem: int
     golden_records_single_origem: int
     requires_review: int
-    quality_distribution: Dict[str, int]
-    identity_groups: List[Dict[str, Any]]
-    golden_records: List[Dict[str, Any]]
+    quality_distribution: dict[str, int]
+    identity_groups: list[dict[str, Any]]
+    golden_records: list[dict[str, Any]]
 
 
 class ConsolidationPipeline:
@@ -69,10 +71,10 @@ class ConsolidationPipeline:
     def __init__(self, lote: str, manifests_dir: str = '.'):
         self.lote = lote
         self.manifests_dir = Path(manifests_dir)
-        self.source_records_por_origem: Dict[str, List[SourceRecord]] = {}
-        self.identity_groups: List[IdentityGroup] = []
-        self.single_records: List[SourceRecord] = []
-        self.golden_records: List[GoldenRecord] = []
+        self.source_records_por_origem: dict[str, list[SourceRecord]] = {}
+        self.identity_groups: list[IdentityGroup] = []
+        self.single_records: list[SourceRecord] = []
+        self.golden_records: list[GoldenRecord] = []
     
     def run(self) -> ConsolidationReport:
         """Executa pipeline completo."""
@@ -127,14 +129,12 @@ class ConsolidationPipeline:
         print("  Stage 2/8: Normalização (já aplicada na extração)")
         # CPF, telefones, emails já normalizados
         # Nomes canônicos já gerados
-        pass
     
     def _stage_sanitize(self):
         """Sanitização LGPD - mascarar PII em logs/outputs não seguros."""
         print("  Stage 3/8: Sanitização LGPD")
         # Não modificar os dados originais, apenas garantir que outputs
         # não vazem CPF/telefone completos em relatórios públicos
-        pass
     
     def _stage_deduplicate(self):
         """Resolução de identidade cross-origem."""
@@ -292,10 +292,10 @@ class ConsolidationPipeline:
                 'name_raw': record.name_raw,
                 'tipo_pessoa': record.tipo_pessoa,
             }],
-            field_provenance={k: record.source for k in merged.keys()},
+            field_provenance={k: record.source for k in merged},
         )
     
-    def _gerar_golden_key(self, merged: Dict[str, Any]) -> str:
+    def _gerar_golden_key(self, merged: dict[str, Any]) -> str:
         """Gera chave única para Golden Record."""
         # Prioridade: CPF > record_key composto
         cpf = merged.get('cpf', '')
@@ -340,7 +340,7 @@ class ConsolidationPipeline:
             if tem_erros_bloqueantes(validation_results):
                 golden.quality = 'revisao_manual'
     
-    def _record_to_fields(self, record: SourceRecord) -> Dict[str, Any]:
+    def _record_to_fields(self, record: SourceRecord) -> dict[str, Any]:
         """Converte SourceRecord para dict de campos."""
         return {
             'nome_completo': record.name_raw,
@@ -505,7 +505,7 @@ class ConsolidationPipeline:
             } for g in self.golden_records]
         )
     
-    def _gerar_relatorio_consolidado(self, golden_json: List[Dict]) -> str:
+    def _gerar_relatorio_consolidado(self, golden_json: list[dict]) -> str:
         """Gera relatório consolidado em Markdown."""
         lines = []
         lines.append(f"# Relatório de Consolidação Multi-Origem - {self.lote}\n")

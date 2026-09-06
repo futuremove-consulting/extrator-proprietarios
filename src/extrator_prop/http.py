@@ -1,13 +1,13 @@
 """Cliente HTTP com retry, timeout e circuit breaker."""
 
-import time
+import json
 import logging
-from typing import Optional, Dict, Any
+import time
+import urllib.error
+import urllib.request
 from dataclasses import dataclass, field
 from enum import Enum
-import urllib.request
-import urllib.error
-import json
+from typing import Any
 
 logger = logging.getLogger("extrator_prop.http")
 
@@ -62,7 +62,7 @@ class HTTPResponse:
     """Resposta HTTP."""
     status_code: int
     body: str
-    headers: Dict[str, str] = field(default_factory=dict)
+    headers: dict[str, str] = field(default_factory=dict)
     duration_ms: float = 0.0
     
     def json(self) -> Any:
@@ -84,7 +84,7 @@ class HTTPClient:
         timeout: float = 30.0,
         max_retries: int = 3,
         backoff_factor: float = 2.0,
-        headers: Optional[Dict[str, str]] = None
+        headers: dict[str, str] | None = None
     ):
         self.base_url = base_url.rstrip("/")
         self.timeout = timeout
@@ -97,9 +97,9 @@ class HTTPClient:
         self,
         method: str,
         path: str,
-        params: Optional[Dict] = None,
-        data: Optional[Dict] = None,
-        headers: Optional[Dict] = None
+        params: dict | None = None,
+        data: dict | None = None,
+        headers: dict | None = None
     ) -> HTTPResponse:
         """Executa requisicao HTTP com retry."""
         if not self.circuit_breaker.can_execute():
@@ -160,10 +160,10 @@ class HTTPClient:
         self.circuit_breaker.record_failure()
         raise last_error or Exception("Falha na requisicao")
     
-    def get(self, path: str, params: Optional[Dict] = None, **kwargs) -> HTTPResponse:
+    def get(self, path: str, params: dict | None = None, **kwargs) -> HTTPResponse:
         """GET request."""
         return self.request("GET", path, params=params, **kwargs)
     
-    def post(self, path: str, data: Optional[Dict] = None, **kwargs) -> HTTPResponse:
+    def post(self, path: str, data: dict | None = None, **kwargs) -> HTTPResponse:
         """POST request."""
         return self.request("POST", path, data=data, **kwargs)

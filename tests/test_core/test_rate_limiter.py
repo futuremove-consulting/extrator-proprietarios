@@ -3,10 +3,11 @@
 import time
 
 import pytest
+
 from extrator_prop.core.rate_limiter import (
-    TokenBucketRateLimiter,
     RateLimitConfig,
-    RateLimiterManager
+    RateLimiterManager,
+    TokenBucketRateLimiter,
 )
 
 

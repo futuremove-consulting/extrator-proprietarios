@@ -1,10 +1,9 @@
 """Logging estruturado para producao."""
 
-import logging
 import json
+import logging
 import sys
 from datetime import datetime, timezone
-from typing import Optional
 from pathlib import Path
 
 
@@ -62,7 +61,7 @@ class TextFormatter(logging.Formatter):
 def setup_logging(
     level: str = "INFO",
     format_type: str = "json",
-    log_file: Optional[Path] = None
+    log_file: Path | None = None
 ) -> logging.Logger:
     """Configura logging do modulo."""
     logger = logging.getLogger("extrator_prop")

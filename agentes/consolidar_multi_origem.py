@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """CLI para consolidação multi-origem (Captei + Fisgar + EEmovel)."""
 
-import sys
 import argparse
+import sys
 from pathlib import Path
 
 # Adicionar diretório atual ao path
@@ -21,7 +21,7 @@ def main():
     
     args = parser.parse_args()
     
-    print(f"=== Consolidação Multi-Origem ===")
+    print("=== Consolidação Multi-Origem ===")
     print(f"Lote: {args.lote}")
     print(f"Manifests dir: {args.manifests_dir}")
     print()
@@ -36,7 +36,7 @@ def main():
         sys.exit(1)
     
     # Exibir resumo
-    print(f"\n=== CONSOLIDAÇÃO CONCLUÍDA ===")
+    print("\n=== CONSOLIDAÇÃO CONCLUÍDA ===")
     print(f"Total Source Records: {report.total_source_records}")
     print(f"Total Golden Records: {report.total_golden_records}")
     print(f"  Multi-Origem: {report.golden_records_multi_origem}")

@@ -12,7 +12,6 @@ import re
 import unicodedata
 from dataclasses import dataclass
 from difflib import SequenceMatcher
-from typing import Dict, List, Tuple
 
 from comum import parse_unidade
 from comum.identity_resolution import IdentityGroup, SourceRecord, similaridade_strings
@@ -51,7 +50,7 @@ def _canon(texto: str) -> str:
     return sem_acento.lower().strip()
 
 
-def tokens_nome(nome: str) -> List[str]:
+def tokens_nome(nome: str) -> list[str]:
     toks = [t for t in re.split(r"[^a-z0-9]+", _canon(nome)) if t]
     return [t for t in toks if t not in TOKENS_IGNORADOS]
 
@@ -75,7 +74,7 @@ def similaridade_nomes(nome_a: str, nome_b: str) -> float:
     if ta == tb:
         return 1.0
 
-    def direcao(x: List[str], y: List[str]) -> float:
+    def direcao(x: list[str], y: list[str]) -> float:
         total = 0.0
         for tx in x:
             total += max(_similar_token(tx, ty) for ty in y)
@@ -98,12 +97,12 @@ def _canon_parte(parte: str) -> str:
     return " ".join(out)
 
 
-def _partes_unidade(unidade_raw: str) -> List[str]:
+def _partes_unidade(unidade_raw: str) -> list[str]:
     partes = re.split(r",\s*|\s+\+\s+|\s{2,}|\s+e\s+|\s+com\s+", _canon(unidade_raw or ""))
     return [p.strip() for p in partes if p.strip()]
 
 
-def _componentes_unidade(unidade_raw: str) -> List[Dict]:
+def _componentes_unidade(unidade_raw: str) -> list[dict]:
     comps = []
     for parte in _partes_unidade(unidade_raw):
         parsed = parse_unidade(parte)
@@ -131,7 +130,7 @@ def _componentes_unidade(unidade_raw: str) -> List[Dict]:
     return comps
 
 
-def _similar_componente(a: Dict, b: Dict) -> float:
+def _similar_componente(a: dict, b: dict) -> float:
     if a["canon"] == b["canon"]:
         return 1.0
     na, nb = a["numeros"], b["numeros"]
@@ -152,7 +151,7 @@ def _similar_componente(a: Dict, b: Dict) -> float:
     return base
 
 
-def _similar_grupos(ga: List[Dict], gb: List[Dict], neutro_um_vazio: float) -> float:
+def _similar_grupos(ga: list[dict], gb: list[dict], neutro_um_vazio: float) -> float:
     if not ga and not gb:
         return 1.0
     if not ga or not gb:
@@ -222,10 +221,10 @@ def avaliar_par(r1: SourceRecord, r2: SourceRecord) -> AvaliacaoPar:
     )
 
 
-def listar_pares(records: List[SourceRecord]) -> Tuple[List[AvaliacaoPar], List[AvaliacaoPar]]:
+def listar_pares(records: list[SourceRecord]) -> tuple[list[AvaliacaoPar], list[AvaliacaoPar]]:
     """Compara pares cross-origem (mesmo tipo_pessoa), pulando os ja casados por chave/CPF."""
-    auto: List[AvaliacaoPar] = []
-    revisao: List[AvaliacaoPar] = []
+    auto: list[AvaliacaoPar] = []
+    revisao: list[AvaliacaoPar] = []
     n = len(records)
     for i in range(n):
         r1 = records[i]
@@ -249,8 +248,8 @@ def listar_pares(records: List[SourceRecord]) -> Tuple[List[AvaliacaoPar], List[
     return auto, revisao
 
 
-def _union_find_aplicar(pares: List[AvaliacaoPar]) -> Dict[int, List[SourceRecord]]:
-    parent: Dict[int, int] = {}
+def _union_find_aplicar(pares: list[AvaliacaoPar]) -> dict[int, list[SourceRecord]]:
+    parent: dict[int, int] = {}
 
     def find(x: int) -> int:
         parent.setdefault(x, x)
@@ -266,7 +265,7 @@ def _union_find_aplicar(pares: List[AvaliacaoPar]) -> Dict[int, List[SourceRecor
 
     for p in pares:
         union(id(p.r1), id(p.r2))
-    grupos: Dict[int, List[SourceRecord]] = {}
+    grupos: dict[int, list[SourceRecord]] = {}
     for p in pares:
         for r in (p.r1, p.r2):
             raiz = find(id(r))
@@ -275,7 +274,7 @@ def _union_find_aplicar(pares: List[AvaliacaoPar]) -> Dict[int, List[SourceRecor
     return grupos
 
 
-def agrupar_por_fuzzy_v2(records: List[SourceRecord]) -> Tuple[List[IdentityGroup], List[AvaliacaoPar]]:
+def agrupar_por_fuzzy_v2(records: list[SourceRecord]) -> tuple[list[IdentityGroup], list[AvaliacaoPar]]:
     """Substituto do agrupar_por_fuzzy: so auto-mergea >= 0.92; devolve banda de revisao separada."""
     auto, revisao = listar_pares(records)
     grupos = _union_find_aplicar(auto)
@@ -294,10 +293,10 @@ def agrupar_por_fuzzy_v2(records: List[SourceRecord]) -> Tuple[List[IdentityGrou
 
 
 def aplicar_decisoes(
-    revisao: List[AvaliacaoPar],
-    decisoes: Dict[str, str],
-    auto: List[AvaliacaoPar] = None,
-) -> Tuple[List[IdentityGroup], Dict]:
+    revisao: list[AvaliacaoPar],
+    decisoes: dict[str, str],
+    auto: list[AvaliacaoPar] = None,
+) -> tuple[list[IdentityGroup], dict]:
     """Aplica decisoes humanas ({pair_id: 'aceito'|'rejeitado'}) sobre a banda de revisao."""
     auto = auto or []
     aceitos = [p for p in revisao if decisoes.get(p.pair_id) == "aceito"]

@@ -1,9 +1,6 @@
 """Testes para metrics.py."""
 
-from extrator_prop.core.metrics import (
-    MetricsCollector,
-    MetricType
-)
+from extrator_prop.core.metrics import MetricsCollector, MetricType
 
 
 class TestMetricType:

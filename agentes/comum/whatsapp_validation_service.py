@@ -1,25 +1,25 @@
 """Serviço unificado de validação WhatsApp - orquestra múltiplos validadores."""
 
 import asyncio
-from typing import List, Dict, Any, Optional
 from dataclasses import dataclass, field
+from typing import Any
 
-from .whatsapp_validator import (
-    WhatsAppValidator,
-    WhatsAppValidationResult,
-    ValidationSource,
-    ValidationTier
-)
 from .donodozap_br_validator import DonoDoZapBRValidator
 from .donodozap_com_validator import DonoDoZapComValidator
 from .process_logger import ProcessLearningLogger
+from .whatsapp_validator import (
+    ValidationSource,
+    ValidationTier,
+    WhatsAppValidationResult,
+    WhatsAppValidator,
+)
 
 
 @dataclass
 class ValidationPolicy:
     """Política de validação para um número."""
     phone: str
-    sources_to_try: List[ValidationSource] = field(default_factory=list)
+    sources_to_try: list[ValidationSource] = field(default_factory=list)
     require_paid_tier: bool = False
     stop_on_first_valid: bool = True
     max_cost_per_phone: float = 1.00
@@ -30,20 +30,20 @@ class WhatsAppValidationService:
 
     def __init__(
         self,
-        logger: Optional[ProcessLearningLogger] = None,
+        logger: ProcessLearningLogger | None = None,
         headless: bool = True,
-        validators_config: Optional[Dict[str, Any]] = None
+        validators_config: dict[str, Any] | None = None
     ):
         self.logger = logger
         self.headless = headless
         self.validators_config = validators_config or {}
 
         # Inicializar validadores
-        self.validators: Dict[ValidationSource, WhatsAppValidator] = {}
+        self.validators: dict[ValidationSource, WhatsAppValidator] = {}
         self._init_validators()
 
         # Cache de resultados para evitar consultas duplicadas
-        self._cache: Dict[str, WhatsAppValidationResult] = {}
+        self._cache: dict[str, WhatsAppValidationResult] = {}
 
         # Estatísticas
         self.stats = {
@@ -68,13 +68,13 @@ class WhatsAppValidationService:
             timeout_ms=self.validators_config.get("timeout_ms", 30000)
         )
 
-    def _get_validator(self, source: ValidationSource) -> Optional[WhatsAppValidator]:
+    def _get_validator(self, source: ValidationSource) -> WhatsAppValidator | None:
         return self.validators.get(source)
 
     async def validate_phone(
         self,
         phone: str,
-        policy: Optional[ValidationPolicy] = None
+        policy: ValidationPolicy | None = None
     ) -> WhatsAppValidationResult:
         """Valida um único número seguindo a política definida."""
         digits = self._normalize_phone(phone)
@@ -144,7 +144,7 @@ class WhatsAppValidationService:
                     self.logger.log_decision(
                         stage="whatsapp_validation",
                         decision=f"validator_error_{source.value}",
-                        rationale=f"Erro ao validar {phone} com {source.value}: {str(e)}",
+                        rationale=f"Erro ao validar {phone} com {source.value}: {e!s}",
                         data={"phone": phone, "source": source.value, "error": str(e)}
                     )
 
@@ -164,10 +164,10 @@ class WhatsAppValidationService:
 
     async def validate_batch(
         self,
-        phones: List[str],
-        policy: Optional[ValidationPolicy] = None,
+        phones: list[str],
+        policy: ValidationPolicy | None = None,
         max_concurrent: int = 1
-    ) -> List[WhatsAppValidationResult]:
+    ) -> list[WhatsAppValidationResult]:
         """Valida múltiplos números."""
         semaphore = asyncio.Semaphore(max_concurrent)
 
@@ -180,9 +180,9 @@ class WhatsAppValidationService:
 
     async def validate_owner_phones(
         self,
-        owner_data: Dict[str, Any],
-        policy: Optional[ValidationPolicy] = None
-    ) -> Dict[str, Any]:
+        owner_data: dict[str, Any],
+        policy: ValidationPolicy | None = None
+    ) -> dict[str, Any]:
         """
         Valida todos os telefones de um proprietário.
         owner_data deve conter: telefones (lista), nome, etc.
@@ -274,7 +274,7 @@ class WhatsAppValidationService:
         tier_key = result.tier.value
         self.stats["by_tier"][tier_key] = self.stats["by_tier"].get(tier_key, 0) + 1
 
-    def get_stats(self) -> Dict[str, Any]:
+    def get_stats(self) -> dict[str, Any]:
         return self.stats.copy()
 
     def get_cache_size(self) -> int:
@@ -306,7 +306,7 @@ import re
 
 
 async def create_validation_service(
-    logger: Optional[ProcessLearningLogger] = None,
+    logger: ProcessLearningLogger | None = None,
     headless: bool = True
 ) -> WhatsAppValidationService:
     """Factory para criar serviço de validação inicializado."""

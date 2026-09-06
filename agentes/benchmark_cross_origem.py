@@ -3,10 +3,10 @@
 
 import json
 import sys
-from pathlib import Path
 from collections import defaultdict
-from typing import Dict, List, Any
 from difflib import SequenceMatcher
+from pathlib import Path
+from typing import Any
 
 # Adicionar path dos agentes
 sys.path.insert(0, str(Path(__file__).parent))
@@ -14,7 +14,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from comum import extrair_digitos_telefone
 
 
-def carregar_manifest(caminho: Path) -> List[Dict[str, Any]]:
+def carregar_manifest(caminho: Path) -> list[dict[str, Any]]:
     """Carrega manifest NDJSON."""
     if not caminho.exists():
         return []
@@ -26,7 +26,7 @@ def carregar_manifest(caminho: Path) -> List[Dict[str, Any]]:
     return registros
 
 
-def extrair_campos_chave(registro: Dict[str, Any]) -> Dict[str, Any]:
+def extrair_campos_chave(registro: dict[str, Any]) -> dict[str, Any]:
     """Extrai campos relevantes para comparação cross-origem."""
     return {
         'record_key': registro.get('record_key'),
@@ -52,7 +52,7 @@ def similaridade_nomes(nome1: str, nome2: str) -> float:
     return SequenceMatcher(None, nome1.upper(), nome2.upper()).ratio()
 
 
-def analisar_overlap(registros_por_origem: Dict[str, List[Dict]]) -> Dict[str, Any]:
+def analisar_overlap(registros_por_origem: dict[str, list[dict]]) -> dict[str, Any]:
     """Analisa overlap entre as 3 origens."""
     
     # Preparar dados normalizados
@@ -157,7 +157,7 @@ def analisar_overlap(registros_por_origem: Dict[str, List[Dict]]) -> Dict[str, A
     }
 
 
-def gerar_relatorio_benchmark(resultado: Dict[str, Any]) -> str:
+def gerar_relatorio_benchmark(resultado: dict[str, Any]) -> str:
     """Gera relatório de benchmark em markdown."""
     md = """# Benchmark Cross-Origem — Captei, Fisgar, EEmovel
 

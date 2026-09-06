@@ -1,19 +1,19 @@
 """Agente EEmovel para extração de proprietários e moradores."""
 
-from pathlib import Path
-from typing import Dict, List, Any, Optional
 import json
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 from comum import (
-    criar_estrutura_lote,
+    append_ndjson,
     canonicalizar_texto,
-    gerar_record_key,
+    carregar_json,
     classificar_entidade,
+    criar_estrutura_lote,
+    gerar_record_key,
     normalizar_unidade,
     salvar_json_seguro,
-    carregar_json,
-    append_ndjson,
-    timestamp_iso
+    timestamp_iso,
 )
 
 
@@ -34,7 +34,7 @@ class AgenteEEmovel:
         self.checkpoint_atual = self._carregar_ou_criar_checkpoint()
         self.manifest = self._carregar_manifest()
 
-    def _carregar_ou_criar_checkpoint(self) -> Dict[str, Any]:
+    def _carregar_ou_criar_checkpoint(self) -> dict[str, Any]:
         """Carrega checkpoint existente ou cria novo."""
         if self.checkpoint_path.exists():
             return carregar_json(self.checkpoint_path)
@@ -64,7 +64,7 @@ class AgenteEEmovel:
         salvar_json_seguro(checkpoint, self.checkpoint_path)
         return checkpoint
 
-    def _carregar_manifest(self) -> List[Dict[str, Any]]:
+    def _carregar_manifest(self) -> list[dict[str, Any]]:
         """Carrega manifest existente ou retorna lista vazia."""
         if not self.manifest_path.exists():
             return []
@@ -97,7 +97,7 @@ class AgenteEEmovel:
             self.checkpoint_atual['counts']['moradores']
         )
 
-    def processar_linha_tabela(self, linha: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+    def processar_linha_tabela(self, linha: dict[str, Any]) -> dict[str, Any] | None:
         """Processa uma linha da tabela do EEmovel e retorna registro estruturado."""
         nome = linha.get('nome', '').strip()
         unidade = linha.get('unidade', '').strip()
@@ -156,7 +156,7 @@ class AgenteEEmovel:
 
         return registro
 
-    def adicionar_ao_manifest(self, registro: Dict[str, Any]) -> None:
+    def adicionar_ao_manifest(self, registro: dict[str, Any]) -> None:
         """Adiciona registro ao manifest append-only."""
         append_ndjson(registro, self.manifest_path)
         self.manifest.append(registro)
@@ -176,14 +176,14 @@ class AgenteEEmovel:
         self.checkpoint_atual['timestamp'] = timestamp_iso()
         salvar_json_seguro(self.checkpoint_atual, self.checkpoint_path)
 
-    def obter_proximo_pendente(self) -> Optional[Dict[str, Any]]:
+    def obter_proximo_pendente(self) -> dict[str, Any] | None:
         """Retorna o próximo registro pendente de processamento (proprietários)."""
         for registro in self.manifest:
             if registro.get('state') == 'pendente_modal':
                 return registro
         return None
 
-    def obter_proximo_morador(self) -> Optional[Dict[str, Any]]:
+    def obter_proximo_morador(self) -> dict[str, Any] | None:
         """Retorna o próximo morador para processamento opcional."""
         for registro in self.manifest:
             if registro.get('state') == 'morador':
@@ -191,7 +191,7 @@ class AgenteEEmovel:
         return None
 
     def atualizar_estado_registro(self, record_key: str, novo_estado: str,
-                                     dados_adicionais: Optional[Dict[str, Any]] = None) -> None:
+                                     dados_adicionais: dict[str, Any] | None = None) -> None:
         """Atualiza estado de um registro específico no manifest."""
         for i, registro in enumerate(self.manifest):
             if registro.get('record_key') == record_key:
@@ -232,8 +232,8 @@ class AgenteEEmovel:
         self.checkpoint_atual['timestamp'] = timestamp_iso()
         salvar_json_seguro(self.checkpoint_atual, self.checkpoint_path)
 
-    def salvar_checkpoint_com_scroll(self, scroll_position: Optional[int] = None,
-                                      creditos: Optional[int] = None) -> None:
+    def salvar_checkpoint_com_scroll(self, scroll_position: int | None = None,
+                                      creditos: int | None = None) -> None:
         """Salva checkpoint incluindo posição de scroll e créditos."""
         if scroll_position is not None:
             self.checkpoint_atual['scroll_position'] = scroll_position
@@ -242,7 +242,7 @@ class AgenteEEmovel:
         self.checkpoint_atual['timestamp'] = timestamp_iso()
         salvar_json_seguro(self.checkpoint_atual, self.checkpoint_path)
 
-    def registrar_log(self, evento: str, dados: Dict[str, Any]) -> None:
+    def registrar_log(self, evento: str, dados: dict[str, Any]) -> None:
         """Registra evento no log de extração."""
         log_entry = {
             'timestamp': timestamp_iso(),

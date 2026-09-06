@@ -1,8 +1,9 @@
 """Políticas de merge por campo para consolidação multi-origem."""
 
-from typing import Dict, List, Any, Callable, Optional
+from collections.abc import Callable
 from dataclasses import dataclass
 from enum import Enum
+from typing import Any
 
 
 class MergeStrategy(str, Enum):
@@ -25,13 +26,13 @@ SOURCE_PRIORITY_ORDER = ['fisgar', 'captei', 'eemovel']  # Fisgar tem CPF/RG, Ca
 class FieldMergePolicy:
     """Política de merge para um campo específico."""
     strategy: MergeStrategy
-    source_priority: Optional[List[str]] = None
-    custom_fn: Optional[Callable] = None
+    source_priority: list[str] | None = None
+    custom_fn: Callable | None = None
     description: str = ""
 
 
 # Políticas de merge por campo (conforme especificação)
-MERGE_POLICIES: Dict[str, FieldMergePolicy] = {
+MERGE_POLICIES: dict[str, FieldMergePolicy] = {
     # Identificação
     "nome_completo": FieldMergePolicy(
         strategy=MergeStrategy.MOST_COMPLETE,
@@ -121,7 +122,7 @@ MERGE_POLICIES: Dict[str, FieldMergePolicy] = {
 }
 
 
-def merge_most_complete(values: List[Any], sources: List[str]) -> Any:
+def merge_most_complete(values: list[Any], sources: list[str]) -> Any:
     """Retorna o valor mais completo (maior string, dict com mais chaves, etc.)."""
     non_null = [(v, s) for v, s in zip(values, sources) if v not in [None, '', [], {}]]
     if not non_null:
@@ -142,8 +143,8 @@ def merge_most_complete(values: List[Any], sources: List[str]) -> Any:
     return non_null[0][0]
 
 
-def merge_non_null_priority(values: List[Any], sources: List[str], 
-                            priority_order: List[str]) -> Any:
+def merge_non_null_priority(values: list[Any], sources: list[str], 
+                            priority_order: list[str]) -> Any:
     """Retorna o primeiro valor não-nulo seguindo ordem de prioridade das origens."""
     # Criar mapa source -> value
     source_to_value = {s: v for v, s in zip(values, sources) if v not in [None, '', [], {}]}
@@ -159,8 +160,8 @@ def merge_non_null_priority(values: List[Any], sources: List[str],
     return None
 
 
-def merge_union_dedup(values: List[List[Any]], sources: List[str], 
-                      key_fn: Callable = lambda x: x) -> List[Any]:
+def merge_union_dedup(values: list[list[Any]], sources: list[str], 
+                      key_fn: Callable = lambda x: x) -> list[Any]:
     """Une listas deduplicando por função de chave."""
     seen = set()
     result = []
@@ -175,7 +176,7 @@ def merge_union_dedup(values: List[List[Any]], sources: List[str],
     return result
 
 
-def merge_union_all(values: List[List[Any]], sources: List[str]) -> List[Any]:
+def merge_union_all(values: list[list[Any]], sources: list[str]) -> list[Any]:
     """Une todas as listas sem deduplicação."""
     result = []
     for val_list in values:
@@ -184,8 +185,8 @@ def merge_union_all(values: List[List[Any]], sources: List[str]) -> List[Any]:
     return result
 
 
-def merge_source_priority(values: List[Any], sources: List[str],
-                          priority_order: List[str]) -> Any:
+def merge_source_priority(values: list[Any], sources: list[str],
+                          priority_order: list[str]) -> Any:
     """Seleciona valor baseado na prioridade da origem."""
     source_to_value = {s: v for v, s in zip(values, sources) if v not in [None, '', [], {}]}
     
@@ -196,7 +197,7 @@ def merge_source_priority(values: List[Any], sources: List[str],
     return None
 
 
-def merge_captei_priority(values: List[Any], sources: List[str]) -> Any:
+def merge_captei_priority(values: list[Any], sources: list[str]) -> Any:
     """Prioriza valor do Captei (para WhatsApp status)."""
     for v, s in zip(values, sources):
         if s == 'captei' and v not in [None, '', [], {}]:
@@ -208,14 +209,14 @@ def merge_captei_priority(values: List[Any], sources: List[str]) -> Any:
     return None
 
 
-def merge_recalculate(values: List[Any], sources: List[str], 
-                      context: Dict[str, Any] = None) -> Any:
+def merge_recalculate(values: list[Any], sources: list[str], 
+                      context: dict[str, Any] = None) -> Any:
     """Placeholder para recálculo no Golden Record (implementado no scoring)."""
     return None
 
 
-def apply_merge_policy(field_name: str, values: List[Any], sources: List[str],
-                       context: Dict[str, Any] = None) -> Any:
+def apply_merge_policy(field_name: str, values: list[Any], sources: list[str],
+                       context: dict[str, Any] = None) -> Any:
     """Aplica a política de merge apropriada para um campo."""
     policy = MERGE_POLICIES.get(field_name)
     

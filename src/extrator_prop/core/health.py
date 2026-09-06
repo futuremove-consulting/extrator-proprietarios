@@ -1,11 +1,11 @@
 """Health check para monitoramento."""
 
-import time
 import logging
-from typing import Dict, Any
+import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
+from typing import Any
 
 logger = logging.getLogger("extrator_prop.health")
 
@@ -25,10 +25,10 @@ class HealthCheckResult:
     status: HealthStatus
     message: str
     duration_ms: float = 0.0
-    metadata: Dict[str, Any] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
     timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "name": self.name,
             "status": self.status.value,
@@ -43,8 +43,8 @@ class HealthChecker:
     """Health checker para o modulo."""
     
     def __init__(self):
-        self._checks: Dict[str, callable] = {}
-        self._last_results: Dict[str, HealthCheckResult] = {}
+        self._checks: dict[str, callable] = {}
+        self._last_results: dict[str, HealthCheckResult] = {}
     
     def register(self, name: str, check_func: callable):
         """Registra um health check."""
@@ -87,7 +87,7 @@ class HealthChecker:
                 duration_ms=duration
             )
     
-    def check_all(self) -> Dict[str, HealthCheckResult]:
+    def check_all(self) -> dict[str, HealthCheckResult]:
         """Executa todos os health checks."""
         results = {}
         for name in self._checks:
@@ -109,7 +109,7 @@ class HealthChecker:
         
         return HealthStatus.UNKNOWN
     
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Converte para dicionario."""
         results = self.check_all()
         overall = self.get_overall_status()

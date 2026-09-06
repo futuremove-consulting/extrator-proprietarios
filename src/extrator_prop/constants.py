@@ -1,9 +1,8 @@
 """Constantes centralizadas do modulo."""
 
-from typing import Dict
 
 # Limites de rate limiting (requests por minuto)
-RATE_LIMITS: Dict[str, int] = {
+RATE_LIMITS: dict[str, int] = {
     "captei": 60,
     "fisgar": 30,
     "eemovel": 30,

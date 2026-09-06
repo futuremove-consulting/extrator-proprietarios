@@ -3,17 +3,16 @@
 import json
 import time
 from abc import ABC, abstractmethod
-from pathlib import Path
-from typing import Optional, Dict, List
-from datetime import datetime, timezone
 from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
 
 from extrator_prop.config import AgentConfig
-from extrator_prop.features import FeatureFlags
 from extrator_prop.exceptions import AgentError
-from extrator_prop.types import CanonicalContact, EntityType
-from extrator_prop.logging import get_logger
+from extrator_prop.features import FeatureFlags
 from extrator_prop.http import HTTPClient
+from extrator_prop.logging import get_logger
+from extrator_prop.types import CanonicalContact, EntityType
 
 
 @dataclass
@@ -24,11 +23,11 @@ class ExtractionStats:
     completed: int = 0
     excluded: int = 0
     errors: int = 0
-    start_time: Optional[float] = None
-    end_time: Optional[float] = None
+    start_time: float | None = None
+    end_time: float | None = None
     
     @property
-    def duration_seconds(self) -> Optional[float]:
+    def duration_seconds(self) -> float | None:
         if self.start_time and self.end_time:
             return self.end_time - self.start_time
         return None
@@ -73,8 +72,8 @@ class AgentBase(ABC):
         
         # Estado
         self.stats = ExtractionStats()
-        self._manifest: List[Dict] = []
-        self._checkpoint: Dict = {}
+        self._manifest: list[dict] = []
+        self._checkpoint: dict = {}
         
         # HTTP Client (se aplicavel)
         if self.requires_http:
@@ -90,13 +89,11 @@ class AgentBase(ABC):
     @abstractmethod
     def agent_name(self) -> str:
         """Nome do agente."""
-        pass
     
     @property
     @abstractmethod
     def source_key(self) -> str:
         """Chave de origem (ex: captei, fisgar, eemovel)."""
-        pass
     
     @property
     def requires_http(self) -> bool:
@@ -104,21 +101,18 @@ class AgentBase(ABC):
         return True
     
     @abstractmethod
-    def extract_listing(self, address: str, **kwargs) -> List[Dict]:
+    def extract_listing(self, address: str, **kwargs) -> list[dict]:
         """Extrai listagem bruta da fonte."""
-        pass
     
     @abstractmethod
-    def extract_details(self, record_key: str) -> Optional[Dict]:
+    def extract_details(self, record_key: str) -> dict | None:
         """Extrai detalhes de um registro."""
-        pass
     
     @abstractmethod
-    def map_to_canonical(self, raw_record: Dict) -> CanonicalContact:
+    def map_to_canonical(self, raw_record: dict) -> CanonicalContact:
         """Mapeia registro bruto para modelo canonico."""
-        pass
     
-    def validate_entity(self, record: Dict) -> EntityType:
+    def validate_entity(self, record: dict) -> EntityType:
         """Valida tipo de entidade."""
         name = record.get("name") or record.get("nome", "")
         if not name:
@@ -134,11 +128,11 @@ class AgentBase(ABC):
         
         return EntityType.PESSOA_FISICA
     
-    def is_pessoa_fisica(self, record: Dict) -> bool:
+    def is_pessoa_fisica(self, record: dict) -> bool:
         """Verifica se e pessoa fisica."""
         return self.validate_entity(record) == EntityType.PESSOA_FISICA
     
-    def append_to_manifest(self, record: Dict):
+    def append_to_manifest(self, record: dict):
         """Adiciona registro ao manifest."""
         with open(self.manifest_path, "a", encoding="utf-8") as f:
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
@@ -157,7 +151,7 @@ class AgentBase(ABC):
         with open(self.checkpoint_path, "w", encoding="utf-8") as f:
             json.dump(checkpoint, f, ensure_ascii=False, indent=2)
     
-    def load_checkpoint(self) -> Dict:
+    def load_checkpoint(self) -> dict:
         """Carrega checkpoint."""
         if self.checkpoint_path.exists():
             with open(self.checkpoint_path, "r", encoding="utf-8") as f:
@@ -166,7 +160,7 @@ class AgentBase(ABC):
                 return self._checkpoint
         return {}
     
-    def log_extraction(self, event: str, data: Dict = None):
+    def log_extraction(self, event: str, data: dict = None):
         """Log de extracao."""
         log_entry = {
             "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -180,7 +174,6 @@ class AgentBase(ABC):
     def check_rate_limit(self):
         """Verifica rate limit (placeholder para implementacao futura)."""
         # TODO: Implementar rate limit real
-        pass
     
     def run(self, address: str, **kwargs) -> ExtractionStats:
         """Executa extracao completa."""

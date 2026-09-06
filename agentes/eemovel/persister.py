@@ -1,19 +1,16 @@
 """Módulo persister para EEmovel - responsável pela persistência de dados."""
 
-from pathlib import Path
-from typing import Dict, Any, Optional
 import json
+from pathlib import Path
+from typing import Any
 
-from comum import (
-    salvar_json_seguro,
-    timestamp_iso
-)
+from comum import salvar_json_seguro, timestamp_iso
 
 
-def persistir_proprietario(dados_extraidos: Dict[str, Any],
-                           registro_manifest: Dict[str, Any],
-                           estrutura: Dict[str, Path],
-                           nome_lote: str) -> Dict[str, Path]:
+def persistir_proprietario(dados_extraidos: dict[str, Any],
+                           registro_manifest: dict[str, Any],
+                           estrutura: dict[str, Path],
+                           nome_lote: str) -> dict[str, Path]:
     """
     Persiste dados de um proprietário/morador em formato JSON e Markdown.
 
@@ -85,7 +82,7 @@ def _criar_nome_arquivo_seguro(nome: str, record_key: str) -> str:
     return f"{nome_limpo}_{record_key}"
 
 
-def _gerar_markdown_proprietario_eemovel(registro: Dict[str, Any]) -> str:
+def _gerar_markdown_proprietario_eemovel(registro: dict[str, Any]) -> str:
     """Gera representação Markdown do proprietário/morador do EEmovel."""
     manifest = registro.get('manifest', {})
     dados = registro.get('dados_extraidos', {})
@@ -200,9 +197,9 @@ def _gerar_markdown_proprietario_eemovel(registro: Dict[str, Any]) -> str:
     return md
 
 
-def atualizar_proprietario_existente(dados_atualizados: Dict[str, Any],
+def atualizar_proprietario_existente(dados_atualizados: dict[str, Any],
                                      record_key: str,
-                                     estrutura: Dict[str, Path]) -> Optional[Dict[str, Path]]:
+                                     estrutura: dict[str, Path]) -> dict[str, Path] | None:
     """
     Atualiza dados de um proprietário/morador já existente.
 
@@ -244,7 +241,7 @@ def atualizar_proprietario_existente(dados_atualizados: Dict[str, Any],
     }
 
 
-def consolidar_lote(estrutura: Dict[str, Path], nome_lote: str) -> Dict[str, Any]:
+def consolidar_lote(estrutura: dict[str, Path], nome_lote: str) -> dict[str, Any]:
     """
     Consolida todos os registros de um lote em arquivos sumarizados.
 

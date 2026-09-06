@@ -1,8 +1,8 @@
 """Type aliases e estruturas de dados."""
 
-from typing import Optional, List, Dict, Any
 from dataclasses import dataclass, field
 from enum import Enum
+from typing import Any
 
 
 class EntityType(str, Enum):
@@ -31,14 +31,14 @@ class ConfidenceLevel(str, Enum):
 @dataclass
 class Address:
     """Endereco estruturado."""
-    street: Optional[str] = None
-    number: Optional[str] = None
-    complement: Optional[str] = None
-    neighborhood: Optional[str] = None
-    city: Optional[str] = None
-    state: Optional[str] = None
-    postal_code: Optional[str] = None
-    full: Optional[str] = None
+    street: str | None = None
+    number: str | None = None
+    complement: str | None = None
+    neighborhood: str | None = None
+    city: str | None = None
+    state: str | None = None
+    postal_code: str | None = None
+    full: str | None = None
     
     def to_dict(self) -> dict:
         return {
@@ -57,7 +57,7 @@ class PhoneValidation:
     name_match_score: float = 0.0
     captei_validated: bool = False
     confidence: ConfidenceLevel = ConfidenceLevel.BAIXA
-    source: Optional[str] = None
+    source: str | None = None
 
 
 @dataclass
@@ -65,7 +65,7 @@ class EmailValidation:
     """Resultado de validacao de e-mail."""
     email: str
     is_valid: bool = False
-    source: Optional[str] = None
+    source: str | None = None
 
 
 @dataclass
@@ -73,15 +73,15 @@ class CanonicalContact:
     """Contato no modelo canonico unificado."""
     name: str
     source: str
-    source_id: Optional[str] = None
+    source_id: str | None = None
     entity_type: EntityType = EntityType.DESCONHECIDO
-    phones: List[PhoneValidation] = field(default_factory=list)
-    emails: List[EmailValidation] = field(default_factory=list)
-    cpf: Optional[str] = None
-    address: Optional[Address] = None
+    phones: list[PhoneValidation] = field(default_factory=list)
+    emails: list[EmailValidation] = field(default_factory=list)
+    cpf: str | None = None
+    address: Address | None = None
     validation_status: ValidationStatus = ValidationStatus.NAO_VALIDADO
     confidence: ConfidenceLevel = ConfidenceLevel.BAIXA
-    metadata: Dict[str, Any] = field(default_factory=dict)
+    metadata: dict[str, Any] = field(default_factory=dict)
     
     def to_dict(self) -> dict:
         """Converte para dicionario."""

@@ -1,10 +1,6 @@
 """Testes para health.py."""
 
-from extrator_prop.core.health import (
-    HealthChecker,
-    HealthCheckResult,
-    HealthStatus
-)
+from extrator_prop.core.health import HealthChecker, HealthCheckResult, HealthStatus
 
 
 class TestHealthStatus:

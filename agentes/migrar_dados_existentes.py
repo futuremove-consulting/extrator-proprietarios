@@ -1,19 +1,15 @@
 #!/usr/bin/env python3
 """Script para migrar dados extraídos anteriormente para o novo formato."""
 
-import sys
 import json
+import sys
 from pathlib import Path
 
 # Adicionar diretório atual ao path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from captei import AgenteCaptei
-from comum import (
-    criar_estrutura_lote,
-    salvar_json_seguro,
-    timestamp_iso
-)
+from comum import criar_estrutura_lote, salvar_json_seguro, timestamp_iso
 
 
 def migrar_captei_parcial(caminho_json: Path, nome_lote: str = "captei_migrado"):

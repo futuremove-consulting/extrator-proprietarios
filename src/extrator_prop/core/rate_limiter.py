@@ -1,9 +1,8 @@
 """Rate limiting com token bucket algoritm."""
 
-import time
-import threading
 import logging
-from typing import Dict, Optional
+import threading
+import time
 from dataclasses import dataclass
 
 logger = logging.getLogger("extrator_prop.rate_limiter")
@@ -13,7 +12,7 @@ logger = logging.getLogger("extrator_prop.rate_limiter")
 class RateLimitConfig:
     """Configuracao de rate limit."""
     requests_per_minute: int = 60
-    burst_size: Optional[int] = None  # Maximo de requests em burst
+    burst_size: int | None = None  # Maximo de requests em burst
     
     def __post_init__(self):
         if self.burst_size is None:
@@ -39,7 +38,7 @@ class TokenBucketRateLimiter:
         self.tokens = min(self.max_tokens, self.tokens + new_tokens)
         self.last_refill = now
     
-    def acquire(self, timeout: Optional[float] = None) -> bool:
+    def acquire(self, timeout: float | None = None) -> bool:
         """Adquire um token. Retorna True se conseguiu."""
         deadline = time.monotonic() + timeout if timeout else None
         
@@ -74,20 +73,20 @@ class RateLimiterManager:
     """Gerenciador de rate limiters por fonte."""
     
     def __init__(self):
-        self._limiters: Dict[str, TokenBucketRateLimiter] = {}
+        self._limiters: dict[str, TokenBucketRateLimiter] = {}
     
     def register(self, source: str, config: RateLimitConfig):
         """Registra um rate limiter para uma fonte."""
         self._limiters[source] = TokenBucketRateLimiter(config)
         logger.info(f"Rate limiter registrado: {source} ({config.requests_per_minute}/min)")
     
-    def acquire(self, source: str, timeout: Optional[float] = None) -> bool:
+    def acquire(self, source: str, timeout: float | None = None) -> bool:
         """Adquire token para uma fonte."""
         if source not in self._limiters:
             return True  # Sem limitacao
         return self._limiters[source].acquire(timeout)
     
-    def get_status(self, source: str) -> Optional[Dict]:
+    def get_status(self, source: str) -> dict | None:
         """Obtem status do rate limiter."""
         if source not in self._limiters:
             return None
@@ -99,7 +98,7 @@ class RateLimiterManager:
             "requests_per_minute": limiter.config.requests_per_minute
         }
     
-    def get_all_status(self) -> Dict[str, Dict]:
+    def get_all_status(self) -> dict[str, dict]:
         """Obtem status de todos os limiters."""
         return {source: self.get_status(source) for source in self._limiters}
 

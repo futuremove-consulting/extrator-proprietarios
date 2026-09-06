@@ -1,13 +1,13 @@
 """Testes para types.py."""
 
 from extrator_prop.types import (
-    EntityType,
-    ValidationStatus,
-    ConfidenceLevel,
     Address,
-    PhoneValidation,
+    CanonicalContact,
+    ConfidenceLevel,
     EmailValidation,
-    CanonicalContact
+    EntityType,
+    PhoneValidation,
+    ValidationStatus,
 )
 
 

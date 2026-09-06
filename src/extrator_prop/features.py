@@ -2,7 +2,6 @@
 
 import os
 from dataclasses import dataclass
-from typing import Optional
 
 
 @dataclass
@@ -31,7 +30,7 @@ class FeatureFlags:
     CIRCUIT_BREAKER_ENABLED: bool = True
     
     @classmethod
-    def from_env(cls, env: Optional[dict] = None) -> "FeatureFlags":
+    def from_env(cls, env: dict | None = None) -> "FeatureFlags":
         """Carrega feature flags de variaveis de ambiente."""
         env = env or os.environ
         

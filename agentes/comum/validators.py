@@ -1,9 +1,9 @@
 """Regras de validação cross-origem para consolidação multi-origem."""
 
-from typing import Dict, List, Any, Optional
+import re
 from dataclasses import dataclass
 from enum import Enum
-import re
+from typing import Any
 
 from comum import validar_email
 
@@ -19,7 +19,7 @@ class ValidationResult:
     field: str
     severity: ValidationSeverity
     message: str
-    sources_involved: List[str]
+    sources_involved: list[str]
     suggested_action: str = ""
 
 
@@ -34,7 +34,7 @@ class ValidationRule:
         self.message = message
         self.suggested_action = suggested_action
     
-    def validate(self, field_values: Dict[str, Any], sources: List[str]) -> Optional[ValidationResult]:
+    def validate(self, field_values: dict[str, Any], sources: list[str]) -> ValidationResult | None:
         try:
             if self.check_fn(field_values, sources):
                 return None
@@ -190,7 +190,7 @@ REGRAS_VALIDACAO = [
 ]
 
 
-def _nomes_sao_compativeis(nomes: List[str]) -> bool:
+def _nomes_sao_compativeis(nomes: list[str]) -> bool:
     """Verifica se nomes são compatíveis (permitindo variações)."""
     nomes_validos = [n for n in nomes if n]
     if len(nomes_validos) <= 1:
@@ -212,7 +212,7 @@ def _nomes_sao_compativeis(nomes: List[str]) -> bool:
     return False
 
 
-def _tipos_pessoa_compativeis(tipos: List[str]) -> bool:
+def _tipos_pessoa_compativeis(tipos: list[str]) -> bool:
     """Verifica se tipos de pessoa são compatíveis."""
     tipos_validos = [t for t in tipos if t]
     if len(tipos_validos) <= 1:
@@ -225,7 +225,7 @@ def _tipos_pessoa_compativeis(tipos: List[str]) -> bool:
     return not (tem_proprietario and tem_morador)
 
 
-def _enderecos_sao_compativeis(enderecos: List[str]) -> bool:
+def _enderecos_sao_compativeis(enderecos: list[str]) -> bool:
     """Verifica se endereços são compatíveis."""
     end_validos = [e for e in enderecos if e]
     if len(end_validos) <= 1:
@@ -244,7 +244,7 @@ def _enderecos_sao_compativeis(enderecos: List[str]) -> bool:
     return False
 
 
-def _datas_nascimento_compativeis(datas: List[str]) -> bool:
+def _datas_nascimento_compativeis(datas: list[str]) -> bool:
     """Verifica se datas de nascimento são compatíveis."""
     datas_validas = [d for d in datas if d]
     if len(datas_validas) <= 1:
@@ -267,8 +267,8 @@ def _datas_nascimento_compativeis(datas: List[str]) -> bool:
     return len(set(norm)) <= 1
 
 
-def executar_validacoes(field_values: Dict[str, Dict[str, Any]], 
-                        golden_record: Dict[str, Any]) -> List[ValidationResult]:
+def executar_validacoes(field_values: dict[str, dict[str, Any]], 
+                        golden_record: dict[str, Any]) -> list[ValidationResult]:
     """
     Executa todas as validações cross-origem.
     
@@ -292,7 +292,7 @@ def executar_validacoes(field_values: Dict[str, Dict[str, Any]],
     return resultados
 
 
-def classificar_validacoes(resultados: List[ValidationResult]) -> Dict[str, List[ValidationResult]]:
+def classificar_validacoes(resultados: list[ValidationResult]) -> dict[str, list[ValidationResult]]:
     """Classifica validações por severidade."""
     return {
         'errors': [r for r in resultados if r.severity == ValidationSeverity.ERROR],
@@ -301,6 +301,6 @@ def classificar_validacoes(resultados: List[ValidationResult]) -> Dict[str, List
     }
 
 
-def tem_erros_bloqueantes(resultados: List[ValidationResult]) -> bool:
+def tem_erros_bloqueantes(resultados: list[ValidationResult]) -> bool:
     """Verifica se há erros que bloqueiam o merge automático."""
     return any(r.severity == ValidationSeverity.ERROR for r in resultados)

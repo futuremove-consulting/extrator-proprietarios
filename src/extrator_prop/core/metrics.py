@@ -1,11 +1,11 @@
 """Coletor de metricas de execucao."""
 
-import time
 import logging
-from typing import Dict, Any, Optional, List
+import time
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
+from typing import Any
 
 logger = logging.getLogger("extrator_prop.metrics")
 
@@ -24,10 +24,10 @@ class Metric:
     name: str
     type: MetricType
     value: float
-    labels: Dict[str, str] = field(default_factory=dict)
+    labels: dict[str, str] = field(default_factory=dict)
     timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
     
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "name": self.name,
             "type": self.type.value,
@@ -41,12 +41,12 @@ class MetricsCollector:
     """Coletor de metricas central."""
     
     def __init__(self):
-        self._metrics: List[Metric] = []
-        self._counters: Dict[str, float] = {}
-        self._gauges: Dict[str, float] = {}
-        self._timers: Dict[str, List[float]] = {}
+        self._metrics: list[Metric] = []
+        self._counters: dict[str, float] = {}
+        self._gauges: dict[str, float] = {}
+        self._timers: dict[str, list[float]] = {}
     
-    def increment(self, name: str, value: float = 1, labels: Optional[Dict[str, str]] = None):
+    def increment(self, name: str, value: float = 1, labels: dict[str, str] | None = None):
         """Incrementa um contador."""
         key = self._make_key(name, labels)
         self._counters[key] = self._counters.get(key, 0) + value
@@ -57,7 +57,7 @@ class MetricsCollector:
             labels=labels or {}
         ))
     
-    def gauge(self, name: str, value: float, labels: Optional[Dict[str, str]] = None):
+    def gauge(self, name: str, value: float, labels: dict[str, str] | None = None):
         """Define um gauge."""
         key = self._make_key(name, labels)
         self._gauges[key] = value
@@ -72,7 +72,7 @@ class MetricsCollector:
         """Cria um timer."""
         return TimerContext(self, name)
     
-    def histogram(self, name: str, value: float, labels: Optional[Dict[str, str]] = None):
+    def histogram(self, name: str, value: float, labels: dict[str, str] | None = None):
         """Adiciona ao histograma."""
         key = self._make_key(name, labels)
         if key not in self._timers:
@@ -85,14 +85,14 @@ class MetricsCollector:
             labels=labels or {}
         ))
     
-    def _make_key(self, name: str, labels: Optional[Dict[str, str]]) -> str:
+    def _make_key(self, name: str, labels: dict[str, str] | None) -> str:
         """Cria chave unica."""
         if not labels:
             return name
         label_str = ",".join(f"{k}={v}" for k, v in sorted(labels.items()))
         return f"{name}{{{label_str}}}"
     
-    def get_summary(self) -> Dict[str, Any]:
+    def get_summary(self) -> dict[str, Any]:
         """Obtem resumo das metricas."""
         return {
             "counters": dict(self._counters),
@@ -110,7 +110,7 @@ class MetricsCollector:
             "total_metrics": len(self._metrics)
         }
     
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         """Converte para dicionario."""
         return {
             "summary": self.get_summary(),
@@ -128,7 +128,7 @@ class MetricsCollector:
 class TimerContext:
     """Context manager para timers."""
     
-    def __init__(self, collector: MetricsCollector, name: str, labels: Optional[Dict[str, str]] = None):
+    def __init__(self, collector: MetricsCollector, name: str, labels: dict[str, str] | None = None):
         self.collector = collector
         self.name = name
         self.labels = labels

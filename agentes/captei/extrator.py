@@ -1,18 +1,18 @@
 """Módulo extrator específico para Captei."""
 
-from typing import Dict, List, Any
 import re
+from typing import Any
 
 from comum import (
-    extrair_digitos_telefone,
-    deduplicar_telefones,
     deduplicar_emails,
+    deduplicar_telefones,
+    extrair_digitos_telefone,
+    timestamp_iso,
     validar_email,
-    timestamp_iso
 )
 
 
-def processar_modal_captei(dados_modal: Dict[str, Any]) -> Dict[str, Any]:
+def processar_modal_captei(dados_modal: dict[str, Any]) -> dict[str, Any]:
     """
     Processa dados extraídos do modal do Captei.
     
@@ -104,7 +104,7 @@ def processar_modal_captei(dados_modal: Dict[str, Any]) -> Dict[str, Any]:
     return registro
 
 
-def _calcular_qualidade(registro: Dict[str, Any]) -> str:
+def _calcular_qualidade(registro: dict[str, Any]) -> str:
     """Calcula score de qualidade do registro extraído."""
     detalhes = registro.get('detalhes', {})
     telefones = registro.get('telefones', [])
@@ -141,7 +141,7 @@ def _calcular_qualidade(registro: Dict[str, Any]) -> str:
         return 'baixa'
 
 
-def validar_dados_modal(dados_modal: Dict[str, Any], registro_manifest: Dict[str, Any]) -> bool:
+def validar_dados_modal(dados_modal: dict[str, Any], registro_manifest: dict[str, Any]) -> bool:
     """
     Valida se os dados do modal correspondem ao registro do manifest.
     
@@ -187,7 +187,7 @@ def _nomes_similares(nome1: str, nome2: str) -> bool:
     return False
 
 
-def extrair_telefones_ver_mais(dados_paginados: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+def extrair_telefones_ver_mais(dados_paginados: list[dict[str, Any]]) -> list[dict[str, Any]]:
     """
     Extrai e consolida telefones de múltiplas páginas "VER MAIS".
     

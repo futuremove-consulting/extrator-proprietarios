@@ -1,12 +1,13 @@
 """Fixtures e configuracao base para testes."""
 
-import pytest
-import tempfile
 import shutil
+import tempfile
 from pathlib import Path
 
-from extrator_prop.features import FeatureFlags
+import pytest
+
 from extrator_prop.config import AgentConfig
+from extrator_prop.features import FeatureFlags
 
 
 @pytest.fixture

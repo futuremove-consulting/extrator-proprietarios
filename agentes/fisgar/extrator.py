@@ -1,18 +1,18 @@
 """Módulo extrator específico para Fisgar."""
 
-from typing import Dict, List, Any
 import re
+from typing import Any
 
 from comum import (
-    extrair_digitos_telefone,
-    deduplicar_telefones,
     deduplicar_emails,
+    deduplicar_telefones,
+    extrair_digitos_telefone,
+    timestamp_iso,
     validar_email,
-    timestamp_iso
 )
 
 
-def processar_modal_fisgar(dados_modal: Dict[str, Any]) -> Dict[str, Any]:
+def processar_modal_fisgar(dados_modal: dict[str, Any]) -> dict[str, Any]:
     """
     Processa dados extraídos do modal do Fisgar.
     
@@ -106,7 +106,7 @@ def processar_modal_fisgar(dados_modal: Dict[str, Any]) -> Dict[str, Any]:
     return registro
 
 
-def _calcular_qualidade_fisgar(registro: Dict[str, Any]) -> str:
+def _calcular_qualidade_fisgar(registro: dict[str, Any]) -> str:
     """Calcula score de qualidade do registro extraído do Fisgar."""
     detalhes = registro.get('detalhes', {})
     telefones = registro.get('telefones', [])
@@ -147,7 +147,7 @@ def _calcular_qualidade_fisgar(registro: Dict[str, Any]) -> str:
         return 'baixa'
 
 
-def validar_dados_modal_fisgar(dados_modal: Dict[str, Any], registro_manifest: Dict[str, Any]) -> bool:
+def validar_dados_modal_fisgar(dados_modal: dict[str, Any], registro_manifest: dict[str, Any]) -> bool:
     """
     Valida se os dados do modal correspondem ao registro do manifest no Fisgar.
     
@@ -193,7 +193,7 @@ def _nomes_similares(nome1: str, nome2: str) -> bool:
     return False
 
 
-def localizar_cta_por_linha(dados_linha: Dict[str, Any], selector_base: str = "tr") -> str:
+def localizar_cta_por_linha(dados_linha: dict[str, Any], selector_base: str = "tr") -> str:
     """
     Gera seletor CSS para localizar o CTA dentro de uma linha específica.
     
@@ -220,7 +220,7 @@ def localizar_cta_por_linha(dados_linha: Dict[str, Any], selector_base: str = "t
     return selector
 
 
-def extrair_links_tel_mailto(conteudo_html: str) -> Dict[str, List[str]]:
+def extrair_links_tel_mailto(conteudo_html: str) -> dict[str, list[str]]:
     """
     Extrai links tel: e mailto: de conteúdo HTML.
     
@@ -249,7 +249,7 @@ def extrair_links_tel_mailto(conteudo_html: str) -> Dict[str, List[str]]:
     }
 
 
-def normalizar_dados_fisgar(dados_brutos: Dict[str, Any]) -> Dict[str, Any]:
+def normalizar_dados_fisgar(dados_brutos: dict[str, Any]) -> dict[str, Any]:
     """
     Normaliza dados brutos do Fisgar para formato padrão.
     
@@ -278,7 +278,7 @@ def normalizar_dados_fisgar(dados_brutos: Dict[str, Any]) -> Dict[str, Any]:
     return normalizado
 
 
-def _normalizar_telefones_fisgar(telefones_brutos: List[Any]) -> List[Dict[str, Any]]:
+def _normalizar_telefones_fisgar(telefones_brutos: list[Any]) -> list[dict[str, Any]]:
     """Normaliza lista de telefones do Fisgar."""
     normalizados = []
     
@@ -301,7 +301,7 @@ def _normalizar_telefones_fisgar(telefones_brutos: List[Any]) -> List[Dict[str, 
     return normalizados
 
 
-def _normalizar_emails_fisgar(emails_brutos: List[Any]) -> List[Dict[str, Any]]:
+def _normalizar_emails_fisgar(emails_brutos: list[Any]) -> list[dict[str, Any]]:
     """Normaliza lista de e-mails do Fisgar."""
     normalizados = []
     

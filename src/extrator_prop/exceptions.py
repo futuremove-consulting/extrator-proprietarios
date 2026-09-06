@@ -1,12 +1,12 @@
 """Excecoes customizadas do modulo extrator."""
 
-from typing import Optional, Any
+from typing import Any
 
 
 class ExtratorError(Exception):
     """Excecao base do modulo."""
     
-    def __init__(self, message: str, details: Optional[dict] = None):
+    def __init__(self, message: str, details: dict | None = None):
         super().__init__(message)
         self.details = details or {}
 
@@ -14,7 +14,7 @@ class ExtratorError(Exception):
 class AgentError(ExtratorError):
     """Erro em agente de extracao."""
     
-    def __init__(self, agent: str, message: str, details: Optional[dict] = None):
+    def __init__(self, agent: str, message: str, details: dict | None = None):
         super().__init__(f"[{agent}] {message}", details)
         self.agent = agent
 
@@ -31,7 +31,7 @@ class ValidationError(ExtratorError):
 class RateLimitError(ExtratorError):
     """Erro de rate limiting."""
     
-    def __init__(self, source: str, retry_after: Optional[float] = None):
+    def __init__(self, source: str, retry_after: float | None = None):
         msg = f"Rate limit atingido para {source}"
         if retry_after:
             msg += f". Tente novamente em {retry_after:g}s"

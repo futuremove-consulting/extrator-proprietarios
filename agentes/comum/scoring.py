@@ -1,8 +1,8 @@
 """Módulo de scoring de confiança para Golden Records."""
 
-from typing import Dict, List, Any
-from dataclasses import dataclass, field
 from collections import defaultdict
+from dataclasses import dataclass, field
+from typing import Any
 
 from comum.merge_policies import MERGE_POLICIES, MergeStrategy
 
@@ -13,21 +13,21 @@ class FieldScore:
     field: str
     value: Any
     confidence: float  # 0-1
-    sources: List[str]
-    provenance: Dict[str, str]  # field -> source que forneceu
-    validation_flags: List[str] = field(default_factory=list)
+    sources: list[str]
+    provenance: dict[str, str]  # field -> source que forneceu
+    validation_flags: list[str] = field(default_factory=list)
 
 
 @dataclass
 class GoldenRecordScore:
     """Score completo do Golden Record."""
     overall_confidence: float  # 0-100
-    field_scores: Dict[str, FieldScore]
+    field_scores: dict[str, FieldScore]
     completeness: float  # 0-1 (% campos preenchidos)
     cross_source_agreement: float  # 0-1 (concordância entre origens)
     quality_tier: str  # 'high', 'medium', 'low', 'review_required'
     requires_manual_review: bool
-    review_reasons: List[str] = field(default_factory=list)
+    review_reasons: list[str] = field(default_factory=list)
 
 
 # Pesos por campo para overall confidence
@@ -68,10 +68,10 @@ MATCH_TYPE_BONUS = {
 
 
 def calcular_field_score(field_name: str, 
-                         values: Dict[str, Any],  # source -> value
+                         values: dict[str, Any],  # source -> value
                          merged_value: Any,
                          match_type: str,
-                         validation_flags: List[str]) -> FieldScore:
+                         validation_flags: list[str]) -> FieldScore:
     """Calcula score de confiança para um campo específico."""
     
     sources = list(values.keys())
@@ -124,10 +124,10 @@ def calcular_field_score(field_name: str,
     )
 
 
-def calcular_golden_record_score(merged_record: Dict[str, Any],
-                                  field_values: Dict[str, Dict[str, Any]],  # field -> {source: value}
+def calcular_golden_record_score(merged_record: dict[str, Any],
+                                  field_values: dict[str, dict[str, Any]],  # field -> {source: value}
                                   match_type: str,
-                                  validation_results: List[Any]) -> GoldenRecordScore:
+                                  validation_results: list[Any]) -> GoldenRecordScore:
     """Calcula score completo do Golden Record."""
     
     # Agrupar validation flags por campo
@@ -218,7 +218,7 @@ def calcular_golden_record_score(merged_record: Dict[str, Any],
 def gerar_relatorio_scoring(score: GoldenRecordScore) -> str:
     """Gera relatório de scoring em markdown."""
     lines = []
-    lines.append(f"# Scoring do Golden Record\n")
+    lines.append("# Scoring do Golden Record\n")
     lines.append(f"**Confiança Geral:** {score.overall_confidence:.1f}%")
     lines.append(f"**Completude:** {score.completeness:.1%}")
     lines.append(f"**Concordância Cross-Origem:** {score.cross_source_agreement:.1%}")

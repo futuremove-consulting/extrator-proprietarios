@@ -1,11 +1,12 @@
 """Retry com backoff exponencial e jitter."""
 
-import time
-import random
-import logging
 import functools
-from typing import Callable, Optional, Tuple, Type, Any
+import logging
+import random
+import time
+from collections.abc import Callable
 from dataclasses import dataclass
+from typing import Any
 
 logger = logging.getLogger("extrator_prop.retry")
 
@@ -18,7 +19,7 @@ class RetryConfig:
     max_backoff: float = 60.0
     initial_delay: float = 1.0
     jitter: bool = True
-    retryable_exceptions: Tuple[Type[Exception], ...] = (Exception,)
+    retryable_exceptions: tuple[type[Exception], ...] = (Exception,)
     
     def calculate_delay(self, attempt: int) -> float:
         """Calcula delay para a tentativa."""
@@ -32,7 +33,7 @@ class RetryConfig:
         return min(delay, self.max_backoff)
 
 
-def with_retry(config: Optional[RetryConfig] = None):
+def with_retry(config: RetryConfig | None = None):
     """Decorator para retry automatico."""
     if config is None:
         config = RetryConfig()
@@ -67,7 +68,7 @@ def with_retry(config: Optional[RetryConfig] = None):
 class RetryHandler:
     """Handler de retry para uso explicito."""
     
-    def __init__(self, config: Optional[RetryConfig] = None):
+    def __init__(self, config: RetryConfig | None = None):
         self.config = config or RetryConfig()
         self.attempts = 0
         self.errors = []

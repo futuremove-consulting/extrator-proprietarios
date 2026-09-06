@@ -2,7 +2,6 @@
 
 import os
 from dataclasses import dataclass, field
-from typing import Optional
 from pathlib import Path
 
 
@@ -22,11 +21,11 @@ class Config:
     
     # Diretorios
     base_dir: Path = field(default_factory=lambda: Path.cwd())
-    data_dir: Optional[Path] = None
-    logs_dir: Optional[Path] = None
+    data_dir: Path | None = None
+    logs_dir: Path | None = None
     
     # Feature flags (referencia ao modulo features)
-    features: Optional[object] = None
+    features: object | None = None
     
     # Configuracoes de agentes
     captei: AgentConfig = field(default_factory=lambda: AgentConfig(
@@ -48,17 +47,17 @@ class Config:
     ))
     
     # Credenciais (carregadas de env)
-    captei_token: Optional[str] = None
-    captei_user_key: Optional[str] = None
-    fisgar_username: Optional[str] = None
-    fisgar_password: Optional[str] = None
-    eemovel_username: Optional[str] = None
-    eemovel_password: Optional[str] = None
+    captei_token: str | None = None
+    captei_user_key: str | None = None
+    fisgar_username: str | None = None
+    fisgar_password: str | None = None
+    eemovel_username: str | None = None
+    eemovel_password: str | None = None
     
     # Logging
     log_level: str = "INFO"
     log_format: str = "json"  # json ou text
-    log_file: Optional[Path] = None
+    log_file: Path | None = None
     
     @classmethod
     def from_env(cls) -> "Config":

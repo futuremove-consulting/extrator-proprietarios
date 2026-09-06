@@ -51,7 +51,7 @@ def classificar_entidade(nome: str) -> str:
     return "Pessoa Fisica"
 
 
-def criar_estrutura_lote(nome_lote: str, diretorio_base: str) -> Dict[str, Path]:
+def criar_estrutura_lote(nome_lote: str, diretorio_base: str) -> dict[str, Path]:
     """Cria estrutura de diretórios para um lote."""
     base = Path(diretorio_base) / nome_lote
     estrutura = {
@@ -79,7 +79,7 @@ def carregar_json(caminho: Path) -> Any:
         return json.load(f)
 
 
-def append_ndjson(registro: Dict[str, Any], caminho: Path) -> None:
+def append_ndjson(registro: dict[str, Any], caminho: Path) -> None:
     """Adiciona linha em arquivo NDJSON (append-only)."""
     with open(caminho, 'a', encoding='utf-8') as f:
         f.write(json.dumps(registro, ensure_ascii=False) + '\n')
@@ -97,7 +97,7 @@ def normalizar_unidade(unidade: str) -> str:
     return unidade.lower().strip()
 
 
-def parse_unidade(unidade: str) -> Dict[str, str]:
+def parse_unidade(unidade: str) -> dict[str, str]:
     """
     Parseia unidade em componentes estruturados.
     
@@ -243,7 +243,7 @@ def validar_email(email: str) -> bool:
     return bool(re.match(padrao, email))
 
 
-def deduplicar_telefones(telefones: List[str]) -> List[str]:
+def deduplicar_telefones(telefones: list[str]) -> list[str]:
     """Deduplica telefones por dígitos."""
     vistos = set()
     resultado = []
@@ -255,7 +255,7 @@ def deduplicar_telefones(telefones: List[str]) -> List[str]:
     return resultado
 
 
-def deduplicar_emails(emails: List[str]) -> List[str]:
+def deduplicar_emails(emails: list[str]) -> list[str]:
     """Deduplica e-mails por lowercase."""
     vistos = set()
     resultado = []
@@ -268,28 +268,28 @@ def deduplicar_emails(emails: List[str]) -> List[str]:
 
 
 # WhatsApp Validation exports
-from .whatsapp_validator import (
-    WhatsAppValidator,
-    WhatsAppValidationResult,
-    ValidationSource,
-    ValidationTier
-)
 from .donodozap_br_validator import DonoDoZapBRValidator
 from .donodozap_com_validator import DonoDoZapComValidator
 from .whatsapp_validation_service import (
-    WhatsAppValidationService,
     ValidationPolicy,
-    create_validation_service
+    WhatsAppValidationService,
+    create_validation_service,
+)
+from .whatsapp_validator import (
+    ValidationSource,
+    ValidationTier,
+    WhatsAppValidationResult,
+    WhatsAppValidator,
 )
 
 __all__ = [
-    "WhatsAppValidator",
-    "WhatsAppValidationResult",
-    "ValidationSource",
-    "ValidationTier",
     "DonoDoZapBRValidator",
     "DonoDoZapComValidator",
-    "WhatsAppValidationService",
     "ValidationPolicy",
+    "ValidationSource",
+    "ValidationTier",
+    "WhatsAppValidationResult",
+    "WhatsAppValidationService",
+    "WhatsAppValidator",
     "create_validation_service",
 ]

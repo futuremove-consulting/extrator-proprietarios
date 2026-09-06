@@ -1,11 +1,11 @@
 """WhatsApp Validation - Base classes and types for Dono do Zap validators."""
 
+import re
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Dict, Any, Optional, List
 from enum import Enum
-import re
+from typing import Any
 
 
 class ValidationSource(Enum):
@@ -34,18 +34,18 @@ class WhatsAppValidationResult:
     timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
 
     # Dados da validação
-    nome_exibicao: Optional[str] = None      # Nome público do WhatsApp
-    foto_perfil_url: Optional[str] = None    # URL da foto de perfil
-    status_whatsapp: Optional[str] = None    # "ativo", "inativo", "não_cadastrado"
-    dados_adicionais: Dict[str, Any] = field(default_factory=dict)
+    nome_exibicao: str | None = None      # Nome público do WhatsApp
+    foto_perfil_url: str | None = None    # URL da foto de perfil
+    status_whatsapp: str | None = None    # "ativo", "inativo", "não_cadastrado"
+    dados_adicionais: dict[str, Any] = field(default_factory=dict)
 
     # Metadados
     custo_estimado: float = 0.0              # Custo em reais (0 para gratuito)
     tempo_resposta_ms: int = 0
-    erro: Optional[str] = None
-    raw_response: Dict[str, Any] = field(default_factory=dict)
+    erro: str | None = None
+    raw_response: dict[str, Any] = field(default_factory=dict)
 
-    def to_dict(self) -> Dict[str, Any]:
+    def to_dict(self) -> dict[str, Any]:
         return {
             "phone_digits": self.phone_digits,
             "phone_formatted": self.phone_formatted,
@@ -92,12 +92,10 @@ class WhatsAppValidator(ABC):
     @abstractmethod
     async def validate(self, phone: str) -> WhatsAppValidationResult:
         """Valida um número de WhatsApp. Retorna WhatsAppValidationResult."""
-        pass
 
     @abstractmethod
-    async def validate_batch(self, phones: List[str]) -> List[WhatsAppValidationResult]:
+    async def validate_batch(self, phones: list[str]) -> list[WhatsAppValidationResult]:
         """Valida múltiplos números em lote."""
-        pass
 
     def _normalize_phone(self, phone: str) -> str:
         """Normaliza telefone para apenas dígitos com código do país."""

@@ -1,12 +1,12 @@
 """Process Learning Logger — NDJSON structured logging for extraction pipeline analysis."""
 
 import json
+import time
 import uuid
+from contextlib import contextmanager
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, Optional
-from contextlib import contextmanager
-import time
+from typing import Any
 
 
 class ProcessLearningLogger:
@@ -35,7 +35,7 @@ class ProcessLearningLogger:
             "metadata": {"log_version": "1.0"}
         })
 
-    def _write_event(self, event: Dict[str, Any]) -> None:
+    def _write_event(self, event: dict[str, Any]) -> None:
         """Escreve evento no arquivo NDJSON (append-only, crash-safe)."""
         event["run_id"] = self.run_id
         event["timestamp"] = event.get("timestamp", datetime.now().isoformat())
@@ -43,7 +43,7 @@ class ProcessLearningLogger:
             f.write(json.dumps(event, ensure_ascii=False) + "\n")
 
     @contextmanager
-    def stage(self, stage_name: str, system: str = None, metadata: Dict = None):
+    def stage(self, stage_name: str, system: str = None, metadata: dict = None):
         """Context manager para marcar início/fim de um estágio."""
         stage_start = time.perf_counter()
         stage_id = f"{stage_name}_{len(self._stage_stack)}"
@@ -84,7 +84,7 @@ class ProcessLearningLogger:
             self._stage_stack.pop()
 
     @contextmanager
-    def action(self, action_name: str, system: str, stage: str, input_data: Dict = None):
+    def action(self, action_name: str, system: str, stage: str, input_data: dict = None):
         """Context manager para logar ação atômica (query, parse, persist, etc)."""
         action_start = time.perf_counter()
         action_id = f"{stage}_{action_name}_{int(action_start * 1000)}"
@@ -128,7 +128,7 @@ class ProcessLearningLogger:
                 "cost": cost
             })
 
-    def log_extraction_result(self, system: str, stage: str, result: Dict[str, Any]) -> None:
+    def log_extraction_result(self, system: str, stage: str, result: dict[str, Any]) -> None:
         """Log resultado agregado de extração (contagens, custos totais)."""
         self._write_event({
             "event_type": "extraction_summary",
@@ -137,7 +137,7 @@ class ProcessLearningLogger:
             "result": result
         })
 
-    def log_cost_snapshot(self, system: str, snapshot: Dict[str, Any]) -> None:
+    def log_cost_snapshot(self, system: str, snapshot: dict[str, Any]) -> None:
         """Log snapshot de custos/limites do sistema."""
         self._write_event({
             "event_type": "cost_snapshot",
@@ -145,7 +145,7 @@ class ProcessLearningLogger:
             "snapshot": snapshot
         })
 
-    def log_decision(self, stage: str, decision: str, rationale: str, data: Dict = None) -> None:
+    def log_decision(self, stage: str, decision: str, rationale: str, data: dict = None) -> None:
         """Log decisão de fluxo (ex: pular sistema, abortar, retry)."""
         self._write_event({
             "event_type": "decision",
@@ -155,7 +155,7 @@ class ProcessLearningLogger:
             "data": data or {}
         })
 
-    def finalize(self, status: str = "completed", summary: Dict = None) -> str:
+    def finalize(self, status: str = "completed", summary: dict = None) -> str:
         """Finaliza o log e retorna caminho do arquivo."""
         self._write_event({
             "event_type": "run_end",
@@ -167,7 +167,7 @@ class ProcessLearningLogger:
         return str(self.log_path)
 
     @property
-    def current_stage(self) -> Optional[str]:
+    def current_stage(self) -> str | None:
         return self._stage_stack[-1] if self._stage_stack else None
 
 
@@ -187,7 +187,7 @@ class ActionCollector:
         self.cost["credits_spent"] += credits
 
 
-def analyze_process_log(log_path: str) -> Dict[str, Any]:
+def analyze_process_log(log_path: str) -> dict[str, Any]:
     """
     Analisa log NDJSON e gera relatório de aprendizado.
     
@@ -261,7 +261,7 @@ def generate_learning_report(log_path: str, output_path: str = None) -> str:
         return f"# Erro\n{analysis['error']}"
     
     lines = []
-    lines.append(f"# Process Learning Report")
+    lines.append("# Process Learning Report")
     lines.append(f"**Run ID:** {analysis['run_id']}")
     lines.append(f"**Início:** {analysis['start_time']}")
     lines.append(f"**Fim:** {analysis['end_time']}")
