@@ -1,19 +1,17 @@
 """Pipeline principal de consolidação multi-origem."""
 
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Any, Optional
 from dataclasses import dataclass, field, asdict
 from pathlib import Path
-import json
-from datetime import datetime
 from collections import defaultdict
 
 from comum.identity_resolution import (
     SourceRecord, IdentityGroup, extrair_source_records, 
-    resolver_identidade, gerar_relatorio_grupos
+    resolver_identidade
 )
-from comum.merge_policies import MERGE_POLICIES, apply_merge_policy, SOURCE_PRIORITY_ORDER
+from comum.merge_policies import apply_merge_policy
 from comum.validators import executar_validacoes, classificar_validacoes, tem_erros_bloqueantes
-from comum.scoring import calcular_golden_record_score, gerar_relatorio_scoring, GoldenRecordScore
+from comum.scoring import calcular_golden_record_score, GoldenRecordScore
 from comum import canonicalizar_texto, gerar_record_key, timestamp_iso, salvar_json_seguro
 
 

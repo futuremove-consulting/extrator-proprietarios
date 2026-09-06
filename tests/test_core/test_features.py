@@ -1,7 +1,5 @@
 """Testes para features.py."""
 
-import pytest
-import os
 from extrator_prop.features import FeatureFlags
 
 

@@ -1,6 +1,6 @@
 """Agente EEmovel para extracao de proprietarios e moradores."""
 
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, List
 from pathlib import Path
 
 from extrator_prop.agents.base import AgentBase

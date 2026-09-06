@@ -1,10 +1,8 @@
 """Testes para metrics.py."""
 
-import pytest
 from extrator_prop.core.metrics import (
     MetricsCollector,
-    MetricType,
-    TimerContext
+    MetricType
 )
 
 

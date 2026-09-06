@@ -4,7 +4,7 @@ import logging
 import json
 import sys
 from datetime import datetime, timezone
-from typing import Optional, Any, Dict
+from typing import Optional
 from pathlib import Path
 
 
@@ -54,8 +54,7 @@ class TextFormatter(logging.Formatter):
             base += f" [source={record.source}]"
         
         if record.exc_info:
-            base += f"
-{self.formatException(record.exc_info)}"
+            base += f"\n{self.formatException(record.exc_info)}"
         
         return base
 

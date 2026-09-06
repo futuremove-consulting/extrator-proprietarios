@@ -1,7 +1,5 @@
 """Testes para health.py."""
 
-import pytest
-from unittest.mock import MagicMock
 from extrator_prop.core.health import (
     HealthChecker,
     HealthCheckResult,

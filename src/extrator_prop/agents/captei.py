@@ -1,13 +1,13 @@
 """Agente Captei para extracao de proprietarios."""
 
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, List
 from pathlib import Path
 
 from extrator_prop.agents.base import AgentBase
 from extrator_prop.config import AgentConfig
 from extrator_prop.features import FeatureFlags
 from extrator_prop.constants import CAPTEI_BASE_URL, RATE_LIMITS
-from extrator_prop.types import CanonicalContact, PhoneValidation, EmailValidation, ValidationStatus
+from extrator_prop.types import CanonicalContact
 
 
 class CapteiAgent(AgentBase):

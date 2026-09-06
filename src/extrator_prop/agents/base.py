@@ -2,19 +2,17 @@
 
 import json
 import time
-import logging
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, List
 from datetime import datetime, timezone
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 from extrator_prop.config import AgentConfig
 from extrator_prop.features import FeatureFlags
-from extrator_prop.constants import RATE_LIMITS, DEFAULT_TIMEOUT
-from extrator_prop.exceptions import AgentError, RateLimitError, ValidationError
-from extrator_prop.types import CanonicalContact, EntityType, ValidationStatus
-from extrator_prop.logging import setup_logging, get_logger
+from extrator_prop.exceptions import AgentError
+from extrator_prop.types import CanonicalContact, EntityType
+from extrator_prop.logging import get_logger
 from extrator_prop.http import HTTPClient
 
 
@@ -143,8 +141,7 @@ class AgentBase(ABC):
     def append_to_manifest(self, record: Dict):
         """Adiciona registro ao manifest."""
         with open(self.manifest_path, "a", encoding="utf-8") as f:
-            f.write(json.dumps(record, ensure_ascii=False) + "
-")
+            f.write(json.dumps(record, ensure_ascii=False) + "\n")
         self._manifest.append(record)
     
     def save_checkpoint(self):
@@ -178,8 +175,7 @@ class AgentBase(ABC):
             "data": data or {}
         }
         with open(self.log_path, "a", encoding="utf-8") as f:
-            f.write(json.dumps(log_entry, ensure_ascii=False) + "
-")
+            f.write(json.dumps(log_entry, ensure_ascii=False) + "\n")
     
     def check_rate_limit(self):
         """Verifica rate limit (placeholder para implementacao futura)."""

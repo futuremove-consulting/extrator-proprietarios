@@ -1,9 +1,8 @@
 """Módulo de scoring de confiança para Golden Records."""
 
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Any
 from dataclasses import dataclass, field
 from collections import defaultdict
-import math
 
 from comum.merge_policies import MERGE_POLICIES, MergeStrategy
 

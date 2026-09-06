@@ -4,7 +4,7 @@ import time
 import threading
 import logging
 from typing import Dict, Optional
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 
 logger = logging.getLogger("extrator_prop.rate_limiter")
 

@@ -1,6 +1,6 @@
 """Type aliases e estruturas de dados."""
 
-from typing import TypedDict, Optional, List, Dict, Any
+from typing import Optional, List, Dict, Any
 from dataclasses import dataclass, field
 from enum import Enum
 

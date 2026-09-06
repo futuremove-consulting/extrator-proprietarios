@@ -6,7 +6,6 @@ from typing import Dict, Any, Optional, List
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from enum import Enum
-import json
 
 logger = logging.getLogger("extrator_prop.metrics")
 

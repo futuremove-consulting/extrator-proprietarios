@@ -1,12 +1,12 @@
 """Módulo de resolução de identidade cross-origem para consolidação multi-origem."""
 
-from typing import Dict, List, Any, Set, Tuple, Optional
+from typing import Dict, List, Any, Tuple, Optional
 from collections import defaultdict
 from dataclasses import dataclass, field
 from difflib import SequenceMatcher
 import re
 
-from comum import canonicalizar_texto, gerar_record_key, extrair_digitos_telefone
+from comum import extrair_digitos_telefone
 
 
 @dataclass

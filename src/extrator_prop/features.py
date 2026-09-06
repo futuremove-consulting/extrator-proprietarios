@@ -1,7 +1,7 @@
 """Feature flags para ativacao gradual de funcionalidades."""
 
 import os
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 
 

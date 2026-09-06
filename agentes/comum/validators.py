@@ -1,11 +1,11 @@
 """Regras de validação cross-origem para consolidação multi-origem."""
 
-from typing import Dict, List, Any, Optional, Tuple
+from typing import Dict, List, Any, Optional
 from dataclasses import dataclass
 from enum import Enum
 import re
 
-from comum import extrair_digitos_telefone, validar_email
+from comum import validar_email
 
 
 class ValidationSeverity(str, Enum):

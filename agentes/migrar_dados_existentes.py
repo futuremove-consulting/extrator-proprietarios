@@ -9,7 +9,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from captei import AgenteCaptei
-from fisgar import AgenteFisgar
 from comum import (
     criar_estrutura_lote,
     salvar_json_seguro,

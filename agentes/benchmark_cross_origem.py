@@ -5,13 +5,13 @@ import json
 import sys
 from pathlib import Path
 from collections import defaultdict
-from typing import Dict, List, Any, Set, Tuple
+from typing import Dict, List, Any
 from difflib import SequenceMatcher
 
 # Adicionar path dos agentes
 sys.path.insert(0, str(Path(__file__).parent))
 
-from comum import canonicalizar_texto, gerar_record_key, extrair_digitos_telefone
+from comum import extrair_digitos_telefone
 
 
 def carregar_manifest(caminho: Path) -> List[Dict[str, Any]]:

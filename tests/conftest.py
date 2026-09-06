@@ -4,11 +4,9 @@ import pytest
 import tempfile
 import shutil
 from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 from extrator_prop.features import FeatureFlags
 from extrator_prop.config import Config, AgentConfig
-from extrator_prop.constants import RATE_LIMITS
 
 
 @pytest.fixture

@@ -55,3 +55,4 @@ agentes/*_teste/
 agentes/sondagem/
 piloto/
 aprovacao*.json
+.venv/

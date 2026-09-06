@@ -1,12 +1,7 @@
 """Testes para agents/base.py."""
 
-import pytest
-from pathlib import Path
-from unittest.mock import MagicMock, patch
 
 from extrator_prop.agents.base import AgentBase, ExtractionStats
-from extrator_prop.config import AgentConfig
-from extrator_prop.features import FeatureFlags
 from extrator_prop.types import CanonicalContact, EntityType, PhoneValidation
 
 

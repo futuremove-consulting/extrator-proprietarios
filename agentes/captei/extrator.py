@@ -1,7 +1,6 @@
 """Módulo extrator específico para Captei."""
 
-from typing import Dict, List, Any, Optional
-from datetime import datetime
+from typing import Dict, List, Any
 import re
 
 from comum import (

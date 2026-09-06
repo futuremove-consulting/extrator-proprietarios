@@ -2,7 +2,7 @@
 
 import time
 import logging
-from typing import Optional, Dict, Any, Callable
+from typing import Optional, Dict, Any
 from dataclasses import dataclass, field
 from enum import Enum
 import urllib.request

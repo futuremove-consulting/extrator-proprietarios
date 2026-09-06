@@ -1,6 +1,5 @@
 """Testes para rate_limiter.py."""
 
-import pytest
 import time
 from extrator_prop.core.rate_limiter import (
     TokenBucketRateLimiter,

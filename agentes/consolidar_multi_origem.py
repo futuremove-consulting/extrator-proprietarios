@@ -3,13 +3,12 @@
 
 import sys
 import argparse
-import json
 from pathlib import Path
 
 # Adicionar diretório atual ao path
 sys.path.insert(0, str(Path(__file__).parent))
 
-from comum.consolidation import consolidar_multi_origem, ConsolidationPipeline
+from comum.consolidation import consolidar_multi_origem
 
 
 def main():

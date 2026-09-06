@@ -16,22 +16,16 @@ from typing import Dict, List, Any, Optional
 sys.path.insert(0, str(Path(__file__).parent))
 
 from comum import (
-    criar_estrutura_lote,
     canonicalizar_texto,
-    gerar_record_key,
     gerar_record_key_v2,
     classificar_entidade,
-    normalizar_unidade,
     parse_unidade,
     classificar_tipo_unidade,
     salvar_json_seguro,
-    carregar_json,
-    append_ndjson,
     timestamp_iso,
     WhatsAppValidationService,
     ValidationPolicy,
-    ValidationSource,
-    ValidationTier
+    ValidationSource
 )
 from comum.process_logger import ProcessLearningLogger, generate_learning_report
 

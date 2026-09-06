@@ -1,6 +1,5 @@
 """Testes para exceptions.py."""
 
-import pytest
 from extrator_prop.exceptions import (
     ExtratorError,
     AgentError,

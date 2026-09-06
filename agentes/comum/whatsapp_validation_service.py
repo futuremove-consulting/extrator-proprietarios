@@ -1,9 +1,8 @@
 """Serviço unificado de validação WhatsApp - orquestra múltiplos validadores."""
 
 import asyncio
-from typing import List, Dict, Any, Optional, Set
+from typing import List, Dict, Any, Optional
 from dataclasses import dataclass, field
-from datetime import datetime
 
 from .whatsapp_validator import (
     WhatsAppValidator,

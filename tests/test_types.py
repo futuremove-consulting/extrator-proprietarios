@@ -1,6 +1,5 @@
 """Testes para types.py."""
 
-import pytest
 from extrator_prop.types import (
     EntityType,
     ValidationStatus,
