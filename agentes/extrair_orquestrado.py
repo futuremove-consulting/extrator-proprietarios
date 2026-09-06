@@ -7,6 +7,7 @@ ESTÁGIO 3: Merge & Enriquecimento
 """
 
 import argparse
+import asyncio
 import json
 import sys
 from datetime import datetime
@@ -253,7 +254,7 @@ def stage1_inventario(
         return inventario
 
 
-def stage2_extracao_cascata(
+async def stage2_extracao_cascata(
     logger: ProcessLearningLogger,
     inventario: dict[str, Any],
     sistemas_ordenados: list[dict],
@@ -321,9 +322,21 @@ def stage2_extracao_cascata(
                                  {"record_key": registro["record_key"], "nome": registro["name_raw"]}) as action:
                     
                     try:
-                        # Simular extração de modal/detalhe
-                        # Na versão real, aqui chamaria browser automation
-                        dados_modal_simulados = _simular_modal(sistema, registro)
+                        # EEmovel: usar browser automation real
+                        if sistema == "eemovel":
+                            from eemovel.browser_extractor import extrair_detalhes_eemovel_browser
+                            import asyncio
+                            
+                            detalhes_lista = await extrair_detalhes_eemovel_browser(
+                                logger, [registro]
+                            )
+                            if not detalhes_lista:
+                                raise ValueError("Browser extractor retornou lista vazia")
+                            dados_modal_simulados = detalhes_lista[0]
+                        else:
+                            # Simular extração de modal/detalhe para Captei/Fisgar
+                            # Na versão real, aqui chamaria browser automation
+                            dados_modal_simulados = _simular_modal(sistema, registro)
                         
                         # Processar
                         dados_processados = processar_modal(dados_modal_simulados)
@@ -620,7 +633,7 @@ def _is_better_whatsapp(new: dict, current: dict) -> bool:
     return bool(new.get("nome_exibicao")) and not bool(current.get("nome_exibicao"))
 
 
-def main():
+async def main():
     parser = argparse.ArgumentParser(description='Orquestrador Inteligente de Extração Multi-Origem')
     parser.add_argument('--endereco', required=True, help='Endereço para busca')
     parser.add_argument('--sistemas', nargs='+', choices=['captei', 'fisgar', 'eemovel'], 
@@ -695,7 +708,7 @@ def main():
             print("Ordem: EEmovel (R$0.81) → Fisgar (R$1.03) → Captei (R$1.57)")
             print(f"{'='*60}")
             
-            resultado_extracao = stage2_extracao_cascata(
+            resultado_extracao = await stage2_extracao_cascata(
                 logger, inventario, ORDEM_EXTRACAO, args.limite
             )
             
@@ -730,12 +743,11 @@ def main():
         print("ESTÁGIO 2.5: VALIDAÇÃO WHATSAPP (Dono do Zap)")
         print(f"{'='*60}")
         
-        import asyncio
-        whatsapp_result = asyncio.run(stage25_validacao_whatsapp(
+        whatsapp_result = await stage25_validacao_whatsapp(
             logger,
             resultado_merge["golden_records_path"],
             max_cost_per_phone=1.00
-        ))
+        )
         
         print("Validação WhatsApp concluída:")
         print(f"  Validados: {whatsapp_result['validated']}")
@@ -772,4 +784,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    import asyncio
+    asyncio.run(main())

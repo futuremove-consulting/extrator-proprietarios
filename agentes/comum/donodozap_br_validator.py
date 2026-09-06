@@ -32,6 +32,14 @@ class DonoDoZapBRValidator(WhatsAppValidator):
             self._session = "donodozap_br"
         return self._session
 
+    async def _init_browser(self):
+        """No-op: agent-browser gerencia sessão externamente."""
+        pass
+
+    async def _close_browser(self):
+        """No-op: agent-browser gerencia sessão externamente."""
+        pass
+
     async def validate(self, phone: str) -> WhatsAppValidationResult:
         start_time = time.time()
         digits = self._normalize_phone(phone)

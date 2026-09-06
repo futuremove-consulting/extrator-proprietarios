@@ -21,6 +21,14 @@ class DonoDoZapComValidator(WhatsAppValidator):
     def base_url(self) -> str:
         return "https://donodozap.com"
 
+    async def _init_browser(self):
+        """No-op: agent-browser gerencia sessão externamente."""
+        pass
+
+    async def _close_browser(self):
+        """No-op: agent-browser gerencia sessão externamente."""
+        pass
+
     async def validate(self, phone: str) -> WhatsAppValidationResult:
         start_time = time.time()
         digits = self._normalize_phone(phone)

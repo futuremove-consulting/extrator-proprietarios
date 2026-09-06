@@ -125,8 +125,10 @@ class WhatsAppValidator(ABC):
 
     @abstractmethod
     async def _init_browser(self):
+        """Inicializa browser/sessão. No-op for agent-browser validators."""
         pass
 
     @abstractmethod
     async def _close_browser(self):
+        """Fecha browser/sessão. No-op for agent-browser validators."""
         pass
