@@ -1,20 +1,17 @@
-"""Validador para donodozap.com usando Playwright."""
+"""Validador para donodozap.com usando agent-browser (Vercel)."""
 
-import asyncio
 import time
-from typing import List, Dict, Any
-from playwright.async_api import async_playwright, Browser, Page
 
 from .whatsapp_validator import (
-    WhatsAppValidator,
-    WhatsAppValidationResult,
     ValidationSource,
-    ValidationTier
+    ValidationTier,
+    WhatsAppValidationResult,
+    WhatsAppValidator,
 )
 
 
 class DonoDoZapComValidator(WhatsAppValidator):
-    """Validador para donodozap.com"""
+    """Validador para donodozap.com via agent-browser."""
 
     @property
     def source(self) -> ValidationSource:
@@ -24,50 +21,42 @@ class DonoDoZapComValidator(WhatsAppValidator):
     def base_url(self) -> str:
         return "https://donodozap.com"
 
-    async def _init_browser(self):
-        self._playwright = await async_playwright().start()
-        self._browser = await self._playwright.chromium.launch(headless=self.headless)
-        self._page = await self._browser.new_page()
-        await self._page.goto(self.base_url, wait_until="networkidle")
-
-    async def _close_browser(self):
-        if self._browser:
-            await self._browser.close()
-        if self._playwright:
-            await self._playwright.stop()
-
     async def validate(self, phone: str) -> WhatsAppValidationResult:
         start_time = time.time()
         digits = self._normalize_phone(phone)
         formatted = self._format_phone(digits)
 
         try:
-            await self._page.goto(self.base_url, wait_until="networkidle")
-
-            # donodozap.com tem seletor de país + input
-            # Encontrar input do telefone
-            phone_input = await self._page.wait_for_selector(
-                'input[type="tel"], input[name="phone"], input[placeholder*="número"], input[placeholder*="numero"], input[type="text"]',
-                timeout=self.timeout_ms
+            # Open page via agent-browser
+            await agent_browser_agent_browser_open(url=self.base_url, session="donodozap_com")
+            
+            # Wait for input and fill
+            await agent_browser_agent_browser_wait_for_selector(
+                selector='input[type="tel"], input[placeholder*="WhatsApp"], input[placeholder*="número"], input[type="text"]',
+                session="donodozap_com",
+                waitTimeoutMs=10000
+            )
+            await agent_browser_agent_browser_fill(
+                selector='input[type="tel"], input[placeholder*="WhatsApp"], input[placeholder*="número"], input[type="text"]',
+                text=formatted,
+                session="donodozap_com"
             )
 
-            # Limpar e preencher
-            await phone_input.fill("")
-            await phone_input.type(formatted, delay=50)
-
-            # Clicar botão descobrir
-            descobrir_btn = await self._page.wait_for_selector(
-                'button:has-text("Descobrir"), button[type="submit"], button:has-text("Consultar")',
-                timeout=self.timeout_ms
+            # Click consultar/descobrir
+            await agent_browser_agent_browser_click(
+                selector='button:has-text("Consultar"), button:has-text("Descobrir"), button[type="submit"]',
+                session="donodozap_com"
             )
-            await descobrir_btn.click()
 
-            # Aguardar resultado
-            await self._page.wait_for_timeout(3000)
+            # Wait for result
+            await agent_browser_agent_browser_wait_for_text(
+                text="Nome",
+                session="donodozap_com",
+                waitTimeoutMs=15000
+            )
 
-            # Extrair resultado
-            result = await self._extract_result(digits, formatted)
-
+            # Extract result
+            result = await self._extract_result_via_browser(digits, formatted)
             result.tempo_resposta_ms = int((time.time() - start_time) * 1000)
             return result
 
@@ -81,61 +70,19 @@ class DonoDoZapComValidator(WhatsAppValidator):
                 tempo_resposta_ms=int((time.time() - start_time) * 1000)
             )
 
-    async def _extract_result(self, digits: str, formatted: str) -> WhatsAppValidationResult:
-        """Extrai dados da página de resultado do donodozap.com"""
-
-        # Verificar se há nome exibido (tier FREE)
+    async def _extract_result_via_browser(self, digits: str, formatted: str) -> WhatsAppValidationResult:
+        snapshot = await agent_browser_agent_browser_snapshot(session="donodozap_com")
+        page_text = str(snapshot)
+        
+        tier = ValidationTier.NOT_FOUND
         nome_exibicao = None
-        nome_selectors = [
-            '.result-name',
-            '[data-testid="result-name"]',
-            'h2:has-text("Nome")',
-            '.nome-resultado',
-            'text=/Nome.*:/',
-            '.card-title'
-        ]
-
-        for selector in nome_selectors:
-            try:
-                elem = await self._page.query_selector(selector)
-                if elem:
-                    text = (await elem.inner_text()).strip()
-                    if text and len(text) > 2:
-                        nome_exibicao = text
-                        break
-            except:
-                continue
-
-        # Verificar foto de perfil (tier PAID)
         foto_url = None
-        try:
-            img_elem = await self._page.query_selector('img[alt*="foto"], img[alt*="perfil"], .profile-photo img, .avatar img')
-            if img_elem:
-                foto_url = await img_elem.get_attribute('src')
-        except:
-            pass
-
-        # Verificar se há botão de desbloqueio (indica tier PAID disponível)
-        has_paid_unlock = False
-        try:
-            unlock_btn = await self._page.query_selector('button:has-text("Desbloquear"), button:has-text("PIX"), button:has-text("Pagar")')
-            if unlock_btn:
-                has_paid_unlock = True
-        except:
-            pass
-
-        # Determinar tier
-        if foto_url or has_paid_unlock:
-            tier = ValidationTier.PAID
-            custo = 0.50
-        elif nome_exibicao:
+        
+        if "nome" in page_text.lower() and len(page_text) > 500:
             tier = ValidationTier.FREE
-            custo = 0.0
-        else:
-            tier = ValidationTier.NOT_FOUND
-            custo = 0.0
-
-        html = await self._page.content()
+        
+        if "foto" in page_text.lower() or "img" in page_text.lower():
+            tier = ValidationTier.PAID
 
         return WhatsAppValidationResult(
             phone_digits=digits,
@@ -144,11 +91,11 @@ class DonoDoZapComValidator(WhatsAppValidator):
             tier=tier,
             nome_exibicao=nome_exibicao,
             foto_perfil_url=foto_url,
-            custo_estimado=custo,
-            raw_response={"html_length": len(html), "page_url": self._page.url, "has_paid_unlock": has_paid_unlock}
+            custo_estimado=0.50 if tier == ValidationTier.PAID else 0.0,
+            raw_response={"page_text_length": len(page_text)}
         )
 
-    async def validate_batch(self, phones: List[str]) -> List[WhatsAppValidationResult]:
+    async def validate_batch(self, phones: list[str]) -> list[WhatsAppValidationResult]:
         results = []
         for phone in phones:
             result = await self.validate(phone)
