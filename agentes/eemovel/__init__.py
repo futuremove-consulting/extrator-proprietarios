@@ -3,7 +3,6 @@
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 import json
-from datetime import datetime
 
 from comum import (
     criar_estrutura_lote,

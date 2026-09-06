@@ -5,7 +5,7 @@ import json
 import re
 from datetime import datetime
 from pathlib import Path
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List
 
 
 def canonicalizar_texto(texto: str) -> str:
@@ -281,3 +281,15 @@ from .whatsapp_validation_service import (
     ValidationPolicy,
     create_validation_service
 )
+
+__all__ = [
+    "WhatsAppValidator",
+    "WhatsAppValidationResult",
+    "ValidationSource",
+    "ValidationTier",
+    "DonoDoZapBRValidator",
+    "DonoDoZapComValidator",
+    "WhatsAppValidationService",
+    "ValidationPolicy",
+    "create_validation_service",
+]
