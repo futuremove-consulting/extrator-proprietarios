@@ -5,6 +5,7 @@ import time
 
 from flask import Flask, jsonify, request
 
+from extrator_prop.api.adapter import to_pilotcrm
 from extrator_prop.config import Config
 from extrator_prop.exceptions import ExtratorError
 from extrator_prop.logging import get_logger
@@ -41,7 +42,8 @@ def create_app(config: Config | None = None) -> Flask:
         return jsonify({
             "address": address,
             "tipo_documento": out.tipo_documento,
-            "resultados": out.results,
+                        "resultados": out.results,
+            "items": to_pilotcrm(out.results),
             "stats": out.stats.to_dict(),
         }), 200
 

@@ -64,6 +64,12 @@ def test_extract_success(monkeypatch, client):
     assert res["name"] == "João Silva"
     assert res["source"] == "captei"
     assert res["source_id"] == "1"
+    # ponte PilotCRM: items no shape ExtractedOwner (ver adapter.py)
+    assert "items" in body
+    item = body["items"][0]
+    assert item["fullName"] == "João Silva"
+    assert item["source"] == "captei"
+    assert item["classification"] in {"proprietario", "possivel_morador", "empresa", "indefinido"}
 
 
 def test_extract_all_agents_disabled(client):
