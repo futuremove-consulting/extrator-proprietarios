@@ -569,7 +569,7 @@ async def stage25_validacao_whatsapp(
                     record["whatsapp_validations"].append(result.to_dict())
                     
                     # Melhor validação para o registro
-                    if not record.get("whatsapp_best") or self._is_better_whatsapp(result, record["whatsapp_best"]):
+                    if not record.get("whatsapp_best") or _is_better_whatsapp(result, record["whatsapp_best"]):
                         record["whatsapp_best"] = result.to_dict()
                     
                     validation_results.append({

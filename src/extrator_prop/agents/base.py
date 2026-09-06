@@ -120,7 +120,7 @@ class AgentBase(ABC):
     
     def validate_entity(self, record: Dict) -> EntityType:
         """Valida tipo de entidade."""
-        name = record.get("name", "")
+        name = record.get("name") or record.get("nome", "")
         if not name:
             return EntityType.DESCONHECIDO
         

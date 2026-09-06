@@ -6,7 +6,7 @@ import shutil
 from pathlib import Path
 
 from extrator_prop.features import FeatureFlags
-from extrator_prop.config import Config, AgentConfig
+from extrator_prop.config import AgentConfig
 
 
 @pytest.fixture
@@ -37,12 +37,12 @@ def mock_features():
 @pytest.fixture
 def mock_config():
     """Configuracao para testes."""
-    return Config(
-        captei=AgentConfig(enabled=True, base_url="https://test.captei.com.br", rate_limit=60),
-        fisgar=AgentConfig(enabled=True, base_url="https://test.fisgar.com.br", rate_limit=30),
-        eemovel=AgentConfig(enabled=True, base_url="https://test.eemovel.com.br", rate_limit=30),
-        log_level="DEBUG",
-        log_format="text"
+    return AgentConfig(
+        enabled=True,
+        base_url="https://test.example.com",
+        timeout=30.0,
+        max_retries=3,
+        rate_limit=60
     )
 
 

@@ -1,6 +1,8 @@
 """Testes para rate_limiter.py."""
 
 import time
+
+import pytest
 from extrator_prop.core.rate_limiter import (
     TokenBucketRateLimiter,
     RateLimitConfig,
@@ -36,7 +38,7 @@ class TestTokenBucketRateLimiter:
         limiter = TokenBucketRateLimiter(config)
         
         assert limiter.acquire() is True
-        assert limiter.available_tokens == 4
+        assert limiter.available_tokens == pytest.approx(4, abs=1e-3)
     
     def test_acquire_exhaustion(self):
         config = RateLimitConfig(requests_per_minute=60, burst_size=2)

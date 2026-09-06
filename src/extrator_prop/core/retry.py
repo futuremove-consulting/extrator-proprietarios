@@ -74,15 +74,17 @@ class RetryHandler:
     
     def execute(self, func: Callable, *args, **kwargs) -> Any:
         """Executa funcao com retry."""
+        last_exception = None
         for attempt in range(self.config.max_attempts):
             try:
                 self.attempts = attempt + 1
                 return func(*args, **kwargs)
             except self.config.retryable_exceptions as e:
                 self.errors.append({"attempt": attempt + 1, "error": str(e)})
+                last_exception = e
                 
                 if attempt < self.config.max_attempts - 1:
                     delay = self.config.calculate_delay(attempt)
                     time.sleep(delay)
         
-        raise self.errors[-1] if self.errors else Exception("Retry falhou")
+        raise last_exception if last_exception is not None else Exception("Retry falhou")

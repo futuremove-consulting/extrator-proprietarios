@@ -34,7 +34,7 @@ class RateLimitError(ExtratorError):
     def __init__(self, source: str, retry_after: Optional[float] = None):
         msg = f"Rate limit atingido para {source}"
         if retry_after:
-            msg += f". Tente novamente em {retry_after}s"
+            msg += f". Tente novamente em {retry_after:g}s"
         super().__init__(msg)
         self.source = source
         self.retry_after = retry_after
@@ -52,7 +52,7 @@ class TimeoutError(ExtratorError):
     """Erro de timeout."""
     
     def __init__(self, source: str, timeout: float):
-        super().__init__(f"Timeout ({timeout}s) para {source}")
+        super().__init__(f"Timeout ({timeout:g}s) para {source}")
         self.source = source
         self.timeout = timeout
 
