@@ -1,4 +1,4 @@
 """Servico de extracao HTTP (Flask)."""
-from extrator_prop.service.extractor_service import ExtractorService, ExtractionResult
+from extrator_prop.service.extractor_service import ExtractionResult, ExtractorService
 
-__all__ = ["ExtractorService", "ExtractionResult"]
+__all__ = ["ExtractionResult", "ExtractorService"]

@@ -46,11 +46,11 @@ def create_app(config: Config | None = None) -> Flask:
         }), 200
 
     @app.errorhandler(404)
-    def not_found(_e):  # noqa: ANN001
+    def not_found(_e):
         return jsonify({"error": "endpoint nao encontrado"}), 404
 
     @app.errorhandler(405)
-    def method_not_allowed(_e):  # noqa: ANN001
+    def method_not_allowed(_e):
         return jsonify({"error": "metodo nao permitido"}), 405
 
     return app

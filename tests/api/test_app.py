@@ -47,7 +47,7 @@ def test_extract_success(monkeypatch, client):
         {"name": "Imobiliária Ltda", "id": "2"},
     ]
 
-    def fake_listing(self, address, **kw):  # noqa: ANN001
+    def fake_listing(self, address, **kw):
         return raw
 
     monkeypatch.setattr("extrator_prop.agents.captei.CapteiAgent.extract_listing", fake_listing)
