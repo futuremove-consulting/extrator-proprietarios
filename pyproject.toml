@@ -23,7 +23,10 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
 ]
 
-dependencies = []
+dependencies = [
+    "flask>=3.0",
+    "click>=8.1",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -38,6 +41,7 @@ dev = [
 
 [project.scripts]
 extrair-proprietarios = "extrator_prop.cli.main:app"
+extrator-api = "extrator_prop.api.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/extrator_prop"]
