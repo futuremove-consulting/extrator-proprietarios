@@ -53,7 +53,7 @@ Checklist obrigatório para encerrar qualquer fluxo:
 | 1 | **Fluxo 1 — Simples EEmóvel** | EEmóvel | extração 1 fonte → CRM | 2–3 dias |
 | 2 | **Fluxo 2 — Simples Fisgar** | Fisgar | extração 1 fonte → CRM | 3–4 dias |
 | 3 | **Fluxo 3 — Simples Captei** | Captei | extração 1 fonte → CRM | 3–4 dias |
-| 4 | **Fluxo 4 — Completo sequencial** | 3 fontes | cascata + enriquecimento incremental + base única | 4–5 dias |
+| 4 | **Fluxo 4 — Completo sequencial** | 3 fontes | cascata + enriquecimento incremental + base única | 6–8 dias (incl. telas 6.9) |
 
 ---
 
@@ -115,7 +115,8 @@ R1–R8 + credenciais EEmóvel (email/senha) no ambiente + saldo ≥ 10 consulta
 - ≥ 2 endereços-piloto extraídos com contatos reais persistidos;
 - classificação correta: com contato → `proprietario` (confidence 0.9); sem contato → `possivel_morador`;
 - `/crm/properties/captados` exibe o imóvel com badge EEmóvel e proprietários;
-- orçamento de crédito respeitado (listagem 1 + N detalhes ≤ N+1).
+- orçamento de crédito respeitado (listagem 1 + N detalhes ≤ N+1);
+- **frontend 11.2 operando**: erros acionáveis + aviso de custo estimado, usados na execução real.
 
 ### 3.6 Riscos específicos
 
@@ -166,7 +167,8 @@ R1–R8 + credenciais Fisgar + **saldo ≥ 15 modais** (250/mês) + custo por mo
 - ≥ 2 endereços-piloto com registros Fisgar persistidos;
 - CPF (quando presente no modal) armazenado e visível no contato;
 - idempotência via `source_record_id` (record_key) provada;
-- orçamento: 1 listagem + N modais ≤ N+1 créditos.
+- orçamento: 1 listagem + N modais ≤ N+1 créditos;
+- **frontend 11.2 operando**: CPF forte x mascarado visível na revisão, usado na execução real.
 
 ### 4.6 Riscos específicos
 
@@ -218,7 +220,8 @@ R1–R8 + credenciais Captei (Token/User-Key) + **saldo capcoins ≥ 20** + pol�
 - ≥ 2 endereços-piloto com registros Captei persistidos;
 - WhatsApp validado nativo refletido em `whatsappValidation` do ExtractedOwner e no CRM;
 - toda execução `live` com aprovação registrada (auditoria sem exceção);
-- orçamento de capcoins por execução respeitado e registrado.
+- orçamento de capcoins por execução respeitado e registrado;
+- **frontend 11.2 operando**: diálogo de aprovação com orçamento, usado na execução real (quem aprovou fica no relatório).
 
 ### 5.6 Riscos específicos
 
@@ -318,6 +321,7 @@ R1–R8 dos **3 fluxos simples Done** + saldos combinados suficientes para 1 pil
 - economia provada: consultas de detalhe totais < U (universo consolidado) — alvo ~40% de economia vs. sem cascata;
 - re-execução do mesmo endereço: **zero crédito extra de listagem** (inventário salvo no manifest) e zero duplicata no CRM;
 - golden record visível no CRM com linhagem multi-fonte (badge de múltiplas fontes no S2-4);
+- **telas da seção 6.9 operando com dados reais** (orquestração, aprovação, revisão de pares, linhagem);
 - relatório de reconciliação e créditos arquivados por execução.
 
 ### 6.8 Riscos específicos
@@ -329,6 +333,21 @@ R1–R8 dos **3 fluxos simples Done** + saldos combinados suficientes para 1 pil
 | Cotas esgotadas no meio da cascata | checkpoint por estágio; cascata retoma de onde parou no mês seguinte |
 | CRM recebe pessoas repetidas entre fontes | dedupe do webhook + dedupe prévio no golden record (2 camadas) |
 
+### 6.9 Frontend do Fluxo 4 — telas novas (obrigatórias para o Done)
+
+O Fluxo 4 **não opera só por CLI**: a orquestração, as aprovações pagas e a revisão de consolidção são decisões de negócio e precisam de tela. Done do Fluxo 4 inclui estas telas testadas com dados reais:
+
+| Tela | Função | Done da tela (mesma régua R/D) |
+|------|--------|-------------------------------|
+| **Captação Completa** (`/crm/captacao/completa`) — NOVA | input do endereço → iniciar orquestração → progresso pelos estágios A–G (inventário, cascatas C1/C2/C3, enriquecimento, golden record, push) com status por fonte | 1 execução real acompanhada ponta a ponta nesta tela |
+| **Ponto de aprovação C2/C3** — na tela acima | antes de cada cascata paga: orçamento (N consultas, custo verificado, saldo), botão aprovar → grava `aprovacao.json` com aprovador | aprovação real registrada e visível no relatório de créditos |
+| **Revisão de pares duvidosos** (`/crm/captacao/revisao`) — NOVA | casamentos de identidade abaixo do limiar: aprovar/rejeitar par; alimenta o golden record | ≥1 lote de pares revisado com dados reais; decisão persistida |
+| **Golden record / contato consolidado** — visão na tela de captação ou no contato do CRM | 1 pessoa = 1 registro com **linhagem por campo** (qual fonte forneceu o quê) | golden record real exibido com linhagem de ≥2 fontes |
+| **Detalhe do imóvel (S2-5)** (`/crm/properties/captados/[id]`) — NOVA | imóvel com proprietários/moradores, papéis, badge multi-fonte ("2 fontes confirmaram") e histórico de captação | imóvel real do piloto aberto com linhagem multi-fonte |
+
+Esforço adicional do Fluxo 4 por causa do frontend: **+2–3 dias** (total passa de 4–5 para **6–8 dias**).
+
+
 ---
 
 ## 7. Cronograma e dependências
@@ -337,7 +356,7 @@ R1–R8 dos **3 fluxos simples Done** + saldos combinados suficientes para 1 pil
 Semana 1        F0 → Fluxo 1 (EEmóvel) ──────────────── Done
 Semana 2        Fluxo 2 (Fisgar) ────────────────────── Done
 Semana 3        Fluxo 3 (Captei) ────────────────────── Done
-Semana 3–4      Fluxo 4 (Completo) ──────────────────── Done
+Semana 3–5      Fluxo 4 (Completo, incl. frontend 6.9) ─ Done
 ```
 
 Regra inegociável: **um fluxo por vez**. Se um fluxo estourar a estimativa, o seguinte desloca — nunca paralelizamos fluxos de fonte diferentes (mesmo browser, mesmas credenciais, mesma conta de crédito).
@@ -373,6 +392,42 @@ Regra inegociável: **um fluxo por vez**. Se um fluxo estourar a estimativa, o s
 | 2. Fisgar | idem + CPF enriquecendo a base | identidade forte |
 | 3. Captei | idem + WhatsApp validado nativo, gasto auditado | qualidade de contato |
 | 4. Completo | 1 comando → 3 fontes em cascata → golden record → CRM, com economia medida | o produto: base única de proprietários a custo mínimo |
+
+---
+
+## 11. Frontend — inventário de telas por fluxo
+
+Princípio: cada fluxo é operado **pelo usuário no navegador**, não por CLI. CLI é o motor; a tela é o produto. O Done de cada fluxo inclui as telas abaixo testadas com dados reais.
+
+### 11.1 Telas existentes (reaproveitadas — já operando)
+
+| Tela | Usada em | Status |
+|------|----------|--------|
+| `/crm/captacao` — CaptacaoForm (busca por fonte única, rua/número/cidade, busca ao vivo x demo) | Fluxos 1–3 | ✅ existe |
+| `ResultsTabs` + `RevisionTable` — resultados, seleção e revisão (exibe cpf · tel · email) | Fluxos 1–3 | ✅ existe |
+| `ValidationWhatsApp` — validação de WhatsApp | Fluxos 1–3 | ✅ existe |
+| `LotesView` — lotes salvos + export CSV | Fluxos 1–3 | ✅ existe |
+| `/crm/properties/captados` — lista de imóveis captados (badge por fonte, busca, filtro) | Todos | ✅ existe (S2-4) |
+| `/api/crm/captacao/credentials` — gestão de credenciais por fonte | Fluxos 1–3 | ⚠️ API existe; **verificar se há tela de configuração** — se não houver, criar tela simples em Settings |
+
+### 11.2 Ajustes nas telas existentes (por fluxo simples)
+
+| Fluxo | Ajuste | Critério de Done do ajuste |
+|-------|--------|---------------------------|
+| 1. EEmóvel | estados de erro amigáveis na busca ao vivo (timeout do runner, sessão expirada, endereço sem dados) — mensagem acionável, não stack trace | operador lê a mensagem e sabe o que fazer |
+| 1. EEmóvel | aviso de custo estimado antes de disparar busca ao vivo ("≈ 1 + N créditos") | exibido antes de cada busca ao vivo |
+| 2. Fisgar | coluna CPF/RG destacada na revisão + indicador de CPF forte x mascarado | visível com dados reais do Fisgar |
+| 3. Captei | diálogo de aprovação com **orçamento de capcoins** antes da busca ao vivo (quem aprovou fica no relatório) | aprovação registrada e auditável |
+
+Esforço: **1–2 dias** somados.
+
+### 11.3 Telas novas (Fluxo 4)
+
+Detalhadas na seção 6.9: Captação Completa (orquestração A–G), aprovação C2/C3, revisão de pares duvidosos, golden record com linhagem por campo, detalhe do imóvel S2-5. Esforço: **2–3 dias**.
+
+### 11.4 Regra
+
+Nenhuma tela entra no Done "pronta" sem ter sido **usada numa execução com dados reais** — mock não conta. Tela sem dado real é código, não entrega.
 
 
 
