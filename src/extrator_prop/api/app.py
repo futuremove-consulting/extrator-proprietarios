@@ -33,8 +33,9 @@ def create_app(config: Config | None = None) -> Flask:
             return jsonify({"error": "payload deve conter 'address' (ou 'query')"}), 400
 
         service = ExtractorService(config=app.config["EXTRATOR_CONFIG"])
+        fontes = payload.get("fontes") or None
         try:
-            out = service.list_owners(address, tipo_documento)
+            out = service.list_owners(address, tipo_documento, fontes=fontes)
         except ExtratorError as exc:
             logger.error("extract failed", extra={"address": address, "error": str(exc)})
             return jsonify({"error": "extracao falhou", "detail": str(exc),

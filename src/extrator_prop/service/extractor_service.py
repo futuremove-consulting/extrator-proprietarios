@@ -52,22 +52,35 @@ class ExtractorService:
     def _build_agent(self, agent_cls: type[AgentBase], agent_cfg: AgentConfig, lot_name: str) -> AgentBase:
         return agent_cls(config=agent_cfg, features=self.features, lot_name=lot_name)
 
-    def build_agents(self, address: str) -> list[AgentBase]:
+    def build_agents(self, address: str, fontes: list[str] | None = None) -> list[AgentBase]:
         slug = address.lower().strip().replace(" ", "_")[:64]
+        fontes_norm = [f.strip().lower() for f in fontes] if fontes else None
+        candidatos: list[tuple[type[AgentBase], AgentConfig, str, str]] = [
+            (CapteiAgent, self.config.captei, f"{slug}-captei", "captei"),
+            (EEmovelAgent, self.config.eemovel, f"{slug}-eemovel", "eemovel"),
+            (FisgarAgent, self.config.fisgar, f"{slug}-fisgar", "fisgar"),
+        ]
         agents: list[AgentBase] = []
-        if self.features.CAPTEI_ENABLED and self.config.captei.enabled:
-            agents.append(self._build_agent(CapteiAgent, self.config.captei, f"{slug}-captei"))
-        if self.features.EEMOVEL_ENABLED and self.config.eemovel.enabled:
-            agents.append(self._build_agent(EEmovelAgent, self.config.eemovel, f"{slug}-eemovel"))
-        if self.features.FISGAR_ENABLED and self.config.fisgar.enabled:
-            agents.append(self._build_agent(FisgarAgent, self.config.fisgar, f"{slug}-fisgar"))
+        for agent_cls, agent_cfg, lot_name, source_key in candidatos:
+            if fontes_norm is not None and source_key not in fontes_norm:
+                continue
+            if not self.features.CAPTEI_ENABLED and agent_cls is CapteiAgent:
+                continue
+            if not self.features.EEMOVEL_ENABLED and agent_cls is EEmovelAgent:
+                continue
+            if not self.features.FISGAR_ENABLED and agent_cls is FisgarAgent:
+                continue
+            if not agent_cfg.enabled:
+                continue
+            agents.append(self._build_agent(agent_cls, agent_cfg, lot_name))
         return agents
 
-    def list_owners(self, address: str, tipo_documento: str = "proprietario") -> ExtractionResult:
+    def list_owners(self, address: str, tipo_documento: str = "proprietario",
+                    fontes: list[str] | None = None) -> ExtractionResult:
         stats = ExtractionStats(start_time=time())
         results: list[dict] = []
         try:
-            for agent in self.build_agents(address):
+            for agent in self.build_agents(address, fontes):
                 raw_listing = agent.extract_listing(address)
                 stats.total += len(raw_listing)
                 for record in raw_listing:

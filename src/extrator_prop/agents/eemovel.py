@@ -10,7 +10,14 @@ from extrator_prop.agents.base import AgentBase
 from extrator_prop.config import AgentConfig
 from extrator_prop.constants import EEMOVEL_BASE_URL, RATE_LIMITS
 from extrator_prop.features import FeatureFlags
-from extrator_prop.types import CanonicalContact, EmailValidation, PhoneValidation
+from extrator_prop.types import (
+    Address,
+    CanonicalContact,
+    ConfidenceLevel,
+    EmailValidation,
+    EntityType,
+    PhoneValidation,
+)
 
 
 class EEmovelAgent(AgentBase):
@@ -110,7 +117,14 @@ class EEmovelAgent(AgentBase):
         return None
     
     def map_to_canonical(self, raw_record: dict) -> CanonicalContact:
-        """Mapeia registro bruto do EEmovel para modelo canonico."""
+        """Mapeia registro bruto do EEmovel para modelo canonico.
+
+        Regras de qualidade:
+        - address estruturado a partir do endereco da busca (street/number/city);
+        - cpf quando presente no detalhe;
+        - confidence ALTA quando o registro tem contato (tel ou email),
+          BAIXA caso contrario (afeta classificacao proprietario x possivel_morador).
+        """
         phones = []
         for phone_raw in raw_record.get("telefones", []):
             if isinstance(phone_raw, str):
@@ -131,15 +145,31 @@ class EEmovelAgent(AgentBase):
                     source="eemovel"
                 ))
         
+        address = Address(
+            street=raw_record.get("street"),
+            number=raw_record.get("number"),
+            city=raw_record.get("city"),
+            full=raw_record.get("endereco"),
+        )
+
+        confidence = (
+            ConfidenceLevel.ALTA if (phones or emails)
+            else ConfidenceLevel.BAIXA
+        )
+
         contact = CanonicalContact(
             name=raw_record.get("nome", ""),
             source=self.source_key,
             source_id=raw_record.get("id"),
+            entity_type=EntityType.PESSOA_FISICA,
             phones=phones,
             emails=emails,
+            cpf=raw_record.get("cpf"),
+            address=address,
+            confidence=confidence,
             metadata={
                 "unidade": raw_record.get("unidade"),
-                "vaga": raw_record.get("vaga"),
+                "endereco": raw_record.get("endereco"),
                 "tipo": raw_record.get("tipo")  # proprietario ou morador
             }
         )

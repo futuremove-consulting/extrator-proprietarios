@@ -80,7 +80,7 @@ def to_extracted_owner(canon: dict[str, Any]) -> dict[str, Any]:
         'street': addr.get('street') or None,
         'number': addr.get('number') or None,
         'complement': addr.get('complement') or None,
-        'unit': metadata.get('unit') or None,
+        'unit': metadata.get('unit') or metadata.get('unidade') or None,
         'cep': addr.get('postal_code') or None,
         'city': addr.get('city') or None,
         'state': addr.get('state') or None,

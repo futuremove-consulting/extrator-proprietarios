@@ -387,6 +387,14 @@ def rodar_mock(args: argparse.Namespace) -> None:
     print(f"[mock] {len(processados)} registros processados em {lote.estrutura['base']}")
 
 
+def _parse_endereco(endereco: str) -> tuple[str, str]:
+    """Divide 'Rua X, 100' em (street, number)."""
+    m = re.match(r"^(.*?)[,\s]+(\d+)\s*$", endereco.strip())
+    if m:
+        return m.group(1).strip().rstrip(","), m.group(2)
+    return endereco.strip(), ""
+
+
 def rodar_batch_json(args: argparse.Namespace) -> None:
     """Modo para o ExtractorService (API): imprime JSON no contrato do agente.
 
@@ -402,6 +410,7 @@ def rodar_batch_json(args: argparse.Namespace) -> None:
 
     records: list[dict[str, Any]] = []
     limite = min(args.max_consultas, len(linhas))
+    rua, numero = _parse_endereco(args.endereco)
     for idx, linha in enumerate(linhas):
         registro = montar_registro_manifest(linha, args.endereco, idx + 1)
         telefones: list[str] = []
@@ -418,6 +427,9 @@ def rodar_batch_json(args: argparse.Namespace) -> None:
             "emails": emails,
             "unidade": registro["unit_raw"],
             "endereco": registro["address_raw"],
+            "street": rua,
+            "number": numero,
+            "city": args.cidade,
             "tipo": "morador" if registro["tipo_pessoa"] == "Morador" else "proprietario",
         })
 
