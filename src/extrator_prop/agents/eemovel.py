@@ -1,5 +1,9 @@
 """Agente EEmovel para extracao de proprietarios e moradores."""
 
+import json
+import os
+import subprocess
+import sys
 from pathlib import Path
 
 from extrator_prop.agents.base import AgentBase
@@ -52,11 +56,51 @@ class EEmovelAgent(AgentBase):
         self._session_cookies = {}
     
     def extract_listing(self, address: str, **kwargs) -> list[dict]:
-        """Extrai listagem de proprietarios do EEmovel."""
+        """Extrai listagem de proprietarios do EEmovel.
+
+        Com EEMOVEL_BROWSER_ENABLED=1, delega ao runner agent-browser
+        (agentes/eemovel/runner.py batch-json). Sem a flag, retorna []
+        (stub, compatibilidade com testes).
+        """
         self.logger.info(f"Extraindo listagem EEmovel: {address}")
-        
-        # TODO: Implementar extracao real
-        return []
+
+        if os.environ.get("EEMOVEL_BROWSER_ENABLED") != "1":
+            self.logger.warning("EEMOVEL_BROWSER_ENABLED != 1 — retornando stub vazio")
+            return []
+
+        runner_path = Path(
+            os.environ.get("EEMOVEL_RUNNER_PATH", "agentes/eemovel/runner.py")
+        )
+        if not runner_path.exists():
+            self.logger.error(f"Runner nao encontrado: {runner_path}")
+            return []
+
+        max_consultas = kwargs.get("max_consultas", int(os.environ.get("EEMOVEL_MAX_CONSULTAS", "10")))
+        cmd = [
+            sys.executable, str(runner_path),
+            "--session", os.environ.get("AGENT_BROWSER_SESSION", "eemovel-runner"),
+            "batch-json",
+            "--endereco", address,
+            "--max-consultas", str(max_consultas),
+        ]
+        try:
+            proc = subprocess.run(cmd, capture_output=True, text=True, timeout=900)
+        except subprocess.TimeoutExpired:
+            self.logger.error("Runner agent-browser excedeu o timeout (900s)")
+            return []
+
+        if proc.returncode != 0:
+            self.logger.error(f"Runner falhou (exit {proc.returncode}): {proc.stderr[-300:]}")
+            return []
+
+        try:
+            records = json.loads(proc.stdout)
+        except json.JSONDecodeError:
+            self.logger.error("Runner nao retornou JSON valido")
+            return []
+
+        self.logger.info(f"Runner devolveu {len(records)} registros reais")
+        return records
     
     def extract_details(self, record_key: str) -> dict | None:
         """Extrai detalhes de um registro (telefones, emails)."""

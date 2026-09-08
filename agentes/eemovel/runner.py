@@ -387,6 +387,44 @@ def rodar_mock(args: argparse.Namespace) -> None:
     print(f"[mock] {len(processados)} registros processados em {lote.estrutura['base']}")
 
 
+def rodar_batch_json(args: argparse.Namespace) -> None:
+    """Modo para o ExtractorService (API): imprime JSON no contrato do agente.
+
+    login -> busca -> listagem -> detalhe (limitado) -> JSON array:
+    [{"nome", "id" (record_key), "telefones": [str], "emails": [str],
+      "unidade", "endereco", "tipo"}]
+    """
+    sel = carregar_seletores()
+    ab = AgentBrowser()
+    garantir_login(ab, sel)
+    buscar_endereco(ab, sel, args.endereco, args.cidade, args.num_inicial, args.num_final)
+    linhas = extrair_listagem(ab, sel)
+
+    records: list[dict[str, Any]] = []
+    limite = min(args.max_consultas, len(linhas))
+    for idx, linha in enumerate(linhas):
+        registro = montar_registro_manifest(linha, args.endereco, idx + 1)
+        telefones: list[str] = []
+        emails: list[str] = []
+        if idx < limite:
+            detalhe = extrair_detalhe(ab, sel, idx)
+            if detalhe:
+                telefones = detalhe.get("telefones", [])
+                emails = detalhe.get("emails", [])
+        records.append({
+            "nome": registro["name_raw"],
+            "id": registro["record_key"],
+            "telefones": telefones,
+            "emails": emails,
+            "unidade": registro["unit_raw"],
+            "endereco": registro["address_raw"],
+            "tipo": "morador" if registro["tipo_pessoa"] == "Morador" else "proprietario",
+        })
+
+    json.dump(records, sys.stdout, ensure_ascii=False, indent=2)
+    print()
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="Runner EEmóvel via agent-browser")
     sub = ap.add_subparsers(dest="modo", required=True)
@@ -406,13 +444,22 @@ def main() -> None:
     p_mock.add_argument("--endereco", default="")
     p_mock.add_argument("--lote", default=None)
 
+    p_batch = sub.add_parser("batch-json", help="JSON no contrato do EEmovelAgent (API)")
+    p_batch.add_argument("--endereco", required=True)
+    p_batch.add_argument("--cidade", default="")
+    p_batch.add_argument("--num-inicial", type=int, default=1)
+    p_batch.add_argument("--num-final", type=int, default=200)
+    p_batch.add_argument("--max-consultas", type=int, default=10)
+
     args = ap.parse_args()
-    if args.lote is None:
+    if args.lote is None and args.modo == "live":
         slug = canonicalizar_texto(args.endereco)[:40].replace(" ", "_")
         args.lote = f"runner_{slug}_eemovel"
 
     if args.modo == "live":
         rodar_live(args)
+    elif args.modo == "batch-json":
+        rodar_batch_json(args)
     else:
         rodar_mock(args)
 
