@@ -38,6 +38,7 @@ from comum import (
     salvar_json_seguro,
     timestamp_iso,
 )
+from comum.creditos import RelatorioCreditos
 from eemovel.extrator import processar_modal_eemovel
 from eemovel.persister import persistir_proprietario
 
@@ -133,8 +134,8 @@ def garantir_login(ab: AgentBrowser, sel: dict[str, str]) -> None:
         print("[login] sessão ativa reutilizada")
         return
 
-    email = os.environ.get("EEMOVEL_EMAIL")
-    senha = os.environ.get("EEMOVEL_SENHA")
+    email = os.environ.get("EEMOVEL_EMAIL") or os.environ.get("EEMOVEL_USERNAME")
+    senha = os.environ.get("EEMOVEL_SENHA") or os.environ.get("EEMOVEL_PASSWORD")
     if not email or not senha:
         raise SystemExit("ERRO: EEMOVEL_EMAIL/EEMOVEL_SENHA não definidas no ambiente.")
 
@@ -327,6 +328,7 @@ def rodar_live(args: argparse.Namespace) -> None:
     sel = carregar_seletores()
     ab = AgentBrowser()
     lote = Lote(args.lote)
+    creditos = RelatorioCreditos("eemovel", args.endereco)
 
     garantir_login(ab, sel)
     if args.calibrate:
@@ -337,9 +339,16 @@ def rodar_live(args: argparse.Namespace) -> None:
         return
 
     buscar_endereco(ab, sel, args.endereco, args.cidade, args.num_inicial, args.num_final)
+    creditos.listagem(f"busca '{args.endereco}'")
     linhas = extrair_listagem(ab, sel)
     if not linhas:
-        raise SystemExit("Nenhuma linha extraída — rode `calibrate`.")
+        creditos.salvar(lote.estrutura["logs"])
+        raise SystemExit(
+            "Nenhuma linha extraída. Possíveis causas:\n"
+            "  1. Seletores desatualizados → rode: live --calibrate --endereco '<endereço>'\n"
+            "  2. Endereço sem dados no EEmóvel\n"
+            "  3. Sessão expirada → rode novamente (relogin automático)"
+        )
 
     limite = min(args.max_consultas, len(linhas))
     ckpt = lote.ler_checkpoint()
@@ -350,6 +359,7 @@ def rodar_live(args: argparse.Namespace) -> None:
         lote.append_manifest(registro)
 
         detalhe = extrair_detalhe(ab, sel, idx)
+        creditos.detalhe(registro["record_key"])
         if detalhe is None:
             print(f"[{idx}] detalhe indisponível — registro fica 'inventariado'")
         else:
@@ -362,7 +372,9 @@ def rodar_live(args: argparse.Namespace) -> None:
 
         lote.salvar_checkpoint(idx, processados)
 
+    caminho_creditos = creditos.salvar(lote.estrutura["logs"])
     print(f"[fim] lote={args.lote} manifest={lote.manifest_path} processados={len(processados)}")
+    print(f"[fim] {creditos.resumo()} → {caminho_creditos}")
 
 
 def rodar_mock(args: argparse.Namespace) -> None:
