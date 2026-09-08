@@ -1,0 +1,13 @@
+{
+  "login_email": "input[type='email'], input[name='email'], #email",
+  "login_senha": "input[type='password'], input[name='senha'], #senha",
+  "login_botao": "button[type='submit'], button:has-text('Entrar')",
+  "busca_cidade": "input[name='cidade'], #cidade",
+  "busca_endereco": "input[name='endereco'], #endereco, input[placeholder*='ndere']",
+  "busca_numero_inicial": "input[name='numeroInicial'], #numeroInicial",
+  "busca_numero_final": "input[name='numeroFinal'], #numeroFinal",
+  "busca_botao": "button:has-text('Buscar'), input[type='submit']",
+  "listagem_tabela": "table tbody tr",
+  "detalhe_abrir": "a:has-text('Ver mais'), button:has-text('Ver mais')",
+  "_nota": "Calibrar com: python3 runner.py live --calibrate --endereco '...' e ajustar aqui"
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "texto": "ANA LAURA ALCANTARA ALVES | Ap 101 E 2 Vg Bl C Recanto Jacaranda | Proprietário",
+    "cells": ["ANA LAURA ALCANTARA ALVES", "Ap 101 E 2 Vg Bl C Recanto Jacaranda", "Proprietário"],
+    "endereco": "Rua Marc Chagall, 397",
+    "detalhe_texto": "ANA LAURA ALCANTARA ALVES Proprietário Ap 101 E 2 Vg Bl C Recanto Jacaranda Telefone: (11) 98877-1234 Email: ana.alcantara@email.com CPF: ***.482.913-**"
+  },
+  {
+    "texto": "GILBERTO LACHTER GREIBER | Ap 101 E 2 Vg Bl A Recanto Jacaranda | Proprietário",
+    "cells": ["GILBERTO LACHTER GREIBER", "Ap 101 E 2 Vg Bl A Recanto Jacaranda", "Proprietário"],
+    "endereco": "Rua Marc Chagall, 397",
+    "detalhe_texto": "GILBERTO LACHTER GREIBER Proprietário Tel: (11) 97766-4321 / (11) 3322-1100 gilbert.lg@uol.com.br"
+  },
+  {
+    "texto": "SUZANA CAPASSI BALTUILHE MARTINS | Ap 202 Bl B Recanto Jacaranda | Possível morador",
+    "cells": ["SUZANA CAPASSI BALTUILHE MARTINS", "Ap 202 Bl B Recanto Jacaranda", "Possível morador"],
+    "endereco": "Rua Marc Chagall, 397",
+    "detalhe_texto": "SUZANA CAPASSI BALTUILHE MARTINS Possível morador suzana.capassi@gmail.com (11) 95544-8877"
+  }
+]
