@@ -1,0 +1,26 @@
+{
+  "rota": "/proprietarios",
+  "busca_autocomplete": "#selectedPlace, [role='combobox']",
+  "busca_numero": "#number",
+  "busca_complemento": "#extra",
+  "busca_bairro": "#district",
+  "busca_cidade": "#city",
+  "busca_cep": "#zipcode",
+  "busca_estado": "#state",
+  "busca_botao": "button:has-text('Buscar')",
+  "confirmar_busca": "button:has-text('Confirmar Busca')",
+  "listagem_container": "#owners-table-container",
+  "modal_cta": "button:has-text('Consultar')",
+  "modal_ver_mais": "button:has-text('VER MAIS')",
+  "_fonte": "FISGAR_SKILL.md + FISGAR_01_Guia_Replicacao_do_Zero.md (agentes/documentacao_base/)",
+  "_notas": [
+    "Busca em 2 passos: Buscar -> Confirmar Busca",
+    "Autocomplete: selecionar opcao REAL do menu (label completo), nao apenas preencher texto",
+    "Modal: abas separadas (nascimento/telefones/emails); VER MAIS nunca indica limite de 3",
+    "telefones/emails: usar links estruturais tel: e mailto:",
+    "Scroll SOMENTE em #owners-table-container; fim = 2 leituras sem nova chave",
+    "Sessao: URL/titulo nao provam autenticacao; GetPeople 401 = contexto expirado",
+    "Refs de snapshot nao sobrevivem a scroll; renovar a cada viewport"
+  ],
+  "listagem_linhas": "#owners-table-container tbody tr.MuiTableRow-root"
+}
