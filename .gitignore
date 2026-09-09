@@ -57,5 +57,13 @@ piloto/
 aprovacao*.json
 .venv/
 
-# Graphify (grafo de conocimiento)
+# Dados de extração operacionais
+agentes/orquestrado_*/
+agentes/inventario_*.json
+agentes/logs_orquestrado/
+agentes/documentacao_base/
+agentes/tests/
+docs/superpowers/
+
+# Graphify (grafo de conhecimento)
 graphify-out/
