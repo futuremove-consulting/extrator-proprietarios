@@ -56,3 +56,6 @@ agentes/sondagem/
 piloto/
 aprovacao*.json
 .venv/
+
+# Graphify (grafo de conocimiento)
+graphify-out/

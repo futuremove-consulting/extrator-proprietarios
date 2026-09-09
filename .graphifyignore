@@ -1,0 +1,26 @@
+# --- Graphify: exclusiones para el grafo de conocimiento ---
+
+# Entorno y dependencias
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+
+# Salida del propio graphify
+.graphify/
+graphify-out/
+
+# Datos operacionales (no es codigo ni conocimiento: lotes de extracion)
+agentes/orquestrado_*/
+agentes/logs_orquestrado/
+agentes/inventario_*.json
+agentes/*/curated/
+agentes/*/raw/
+agentes/*/manifest/
+agentes/*/checkpoints/
+agentes/*/logs/
+aprovacao*.json
+
+# Docs de respaldo voluminosos o temporales
+raw/
